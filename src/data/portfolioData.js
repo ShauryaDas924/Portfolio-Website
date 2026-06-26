@@ -252,18 +252,21 @@ export const resumes = [
     description:
       'Broad software engineering resume focused on end-to-end product building, systems thinking, and shipped portfolio artifacts.',
     href: '/resume/Shaurya_Das_Resume_A_Product_Builder.pdf',
+    downloadName: 'Shaurya_Das_Resume_A_Product_Builder.pdf',
   },
   {
     title: 'Resume B — AI Software Engineer',
     description:
       'AI-focused resume emphasizing FastAPI backends, OpenAI workflows, PostgreSQL, auth, retrieval, and testing.',
     href: '/resume/Shaurya_Das_AI_Software_Engineer_Resume.pdf',
+    downloadName: 'Shaurya_Das_AI_Software_Engineer_Resume.pdf',
   },
   {
     title: 'Resume C — Swift / Apple Ecosystem',
     description:
       'Apple-platform resume focused on Swift, SwiftUI, AppKit, LaunchAgents, LaunchDaemons, iOS, and macOS product work.',
     href: '/resume/Shaurya_Das_Swift_Apple_Resume.pdf',
+    downloadName: 'Shaurya_Das_Swift_Apple_Resume.pdf',
   },
 ];
 
