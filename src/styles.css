@@ -448,12 +448,51 @@ p {
   min-height: 184px;
   display: flex;
   align-items: flex-end;
+  justify-content: flex-start;
   padding: 18px;
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.15)),
     linear-gradient(135deg, var(--sky), var(--mint));
   color: var(--navy);
   font-weight: 900;
+}
+
+.product-preview-logo {
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 20% 16%, rgba(255, 255, 255, 0.9), transparent 34%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(247, 251, 255, 0.62)),
+    linear-gradient(135deg, rgba(126, 200, 227, 0.28), rgba(255, 232, 115, 0.22), rgba(255, 179, 217, 0.24));
+}
+
+.product-logo {
+  width: min(150px, 68%);
+  max-height: 144px;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 14px 34px rgba(17, 24, 39, 0.16);
+}
+
+.product-logo-fallback {
+  display: none;
+}
+
+.product-preview-logo.logo-failed {
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.product-preview-logo.logo-failed .product-logo-fallback {
+  width: 100%;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .accent-mint .product-preview {
@@ -480,7 +519,16 @@ p {
     linear-gradient(135deg, var(--lavender), var(--mint));
 }
 
-.product-preview span {
+.accent-mint .product-preview-logo,
+.accent-pink .product-preview-logo,
+.accent-lavender .product-preview-logo {
+  background:
+    radial-gradient(circle at 20% 16%, rgba(255, 255, 255, 0.9), transparent 34%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(247, 251, 255, 0.62)),
+    linear-gradient(135deg, rgba(126, 200, 227, 0.28), rgba(255, 232, 115, 0.22), rgba(255, 179, 217, 0.24));
+}
+
+.product-preview > span:not(.product-logo-fallback) {
   width: 100%;
   min-height: 46px;
   display: flex;
@@ -886,6 +934,10 @@ p {
 
   .product-preview {
     min-height: 160px;
+  }
+
+  .product-logo {
+    max-height: 124px;
   }
 
   .footer-inner {

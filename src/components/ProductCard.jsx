@@ -3,8 +3,26 @@ import { ArrowRight } from 'lucide-react';
 export default function ProductCard({ product }) {
   return (
     <article className={`product-card accent-${product.accent}`}>
-      <div className="product-preview" aria-label={`${product.name} screenshot placeholder`}>
-        <span>{product.previewLabel}</span>
+      <div
+        className={`product-preview${product.logo ? ' product-preview-logo' : ''}`}
+        aria-label={product.logo ? undefined : `${product.name} screenshot placeholder`}
+      >
+        {product.logo ? (
+          <>
+            <img
+              className="product-logo"
+              src={product.logo}
+              alt={product.logoAlt}
+              onError={(event) => {
+                event.currentTarget.hidden = true;
+                event.currentTarget.parentElement?.classList.add('logo-failed');
+              }}
+            />
+            <span className="product-logo-fallback">{product.previewLabel}</span>
+          </>
+        ) : (
+          <span>{product.previewLabel}</span>
+        )}
       </div>
 
       <div className="product-card-body">

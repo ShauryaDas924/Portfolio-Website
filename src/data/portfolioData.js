@@ -36,6 +36,8 @@ export const products = [
     status: 'Private product / In development',
     accent: 'blue',
     previewLabel: 'macOS enforcement dashboard',
+    logo: '/product-logos/focuslock-logo.png',
+    logoAlt: 'FocusLock DNS Guard logo',
     highlights: [
       'Privileged helper and LaunchDaemon architecture',
       'Immutable active lock records and schedule windows',
@@ -45,15 +47,15 @@ export const products = [
     ],
     caseStudy: {
       problem:
-        'Blocking tools are easy to weaken if they only live inside a normal app process. A useful self-control product needs persistence, clear limits, and honest failure modes.',
+        'I wanted a website blocker that was stronger than a normal browser extension, worked across browsers for block-list sessions, supported schedules and multiple block windows, and could fit into a larger Apple-focused productivity system. The goal was not to claim total bypass resistance, but to create real local friction with clear technical boundaries.',
       built:
-        'I built a native macOS blocker that uses a privileged helper, LaunchDaemon checks, immutable active lock records, schedule snapshots, hosts-file enforcement, DNS cache flushing, and a browser-extension bridge for allow-list mode.',
+        'I built a native macOS blocker that uses a SwiftUI app, privileged helper, LaunchDaemon checks, immutable active lock records, schedule snapshots, hosts-file enforcement for block-list sessions, DNS cache flushing, and a browser-extension bridge for browser-scoped allow-list mode.',
       architecture:
         'The SwiftUI app handles setup, schedules, presets, diagnostics, and user flow. A privileged helper owns protected system writes and active lock state, while the Chromium MV3 extension communicates through native messaging for browser-scoped allow-list enforcement.',
       challenge:
-        'The hardest part was making protected sessions difficult to weaken while still supporting repair, expiry cleanup, multiple overlapping locks, setup diagnostics, and plain-language safety boundaries.',
+        'The hardest engineering challenge was making scheduled blocks clean up correctly after their time windows ended. I ran into orphaned schedule records, expired occurrence IDs, and leftover managed hosts-file entries that could cause old blocks to survive longer than intended. I fixed this by tightening schedule snapshots, active occurrence tracking, expiry cleanup, and overlap-safe rebuilding so one block ending would not accidentally remove or preserve the wrong protection.',
       boundaries:
-        'The product does not claim impossible system-wide allow-only networking through hosts files. It documents VPN, proxy, browser DoH, administrator, and unsupported-browser limitations clearly.',
+        'The product does not claim system-wide allow-only networking through hosts files. Hosts-file enforcement is used for block-list sessions and has documented limitations around VPNs, proxies, browser DNS-over-HTTPS, administrator removal, and unsupported browser behavior. Allow-list mode is browser-scoped and currently depends on supported Chromium-style browsers such as Chrome and Edge.',
     },
   },
   {
@@ -74,6 +76,8 @@ export const products = [
     status: 'Private product / In development',
     accent: 'mint',
     previewLabel: 'menu-bar rule manager',
+    logo: '/product-logos/macapptimeguard-logo.png',
+    logoAlt: 'MacAppTimeGuard logo',
     highlights: [
       'SwiftUI/AppKit menu-bar app',
       'NSWorkspace and NSRunningApplication monitoring',
@@ -83,15 +87,15 @@ export const products = [
     ],
     caseStudy: {
       problem:
-        'People need app limits that work locally and respect privacy without inspecting the contents of other apps.',
+        'While building my larger software projects, I realized I needed a better way to set boundaries around certain Mac apps. Ordinary timers and reminders were too easy to ignore, so I wanted a local tool that could enforce app limits, schedules, and Pomodoro-based access with more friction.',
       built:
-        'I built a macOS menu-bar app that tracks selected app usage, closes apps when rules disallow access, and supports daily limits, allowed windows, Pomodoro-only access, temporary blocks, and protected settings.',
+        'I built a macOS menu-bar app that tracks selected app usage, closes apps when rules disallow access, and supports daily limits, allowed windows, blocked windows, Pomodoro-only access, temporary blocks, protected settings, and admin-protected rule changes.',
       architecture:
-        'The app combines SwiftUI screens with AppKit menu-bar behavior, NSWorkspace monitoring, local persistence, notification warnings, and LaunchAgent startup support.',
+        'The app combines SwiftUI screens with AppKit menu-bar behavior, NSWorkspace monitoring, NSRunningApplication termination, Codable local persistence, notification warnings, login/startup support, protected configuration, and a local rule engine for evaluating app access.',
       challenge:
-        'The hardest challenge was separating stricter changes from weaker changes so users can tighten rules freely while requiring admin authorization for changes that would reduce protection.',
+        'The hardest part was not just making app rules run at the right times. The bigger challenge was turning a powerful control system into a friendly macOS product. This was my first serious macOS app, so I had to learn how to design a simple menu-bar experience, a deeper Manage Apps editor, clear rule states, and onboarding that made the app understandable for someone besides me.',
       boundaries:
-        'The app is local-only and does not inspect app contents. It is designed as a self-control tool, not a surveillance product or cryptographic security boundary.',
+        'The app is local-only and does not inspect app contents, browser history, screenshots, keystrokes, messages, or documents. It is designed as a self-control friction tool, not a surveillance product, kernel-level security tool, or cryptographic security boundary. A Mac administrator can intentionally remove or weaken it.',
     },
   },
   {
@@ -113,6 +117,8 @@ export const products = [
     status: 'Private product / In development',
     accent: 'pink',
     previewLabel: 'AI reflection workspace',
+    logo: '/product-logos/evrana-logo.png',
+    logoAlt: 'Evrana logo',
     highlights: [
       'AI chat, journaling, recall, trigger insights, growth tracking',
       'JWT/Google authentication',
@@ -122,15 +128,15 @@ export const products = [
     ],
     caseStudy: {
       problem:
-        'Habit-support apps often lose context, feel generic, or fail to protect sensitive reflection data with the seriousness it deserves.',
+        'I wanted a place where I could reflect on my day, track growth over time, and organize important moments, setbacks, patterns, and insights. I also wanted the product to support conversation, journaling, recall, and progress tracking in one connected system.',
       built:
-        'I built a cross-platform AI support product with journaling, chat, recall, trigger insight, growth tracking, authenticated web flows, backend services, and an iOS client.',
+        'I built a cross-platform AI support and reflection product with AI chat, journaling, recall, trigger insights, golden moments, growth tracking, authenticated web flows, backend services, SQL persistence, and a native SwiftUI iOS client.',
       architecture:
-        'React powers the web client, FastAPI handles domain services and OpenAI workflows, PostgreSQL persists user data, JWT/Google auth protects routes, and SwiftUI iOS stores tokens through Keychain.',
+        'React powers the web client, FastAPI handles domain services and OpenAI workflows, PostgreSQL persists user data, JWT/Google authentication protects routes, and SwiftUI iOS stores app tokens through Keychain while sharing backend API contracts with the web product.',
       challenge:
-        'The hardest challenge was designing AI workflows that remain useful while keeping privacy isolation, protected routes, rate limits, and malicious-input handling testable.',
+        'The hardest engineering challenge was keeping AI behavior separated across different modes. I thought of this as avoiding mode bleed: I did not want one mode\'s tone, assumptions, or safety behavior to leak into another mode, especially around sensitive flows. I handled this with backend-defined mode boundaries, separated prompt construction, endpoint-level validation, and defensive checks around mode selection and crisis-sensitive behavior.',
       boundaries:
-        'The product treats reflection data as sensitive. The portfolio does not expose prompts, private workflows, secrets, databases, or repository source.',
+        'The product treats reflection data as sensitive. The portfolio does not expose private prompts, private workflows, secrets, database contents, or repository source. The product is positioned as supportive reflection software, not crisis response or a replacement for qualified support.',
     },
   },
   {
@@ -161,15 +167,15 @@ export const products = [
     ],
     caseStudy: {
       problem:
-        'Students need help that is grounded in their actual class materials instead of generic tutoring that drifts away from the evidence.',
+        'College AI started from a real study problem. In one of my classes, slides were basically the study guide, so I first built it as a flashcard generator for deeper review. As I used it for more classes, especially math-heavy classes where practice mattered more than memorization, it expanded into homework tutoring, mastery tracking, and exam-focused workflows.',
       built:
-        'I built a full-stack AI platform that ingests class notes, homework, attempts, and exam materials to power tutoring, practice, mastery tracking, flashcards, analytics, and exam-focused workflows.',
+        'I built a full-stack AI study platform that ingests class notes, homework, practice attempts, and exam materials to power tutoring, practice, concept extraction, mastery tracking, flashcards, analytics, and evidence-based exam prep.',
       architecture:
-        'The frontend uses Next.js and TypeScript. The backend uses FastAPI, async SQLAlchemy, PostgreSQL, pgvector, file extraction services, and OpenAI workflows tied back to persisted class artifacts.',
+        'The frontend uses Next.js and TypeScript. The backend uses FastAPI, async SQLAlchemy, PostgreSQL, pgvector, file extraction services, and OpenAI workflows tied back to persisted class artifacts and class-scoped learning data.',
       challenge:
-        'The hardest challenge was keeping LLM-generated plans evidence-linked by connecting study and exam workflows to extracted concepts and persisted question IDs.',
+        'The hardest challenge was grounding AI extraction in the actual course materials. I wanted extracted notes, topics, and recommended questions to be supported by evidence from uploaded materials instead of unsupported AI guesses. I worked on a retrieval and embedding-based pipeline, source-aware extraction, filtering for unnecessary information, and boosting important review sections so generated study plans could stay connected to real class artifacts.',
       boundaries:
-        'The product is designed around class-scoped data and evidence-grounded outputs. Private materials, database contents, prompts, and source code stay out of the public portfolio.',
+        'The product is designed around user-scoped and class-scoped data with evidence-grounded outputs. Private materials, database contents, prompts, and source code stay out of the public portfolio. This is still a prototype/MVP, so it should not be presented as a hardened production system yet; production use would require deeper upload security, retention controls, deletion flows, and privacy review.',
     },
   },
   {
@@ -183,6 +189,8 @@ export const products = [
     status: 'Published extension',
     accent: 'lavender',
     previewLabel: 'extension controls and blocked page',
+    logo: '/product-logos/keyword-blocker-logo.png',
+    logoAlt: 'Personal Keyword Blocker logo',
     highlights: [
       'Local-only enforcement with no backend or telemetry',
       'Custom regex builder',
@@ -193,15 +201,15 @@ export const products = [
     ],
     caseStudy: {
       problem:
-        'Keyword blockers can be too blunt, too easy to bypass, or too invasive if they send browsing data elsewhere.',
+        'I wanted a keyword blocker that was more versatile than simple word matching. Many blockers only check exact words or obvious pages, which means variations, separators, accents, or larger word forms can bypass them. I wanted users to choose between stricter boundary-safe matching and a stronger max-security mode for terms they intentionally want matched more broadly.',
       built:
         'I built a Chrome Manifest V3 extension that checks URLs, search queries, page titles, typed text, form submissions, and optional page text locally against user-defined lists.',
       architecture:
-        'The extension uses MV3 scripts, Chrome storage sync/local fallback, local regex compilation, trusted URL exceptions, blocked-page routing, and an options UI for import/export and lock settings.',
+        'The extension uses MV3 service workers and content scripts, Chrome storage sync/local fallback, local regex compilation, trusted URL exceptions, blocked-page routing, and an options UI for import/export, previews, privacy controls, and append-only lock settings.',
       challenge:
-        'The hardest part was building separator, accent, leet, plural, and action-form matching while keeping strict boundaries to avoid accidental matches inside unrelated words.',
+        'The hardest engineering challenge was normalizing the detection engine while avoiding false positives. Short words could accidentally match harmless URL segments, authentication paths, or tracking parameters. I improved this by separating hostname, path, and meaningful search-query scanning so the extension could still catch intentional search terms while reducing false positives in unrelated URL parts.',
       boundaries:
-        'The extension has no backend, telemetry, analytics, advertising, or remote code. Append-only lock mode is a self-control workflow, not a cryptographic security guarantee.',
+        'The extension has no backend, telemetry, analytics, advertising, or remote code. Blocked terms and browsing content are processed locally. Append-only lock mode is designed as a self-control workflow, not a cryptographic security boundary.',
     },
   },
   {
@@ -225,15 +233,15 @@ export const products = [
     ],
     caseStudy: {
       problem:
-        'A technical productivity kit needs a buyer-support experience that feels credible, clear, and honest about what each layer can and cannot do.',
+        'I wanted to bundle my Apple-focused productivity tools, browser extensions, configuration profiles, setup guidance, and support materials into a clear product that users could understand and purchase as a one-time kit.',
       built:
-        'I built a React/Vite site with a polished landing page, thank-you flow, updates page, reusable content structure, and support-oriented copy.',
+        'I built a React/Vite marketing and buyer-support site with a polished landing page, thank-you flow, updates page, reusable content structure, product explanations, pricing section, and support-oriented copy.',
       architecture:
-        'The site uses Vite, React components, reusable content arrays, and responsive CSS to present product layers, buyer guidance, privacy notes, and limitation copy.',
+        'The site uses Vite, React components, reusable content arrays, and responsive CSS to present product layers, buyer guidance, privacy notes, limitation copy, updates, and setup-oriented support flows.',
       challenge:
-        'The hardest challenge was making commercial copy feel premium without overstating protection guarantees or hiding platform limitations.',
+        'The hardest challenge was making commercial copy feel premium without overstating protection guarantees or hiding platform limitations. I wanted the site to explain the value clearly while staying honest about what each layer can and cannot do.',
       boundaries:
-        'The site avoids analytics and tracking in this portfolio version. It focuses on buyer support, clear product explanation, and honest privacy positioning.',
+        'The site avoids analytics and tracking in this portfolio version. It focuses on buyer support, clear product explanation, privacy-conscious messaging, and honest limitation copy. It does not expose private buyer files, secrets, source code, or private download links.',
     },
   },
 ];

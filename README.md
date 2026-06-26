@@ -34,6 +34,16 @@ public/screenshots/
 
 The current site uses polished placeholder preview boxes until screenshots are available. Keep screenshots free of secrets, private file paths, API keys, customer data, local logs, database contents, and private source code.
 
+## Product Logos
+
+Place Featured Products logo artwork in:
+
+```text
+public/product-logos/
+```
+
+Products with a `logo` field render the image in the card artwork area. Products without a logo keep the colorful placeholder artwork.
+
 ## Privacy Notes
 
 The portfolio intentionally does not expose private repository source code. Product sections describe architecture, product scope, tech stacks, privacy boundaries, and demo availability without claiming that private projects are public.
