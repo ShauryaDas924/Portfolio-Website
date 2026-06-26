@@ -37,9 +37,8 @@ Features
 * Responsive desktop and mobile design
 * Private-source-code-safe presentation
 
-## Project Structure
+Project Structure
 
-```text
 .
 ├── public/
 │   ├── resume/
