@@ -213,6 +213,47 @@ export const products = [
     },
   },
   {
+    id: 'discipline-feed-guard',
+    name: 'Discipline Feed Guard',
+    description:
+      'Local-only Chrome Manifest V3 extension that hides distracting Reddit, YouTube, and LinkedIn surfaces while preserving useful pages and workflows.',
+    shortDescription:
+      'Privacy-first Chrome extension that reduces distracting feeds, recommendations, Shorts, comments, news rails, promoted posts, and other distraction loops across Reddit, YouTube, and LinkedIn.',
+    techStack: [
+      'Chrome MV3',
+      'JavaScript',
+      'Content scripts',
+      'Service worker',
+      'Chrome storage APIs',
+      'MutationObserver',
+      'Node tests',
+    ],
+    status: 'Published extension / Store-ready local build',
+    accent: 'mint',
+    previewLabel: 'Reddit, YouTube, and LinkedIn guardrails',
+    sourceNote: 'Source repository private; architecture and implementation walkthrough available on request.',
+    highlights: [
+      'Reddit, YouTube, and LinkedIn distraction-surface blocking',
+      'Feed, Shorts, comments, recommendations, news rails, and promoted-content hiding',
+      'Allowlist modes for intentional subreddits, channels, and useful routes',
+      'Lock Mode with strengthening-only settings changes',
+      'Sync/local storage fallback with strict merge behavior',
+      'Node tests for migrations, lock rules, and LinkedIn route classification',
+    ],
+    caseStudy: {
+      problem:
+        'I wanted a browser extension that reduced the most distracting parts of Reddit, YouTube, and LinkedIn without blocking the entire sites. I still wanted intentional access to useful subreddits, channels, profiles, jobs, messages, search, and work-related pages, but I did not want feeds, recommendations, Shorts, comments, LinkedIn news rails, promoted posts, people suggestions, reaction counters, or infinite-scroll loops pulling me away from what I opened the site to do.',
+      built:
+        'I built a local-only Chrome Manifest V3 extension that hides high-distraction surfaces across Reddit, YouTube, and LinkedIn through platform-specific controls, popup quick toggles, a grouped options page, allowlist modes, blocked paths, import/export, and lock-mode strengthening rules.',
+      architecture:
+        'The extension uses a shared storage module for default settings, normalization, migrations, import/export, sync/local fallback, strict merge behavior, and Lock Mode weakening detection. A Manifest V3 service worker handles background behavior and settings messages, while separate Reddit, YouTube, and LinkedIn content scripts apply route-aware hiding rules, observe dynamic DOM changes, and reapply protections during single-page-app navigation.',
+      challenge:
+        'The hardest engineering challenge was making the extension reliable across three complex platforms that constantly update without full page reloads. Reddit, YouTube, and LinkedIn all behave like single-page apps, so a protection could work on first load but fail after navigation, infinite scroll, feed refreshes, or dynamic module updates. LinkedIn added its own challenge because I needed to hide distracting surfaces like the main feed, news rails, suggested posts, people suggestions, games, notifications, and reaction counters while preserving useful routes like jobs, profiles, messaging, and search.',
+      boundaries:
+        'The extension is local-only and has no analytics, telemetry, remote server, external APIs, account system, tracking pixels, or third-party runtime dependencies. Settings are stored in Chrome storage, using sync as the primary path and local storage as fallback. Content scripts run only on declared Reddit, YouTube, and LinkedIn hosts. Lock Mode is a self-control strengthening workflow, not a cryptographic security guarantee.',
+    },
+  },
+  {
     id: 'apple-lockdown-kit-website',
     name: 'Apple Lockdown Kit Website',
     description:

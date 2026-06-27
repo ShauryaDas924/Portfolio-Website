@@ -120,6 +120,12 @@ This portfolio does not expose:
 
 Architecture and demo walkthroughs are available on request.
 
+## Search Indexing
+
+This site is currently configured as link-accessible but not search-indexed. It includes robots noindex meta tags, a robots.txt disallow rule, and Cloudflare Pages X-Robots-Tag headers. This prevents normal search indexing but is not a substitute for authentication; anyone with the link can still view the site.
+
+To make the site public/searchable later, remove the noindex meta tags, update robots.txt, remove the X-Robots-Tag noindex headers, and optionally add a sitemap.
+
 Design Direction
 
 The visual style is intended to be:

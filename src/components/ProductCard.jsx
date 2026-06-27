@@ -40,7 +40,9 @@ export default function ProductCard({ product }) {
           ))}
         </div>
 
-        <p className="source-note">Source code private; architecture and demo available on request.</p>
+        <p className="source-note">
+          {product.sourceNote ?? 'Source code private; architecture and demo available on request.'}
+        </p>
 
         <a className="text-link" href={`#case-${product.id}`}>
           View case study

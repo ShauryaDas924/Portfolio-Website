@@ -56,7 +56,7 @@ export default function ProductDetail({ product }) {
 
           <div className="private-note">
             <h4>Source code note</h4>
-            <p>Private repository; architecture/demo available on request.</p>
+            <p>{product.sourceNote ?? 'Private repository; architecture/demo available on request.'}</p>
           </div>
         </aside>
       </div>
