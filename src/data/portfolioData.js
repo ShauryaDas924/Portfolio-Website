@@ -231,6 +231,8 @@ export const products = [
     status: 'Published extension / Store-ready local build',
     accent: 'mint',
     previewLabel: 'Reddit, YouTube, and LinkedIn guardrails',
+    logo: '/product-logos/discipline-feed-guard-logo.png',
+    logoAlt: 'Discipline Feed Guard logo',
     sourceNote: 'Source repository private; architecture and implementation walkthrough available on request.',
     highlights: [
       'Reddit, YouTube, and LinkedIn distraction-surface blocking',
