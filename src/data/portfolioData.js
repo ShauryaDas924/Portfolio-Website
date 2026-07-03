@@ -43,7 +43,7 @@ export const products = [
       'Immutable active lock records and schedule windows',
       'Hosts-file enforcement, DNS flushing, helper repair checks',
       'Browser-scoped allow-list mode with extension/native bridge',
-      '604 XCTest tests with 0 failures',
+      '746 XCTest tests with 0 failures',
     ],
     caseStudy: {
       problem:
@@ -276,7 +276,7 @@ export const products = [
     ],
     caseStudy: {
       problem:
-        'I wanted to bundle my Apple-focused productivity tools, browser extensions, configuration profiles, setup guidance, and support materials into a clear product that users could understand and purchase as a one-time kit.',
+        'I wanted to bundle my Apple-focused productivity tools, browser extensions, setup guidance, and support materials into a clear product that users could understand and purchase as a one-time kit.',
       built:
         'I built a React/Vite marketing and buyer-support site with a polished landing page, thank-you flow, updates page, reusable content structure, product explanations, pricing section, and support-oriented copy.',
       architecture:
