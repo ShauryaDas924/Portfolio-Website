@@ -270,38 +270,7 @@ export const products = [
         'The extension is local-only and has no analytics, telemetry, remote server, external APIs, account system, tracking pixels, or third-party runtime dependencies. Settings are stored in Chrome storage, using sync as the primary path and local storage as fallback. Content scripts run only on declared Reddit, YouTube, and LinkedIn hosts. Lock Mode is a self-control strengthening workflow, not a cryptographic security guarantee.',
     },
   },
-  {
-    id: 'apple-lockdown-kit-website',
-    name: 'Apple Lockdown Kit Website',
-    description:
-      'React/Vite marketing and buyer-support site for a multi-layer Apple productivity kit across Mac, Chrome, iPhone, and iPad.',
-    shortDescription:
-      'React/Vite buyer-support site for a multi-layer Apple productivity kit.',
-    techStack: ['React', 'Vite', 'JavaScript', 'CSS'],
-    status: 'Portfolio-ready',
-    accent: 'blue',
-    previewLabel: 'premium support landing page',
-    highlights: [
-      'Premium landing page',
-      'Thank-you and updates pages',
-      'Buyer-support flow',
-      'Reusable content arrays',
-      'Privacy-focused and honest limitation copy',
-      'Production build verification',
-    ],
-    caseStudy: {
-      problem:
-        'I wanted to bundle my Apple-focused productivity tools, browser extensions, setup guidance, and support materials into a clear product that users could understand and purchase as a one-time kit.',
-      built:
-        'I built a React/Vite marketing and buyer-support site with a polished landing page, thank-you flow, updates page, reusable content structure, product explanations, pricing section, and support-oriented copy.',
-      architecture:
-        'The site uses Vite, React components, reusable content arrays, and responsive CSS to present product layers, buyer guidance, privacy notes, limitation copy, updates, and setup-oriented support flows.',
-      challenge:
-        'The hardest challenge was making commercial copy feel premium without overstating protection guarantees or hiding platform limitations. I wanted the site to explain the value clearly while staying honest about what each layer can and cannot do.',
-      boundaries:
-        'The site avoids analytics and tracking in this portfolio version. It focuses on buyer support, clear product explanation, privacy-conscious messaging, and honest limitation copy. It does not expose private buyer files, secrets, source code, or private download links.',
-    },
-  },
+  
 ];
 
 export const resumes = [
