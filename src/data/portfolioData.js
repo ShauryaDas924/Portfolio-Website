@@ -150,6 +150,8 @@ export const products = [
     'Published Chrome Manifest V3 extension that reduces distracting search loops by preserving direct access to useful websites while applying configurable search restrictions, schedules, saved links, and privacy-conscious location-aware controls.',
   shortDescription:
     'Published Chrome extension that reduces distracting search loops while preserving direct access to useful websites.',
+  logo: '/product-logos/browser-manager-logo.png',
+  logoAlt: 'Browser Manager logo',
   techStack: [
     'Chrome MV3',
     'JavaScript',
