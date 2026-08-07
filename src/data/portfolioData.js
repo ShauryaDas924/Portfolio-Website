@@ -142,7 +142,55 @@ export const products = [
         'The product treats reflection data as sensitive. The portfolio does not expose private prompts, private workflows, secrets, database contents, or repository source. The product is positioned as supportive reflection software, not crisis response or a replacement for qualified support.',
     },
   },
-  
+
+  {
+  id: 'browser-manager',
+  name: 'Browser Manager',
+  description:
+    'Published Chrome Manifest V3 extension that reduces distracting search loops by preserving direct access to useful websites while applying configurable search restrictions, schedules, saved links, and privacy-conscious location-aware controls.',
+  shortDescription:
+    'Published Chrome extension that reduces distracting search loops while preserving direct access to useful websites.',
+  techStack: [
+    'Chrome MV3',
+    'JavaScript',
+    'Declarative Net Request',
+    'Service worker',
+    'Offscreen documents',
+    'Chrome storage APIs',
+    'Geolocation',
+    'Node tests',
+  ],
+  status: 'Published extension',
+  accent: 'blue',
+  previewLabel: 'direct-access and location controls',
+  highlights: [
+    'Direct-access browsing with search-route restrictions',
+    'Saved website workflow for intentional navigation',
+    'Location-aware Safe and Lock behavior',
+    'Schedule-based and indefinite browsing modes',
+    'Automatic recovery across Chrome and Manifest V3 lifecycle changes',
+    'Local-first settings and location decisions without movement-history tracking',
+  ],
+  sourceNote:
+    'Source repository private; product behavior and selected architecture decisions are documented publicly, with deeper implementation walkthroughs available during interviews.',
+  caseStudy: {
+    problem:
+      'I wanted a browser extension that made it harder to drift into unnecessary browsing when I opened my computer for a specific task. My problem was not that I needed the entire internet blocked; I still needed direct access to useful websites like documentation, email, course pages, and work tools. What distracted me was the search loop itself—opening a search engine, looking up something unrelated, and gradually ending up on news, reference pages, or other content I never intended to visit. That led me to the idea of a direct-access browser mode: instead of freely searching for anything, I could still open websites I intentionally chose while search routes remained restricted. Using the browser this way helped me stay much more focused because I had to decide where I wanted to go before I started browsing.',
+
+    built:
+      'I built a Chrome Manifest V3 extension that supports a direct-access browsing mode where users can open saved websites and navigate directly to useful destinations while distracting search routes remain restricted. The extension includes configurable schedules, saved links, location-aware Safe and Lock areas, local import/export, protected settings, and automatic recovery across browser restarts and background-worker lifecycle changes. I designed the product so those controls work together rather than behaving like separate features, with location state, schedules, saved websites, and browser enforcement resolving into one current browsing policy.',
+
+    architecture:
+      'The extension uses a Manifest V3 service worker as the central policy and state coordinator, Chrome Declarative Net Request for browser-level route enforcement, Chrome storage for persistent local configuration, and an offscreen document for continuous geolocation while location-aware behavior is active. A shared settings layer handles versioned configuration, validation, import/export, and safe persistence. Because Manifest V3 background workers can be suspended and restarted, the extension reconstructs its effective state from persisted configuration rather than assuming the worker will remain alive. Location monitoring is kept in a single dedicated offscreen context so the product does not create competing geolocation watchers or store unnecessary movement history.',
+
+    challenge:
+      'The hardest engineering challenge was making location-aware behavior reliable enough that it did not constantly disrupt normal browsing. Browser geolocation is not perfectly continuous or perfectly precise, and Manifest V3 service workers can suspend between events. That created an important product decision: if the extension had already confirmed that the user was in a Safe Location, should the browser immediately return to a restricted checking state whenever the next location refresh began? I solved this by treating a recently confirmed Safe Location as a continuity state instead of discarding it during every routine refresh. The extension continues checking location in the background, but a previously confirmed safe state remains active while it is still considered fresh and trustworthy. Only meaningful new location evidence or an expired state causes the browsing policy to change. The larger lesson was that location features are not just about reading coordinates; the difficult part is deciding how much confidence the product should place in imperfect sensor data while keeping the user experience predictable.',
+
+    boundaries:
+      'The extension is designed around local browser enforcement and does not maintain a remote history of the user’s browsing or movement. Saved websites, schedules, location configuration, and enforcement state are stored locally through Chrome extension storage. Location is used only to determine the current browsing policy rather than to build or upload a movement timeline. The product treats location controls as a self-control feature rather than a physical-security guarantee, since browser geolocation depends on the permissions and accuracy available through Chrome and users with control of the browser or device can ultimately remove or modify an extension. Public portfolio material intentionally leaves out exact location thresholds, policy precedence, internal rule IDs, storage schemas, and recovery logic.',
+  },
+},
+
   {
     id: 'personal-keyword-blocker',
     name: 'Personal Keyword Blocker',
