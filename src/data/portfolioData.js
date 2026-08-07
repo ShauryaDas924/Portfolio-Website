@@ -18,86 +18,89 @@ export const buildCards = [
 
 export const products = [
   {
-    id: 'focuslock-dns-guard',
-    name: 'FocusLock DNS Guard',
-    description:
-      'Native macOS Swift/SwiftUI focus-blocking app with privileged helper enforcement, LaunchDaemon support, hosts-file blocking, Browser Allow List mode, Chromium MV3 extension integration, and Swift native messaging bridge.',
-    shortDescription:
-      'Strict macOS focus blocking with privileged helper enforcement and browser-scoped allow-list support.',
-    techStack: [
-      'Swift',
-      'SwiftUI',
-      'LaunchDaemon',
-      'Privileged helper',
-      'Chrome MV3',
-      'Native Messaging',
-      'XCTest',
-    ],
-    status: 'Private product / In development',
-    accent: 'blue',
-    previewLabel: 'macOS enforcement dashboard',
-    logo: '/product-logos/focuslock-logo.png',
-    logoAlt: 'FocusLock DNS Guard logo',
-    highlights: [
-      'Privileged helper and LaunchDaemon architecture',
-      'Immutable active lock records and schedule windows',
-      'Hosts-file enforcement, DNS flushing, helper repair checks',
-      'Browser-scoped allow-list mode with extension/native bridge',
-      '746 XCTest tests with 0 failures',
-    ],
-    caseStudy: {
-      problem:
-        'I wanted a website blocker that was stronger than a normal browser extension, worked across browsers for block-list sessions, supported schedules and multiple block windows, and could fit into a larger Apple-focused productivity system. The goal was not to claim total bypass resistance, but to create real local friction with clear technical boundaries.',
-      built:
-        'I built a native macOS blocker that uses a SwiftUI app, privileged helper, LaunchDaemon checks, immutable active lock records, schedule snapshots, hosts-file enforcement for block-list sessions, DNS cache flushing, and a browser-extension bridge for browser-scoped allow-list mode.',
-      architecture:
-        'The SwiftUI app handles setup, schedules, presets, diagnostics, and user flow. A privileged helper owns protected system writes and active lock state, while the Chromium MV3 extension communicates through native messaging for browser-scoped allow-list enforcement.',
-      challenge:
-        'The hardest engineering challenge was making scheduled blocks clean up correctly after their time windows ended. I ran into orphaned schedule records, expired occurrence IDs, and leftover managed hosts-file entries that could cause old blocks to survive longer than intended. I fixed this by tightening schedule snapshots, active occurrence tracking, expiry cleanup, and overlap-safe rebuilding so one block ending would not accidentally remove or preserve the wrong protection.',
-      boundaries:
-        'The product does not claim system-wide allow-only networking through hosts files. Hosts-file enforcement is used for block-list sessions and has documented limitations around VPNs, proxies, browser DNS-over-HTTPS, administrator removal, and unsupported browser behavior. Allow-list mode is browser-scoped and currently depends on supported Chromium-style browsers such as Chrome and Edge.',
-    },
+  id: 'native-macos-website-restriction-platform',
+  name: 'Native macOS Website Restriction Platform',
+  description:
+    'Native Swift and SwiftUI macOS platform for reliable website restrictions, scheduling, browser coordination, lifecycle recovery, and privacy-conscious local enforcement.',
+  shortDescription:
+    'Native macOS website-management platform built around reliability, recovery, and protected user controls.',
+  techStack: [
+    'Swift',
+    'SwiftUI',
+    'macOS',
+    'Chrome MV3',
+    'Native Messaging',
+    'XCTest',
+  ],
+  status: 'Private product / In development',
+  accent: 'blue',
+  previewLabel: 'Private product — media withheld',
+  highlights: [
+    'Native macOS and browser-platform integration',
+    'Reliable scheduled and overlapping restrictions',
+    'Recovery across crashes, restarts, and interrupted states',
+    'Setup, diagnostics, and repair-oriented user workflows',
+    '1,003 XCTest tests with 0 failures',
+  ],
+  caseStudy: {
+    problem:
+      'I wanted a focus tool that could provide more reliable website restrictions than a browser-only solution while still feeling like a polished native Mac product. The goal was to make intentional focus easier through clear scheduling, dependable behavior, and meaningful friction without overstating what software can guarantee on a user-controlled computer.',
+
+    built:
+      'I built a native macOS platform that coordinates system-level and browser-level components to support website restrictions, schedules, protected sessions, and browser-specific workflows. I focused heavily on reliability, recovery, privacy, and making difficult system behavior understandable through a simple native interface.',
+
+    architecture:
+      'The product combines a native Swift/SwiftUI application with supporting macOS and browser components. The public portfolio intentionally omits lower-level enforcement mechanisms, state formats, communication protocols, and recovery implementation because the product remains under active private development.',
+
+    challenge:
+      'The most difficult engineering work was making protection state remain correct through real-world lifecycle events. Features that work perfectly during a normal session can behave very differently after crashes, restarts, interrupted updates, or overlapping schedules. I spent substantial time designing recovery behavior, validating edge cases, and building regression coverage so the product could return to the correct state rather than depending on the ideal execution path.',
+
+    boundaries:
+      'This is a private self-control product, not a claim of absolute device security. Public materials intentionally exclude implementation details that could expose proprietary enforcement or recovery behavior. I can discuss the architecture, tradeoffs, testing strategy, and selected implementation decisions in an interview setting.',
   },
+},
   {
-    id: 'mac-app-time-guard',
-    name: 'MacAppTimeGuard',
-    description:
-      'Local-only macOS menu-bar app that limits selected apps with daily limits, schedules, Pomodoro-only access, temporary blocks, and admin-protected rule changes.',
-    shortDescription:
-      'Local-only macOS menu-bar guard for app limits, schedules, Pomodoro access, and protected rules.',
-    techStack: [
-      'Swift',
-      'SwiftUI',
-      'AppKit',
-      'NSWorkspace',
-      'UserNotifications',
-      'LaunchAgent',
-    ],
-    status: 'Private product / In development',
-    accent: 'mint',
-    previewLabel: 'menu-bar rule manager',
-    logo: '/product-logos/macapptimeguard-logo.png',
-    logoAlt: 'MacAppTimeGuard logo',
-    highlights: [
-      'SwiftUI/AppKit menu-bar app',
-      'NSWorkspace and NSRunningApplication monitoring',
-      'Local rule engine and persistent state',
-      'Pomodoro, daily limits, schedules, blocked windows',
-      'Admin-protected weakening policy',
-    ],
-    caseStudy: {
-      problem:
-        'While building my larger software projects, I realized I needed a better way to set boundaries around certain Mac apps. Ordinary timers and reminders were too easy to ignore, so I wanted a local tool that could enforce app limits, schedules, and Pomodoro-based access with more friction.',
-      built:
-        'I built a macOS menu-bar app that tracks selected app usage, closes apps when rules disallow access, and supports daily limits, allowed windows, blocked windows, Pomodoro-only access, temporary blocks, protected settings, and admin-protected rule changes.',
-      architecture:
-        'The app combines SwiftUI screens with AppKit menu-bar behavior, NSWorkspace monitoring, NSRunningApplication termination, Codable local persistence, notification warnings, login/startup support, protected configuration, and a local rule engine for evaluating app access.',
-      challenge:
-        'The hardest part was not just making app rules run at the right times. The bigger challenge was turning a powerful control system into a friendly macOS product. This was my first serious macOS app, so I had to learn how to design a simple menu-bar experience, a deeper Manage Apps editor, clear rule states, and onboarding that made the app understandable for someone besides me.',
-      boundaries:
-        'The app is local-only and does not inspect app contents, browser history, screenshots, keystrokes, messages, or documents. It is designed as a self-control friction tool, not a surveillance product, kernel-level security tool, or cryptographic security boundary. A Mac administrator can intentionally remove or weaken it.',
-    },
+  id: 'native-macos-application-management-platform',
+  name: 'Native macOS Application Management Platform',
+  description:
+    'Native SwiftUI and AppKit macOS application-management product for usage limits, schedules, focused sessions, protected settings, and reliable lifecycle behavior.',
+  shortDescription:
+    'Native macOS application-management platform combining time-based controls, focused workflows, and protected configuration.',
+  techStack: [
+    'Swift',
+    'SwiftUI',
+    'AppKit',
+    'macOS',
+    'Core Location',
+    'UserNotifications',
+  ],
+  status: 'Private product / In development',
+  accent: 'mint',
+  previewLabel: 'Private product — media withheld',
+  highlights: [
+    'Native SwiftUI and AppKit menu-bar experience',
+    'Application usage limits and scheduled controls',
+    'Focused-session workflows',
+    'Protected configuration changes',
+    'Location-aware product behavior and lifecycle recovery',
+  ],
+  caseStudy: {
+    problem:
+      'While building larger software projects, I wanted a better way to create boundaries around distracting desktop applications. Simple timers were easy to ignore, so I wanted something native to macOS that could combine time-based controls with enough friction to make those decisions meaningful.',
+
+    built:
+      'I built a native macOS menu-bar product that manages application access through configurable limits, schedules, focused sessions, temporary restrictions, and protected settings. The product is designed to remain lightweight during normal Mac use while making its current state understandable to the user.',
+
+    architecture:
+      'The application is built with Swift, SwiftUI, and AppKit and integrates with native macOS lifecycle and application-management APIs. Persistent local state, notifications, startup behavior, and location-aware workflows support the user-facing experience. Detailed monitoring, enforcement, persistence, and policy logic remain private while the product is under development.',
+
+    challenge:
+      'One of the most interesting challenges was making a powerful control system feel simple. A product can support many combinations of limits, schedules, focused sessions, and protected states, but users still need to understand what is currently happening and why. I spent significant time refining the native menu-bar experience, configuration screens, lifecycle behavior, and rule presentation so the complexity stayed behind the interface rather than being pushed onto the user.',
+
+    boundaries:
+      'The application processes its configuration locally and is intended as a personal self-control tool rather than surveillance software or an absolute security boundary. Public materials intentionally omit implementation details that could expose proprietary monitoring, enforcement, location, or protection behavior.',
   },
+},
   {
     id: 'evrana',
     name: 'Evrana',

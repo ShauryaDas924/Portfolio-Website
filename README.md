@@ -1,165 +1,206 @@
-Shaurya Das — Portfolio Website
+# Shaurya Das Portfolio Website
 
-This is my personal software engineering portfolio website. It presents my work as a product builder across macOS apps, AI/full-stack software, browser extensions, iOS, productivity tools, and buyer-support websites.
+Personal software engineering portfolio for Shaurya Das, built as a static React/Vite site. It presents recruiter-friendly product cards, concise case studies, resume downloads, GitHub/LinkedIn links, and contact information without exposing private or commercial source code.
 
-The goal of this site is to give recruiters, mentors, and collaborators a clear view of what I have built without exposing private or commercial source code.
+## What This Project Does
 
-Overview
+This site helps recruiters, mentors, collaborators, and technical reviewers understand Shaurya's work as a student product builder across macOS, AI/full-stack software, browser extensions, iOS, productivity tools, and buyer-support websites.
 
-This portfolio highlights several private and portfolio-ready software products, including:
+The portfolio focuses on:
 
-* FocusLock DNS Guard — native macOS focus-blocking app with privileged helper enforcement, LaunchDaemon support, hosts-file blocking, browser-scoped allow-list mode, Chromium MV3 integration, and Swift native messaging.
-* MacAppTimeGuard — local-only macOS menu-bar app for app limits, schedules, Pomodoro-only access, temporary blocks, and admin-protected rule changes.
-* Evrana — cross-platform AI habit-support and reflection product built with React, FastAPI, PostgreSQL, OpenAI workflows, and SwiftUI iOS.
-* College AI — full-stack AI study platform for notes, tutoring, practice, mastery tracking, flashcards, analytics, and evidence-based exam prep.
-* Personal Keyword Blocker — privacy-first Chrome Manifest V3 extension for local keyword blocking across URLs, search queries, page titles, typed text, forms, and optional page text.
-* Apple Lockdown Kit Website — React/Vite marketing and buyer-support site for a multi-layer Apple productivity kit.
+- Product descriptions and technical summaries.
+- Case studies for private or portfolio-ready products.
+- Clear source-code boundaries for private projects.
+- Resume download paths for three role-specific resume variants.
+- Direct contact and profile links.
+- Static hosting on a privacy-conscious, noindex configuration.
 
-Most flagship product repositories are private because they are active private or commercial projects. This portfolio focuses on case studies, product explanations, architecture summaries, tech stacks, and recruiter-friendly project context.
+## Intended Audience
 
-Tech Stack
+- Software engineering recruiters.
+- Internship interviewers.
+- Technical reviewers.
+- Collaborators requesting product demos or architecture walkthroughs.
+- Future maintainers and AI coding agents working on this repo.
 
-* React
-* Vite
-* JavaScript / JSX
-* CSS
-* Responsive layout
-* Static frontend deployment
+## Featured Product Areas
 
-Features
+The product content is defined in [`src/data/portfolioData.js`](src/data/portfolioData.js).
 
-* Colorful, professional personal landing page
-* Featured product cards
-* Product case studies
-* Resume download section
-* GitHub and LinkedIn links
-* Contact section
-* Responsive desktop and mobile design
-* Private-source-code-safe presentation
+- FocusLock DNS Guard: native macOS focus-blocking app with privileged helper, LaunchDaemon, hosts-file blocking, browser allow-list mode, Chrome MV3 integration, and native messaging.
+- MacAppTimeGuard: local-only macOS menu-bar app for app limits, schedules, Pomodoro-only access, temporary blocks, and admin-protected rule changes.
+- Evrana: cross-platform AI habit-support and reflection product spanning React, FastAPI, PostgreSQL, OpenAI workflows, and SwiftUI iOS.
+- College AI: full-stack AI study platform for notes, tutoring, practice, mastery tracking, flashcards, analytics, and evidence-based exam prep.
+- Personal Keyword Blocker: privacy-first Chrome MV3 extension for local keyword blocking across URLs, search queries, page titles, typed text, forms, and optional page text.
+- Discipline Feed Guard: local-only Chrome MV3 extension for reducing distracting Reddit, YouTube, and LinkedIn surfaces while preserving useful routes.
+- Apple Lockdown Kit Website: React/Vite marketing and buyer-support site for a multi-layer Apple productivity kit.
 
-Project Structure
+## Tech Stack
 
+| Area | Technology |
+| --- | --- |
+| Frontend | React 18, JSX |
+| Build tool | Vite |
+| Styling | Plain CSS in `src/styles.css` |
+| Icons | `lucide-react` |
+| Runtime | Static client-side site; no backend in this repo |
+| Static assets | Vite `public/` directory |
+| Deployment target | Static hosting such as Cloudflare Pages |
+
+## Quick Start
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Development Commands
+
+These scripts are defined in [`package.json`](package.json).
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Starts Vite on `127.0.0.1` for local development. |
+| `npm run build` | Creates a production build in `dist/`. |
+| `npm run preview` | Serves the production build locally through Vite preview. |
+
+## Testing Commands
+
+No automated test command is defined in the current [`package.json`](package.json).
+
+Recommended validation for this repo:
+
+```bash
+npm run build
+```
+
+Manual checks should cover navigation anchors, product card logo rendering, resume download behavior, responsive desktop/mobile layout, and noindex deployment files.
+
+## Project Structure Summary
+
+```text
 .
+├── AI_CONTEXT.md
+├── docs/
 ├── public/
-│   ├── resume/
-│   │   ├── Shaurya_Das_Resume_A_Product_Builder.pdf
-│   │   ├── Shaurya_Das_AI_Software_Engineer_Resume.pdf
-│   │   └── Shaurya_Das_Swift_Apple_Resume.pdf
+│   ├── _headers
 │   ├── product-logos/
+│   ├── resume/
+│   ├── robots.txt
 │   └── screenshots/
 ├── src/
-│   ├── assets/
 │   ├── components/
+│   ├── data/
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── styles.css
 ├── index.html
 ├── package.json
+├── package-lock.json
+├── vite.config.js
 └── README.md
+```
 
-The exact folder structure may vary slightly depending on future updates.
+Generated output:
 
-Local Development
+- `dist/` is generated by `npm run build`.
+- `node_modules/` is generated by `npm install`.
+- Both are ignored by `.gitignore`.
 
-Install dependencies:
+## Environment and Configuration
 
-npm install
+No environment variables are required by the current repo.
 
-Start the development server:
+The site is configured as link-accessible but not intentionally search-indexed:
 
-npm run dev
+- `index.html` includes `robots`, `googlebot`, and `bingbot` noindex meta tags.
+- `public/robots.txt` disallows crawling.
+- `public/_headers` sets Cloudflare Pages `X-Robots-Tag` headers.
 
-Build for production:
+This is not authentication. Anyone with the deployed link can still view the site.
 
-npm run build
+## Static Assets
 
-Preview the production build locally:
+Resume PDFs live in:
 
-npm run preview
-
-Resume Files
-
-Resume PDFs should be placed in:
-
+```text
 public/resume/
+```
 
-Current resume versions:
+Product logos live in:
 
-Shaurya_Das_Resume_A_Product_Builder.pdf
-Shaurya_Das_AI_Software_Engineer_Resume.pdf
-Shaurya_Das_Swift_Apple_Resume.pdf
-
-The site links to these files from the Resume section.
-
-Product Logos and Screenshots
-
-Product logos should be placed in:
-
+```text
 public/product-logos/
+```
 
-Product screenshots or demo images should be placed in:
+Screenshots or future demo images should live in:
 
+```text
 public/screenshots/
+```
 
-The site is designed to support private products by using screenshots, case studies, and architecture summaries instead of public source code links.
+Do not place secrets, private source code, private prompts, database dumps, logs, certificates, signing files, or private local paths in `public/`.
 
-Private Repository Note
+## Documentation
 
-Many of the projects shown on this site are private because they may become commercial products or contain non-public implementation details.
+Start here:
 
-This portfolio does not expose:
+- [AI_CONTEXT.md](AI_CONTEXT.md): AI-agent operating context and safety rules.
+- [docs/PROJECT_OVERVIEW.md](docs/PROJECT_OVERVIEW.md): product and repo overview.
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): static app architecture and data flow.
+- [docs/SETUP.md](docs/SETUP.md): setup, run, build, and validation guide.
+- [docs/DEVELOPMENT_GUIDE.md](docs/DEVELOPMENT_GUIDE.md): safe development workflow.
+- [docs/FEATURES.md](docs/FEATURES.md): feature-by-feature behavior guide.
+- [docs/FILE_MAP.md](docs/FILE_MAP.md): file and folder map for maintainers.
+- [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md): common issues and checks.
+- [docs/CHANGELOG_STARTER.md](docs/CHANGELOG_STARTER.md): starter changelog format.
 
-* private source code
-* private prompts
-* secrets or environment variables
-* database contents
-* private file paths
-* API keys or tokens
-* logs or user data
-* proprietary implementation details
+## Current Status
 
-Architecture and demo walkthroughs are available on request.
+The repo is a private static portfolio website. It is suitable for local development and static deployment after `npm run build`. The repository does not contain backend services, database schemas, API routes, authentication logic, or automated tests.
 
-## Search Indexing
+## Private Repository Note
 
-This site is currently configured as link-accessible but not search-indexed. It includes robots noindex meta tags, a robots.txt disallow rule, and Cloudflare Pages X-Robots-Tag headers. This prevents normal search indexing but is not a substitute for authentication; anyone with the link can still view the site.
+Many projects shown on the site are private because they may become commercial products or contain non-public implementation details. This portfolio should not expose:
 
-To make the site public/searchable later, remove the noindex meta tags, update robots.txt, remove the X-Robots-Tag noindex headers, and optionally add a sitemap.
+- Private source code.
+- Private prompts.
+- Secrets or environment variables.
+- Database contents.
+- Private file paths.
+- API keys or tokens.
+- Logs or user data.
+- Proprietary implementation details.
 
-Design Direction
+Architecture and demo walkthroughs can be discussed separately during interviews.
 
-The visual style is intended to be:
+## Contact
 
-* professional
-* colorful
-* warm
-* recruiter-friendly
-* modern
-* polished without being overly corporate
+Shaurya Das  
+Frisco, Texas  
+Email: <shauryadas2006@gmail.com>  
+LinkedIn: <https://www.linkedin.com/in/shauryadas/>  
+GitHub: <https://github.com/ShauryaDas924>
 
-The design uses soft gradients, rounded cards, subtle shapes, and clean typography to reflect a product-builder identity while keeping the site appropriate for internship applications and professional review.
+## License
 
-Purpose
-
-This website supports software engineering internship applications by showing more than a traditional resume can show.
-
-It helps communicate:
-
-* what I built
-* why I built it
-* what technologies I used
-* what engineering challenges I solved
-* how I think about product quality
-* how I handle privacy, security, and technical boundaries
-
-Contact
-
-Shaurya Das
-Frisco, Texas
-Email: shauryadas2006@gmail.com
-LinkedIn: https://www.linkedin.com/in/shauryadas/
-GitHub: https://github.com/ShauryaDas924
-
-License / Usage
-
-This portfolio is a personal website. The portfolio design and public-facing text may be used for presentation purposes, but the private products, product concepts, source code, architecture details, assets, and commercial materials remain private unless explicitly released.
+License: Unknown from current repo. There is no `LICENSE` file in the repository, and `package.json` marks the package as private.
