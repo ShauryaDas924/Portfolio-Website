@@ -142,45 +142,7 @@ export const products = [
         'The product treats reflection data as sensitive. The portfolio does not expose private prompts, private workflows, secrets, database contents, or repository source. The product is positioned as supportive reflection software, not crisis response or a replacement for qualified support.',
     },
   },
-  {
-    id: 'college-ai',
-    name: 'College AI',
-    description:
-      'Full-stack AI study platform that turns notes, homework, practice attempts, and uploaded exam materials into class-scoped tutoring, practice, mastery tracking, and evidence-based exam prep.',
-    shortDescription:
-      'AI study platform for class-scoped tutoring, practice generation, mastery tracking, and exam prep.',
-    techStack: [
-      'Next.js',
-      'TypeScript',
-      'FastAPI',
-      'PostgreSQL',
-      'pgvector',
-      'OpenAI API',
-      'async SQLAlchemy',
-    ],
-    status: 'Private product / In development',
-    accent: 'yellow',
-    previewLabel: 'class-scoped study system',
-    highlights: [
-      'Notes upload and concept extraction',
-      'Homework tutoring and adaptive practice',
-      'Mastery tracking, flashcards, analytics',
-      'Evidence-grounded Exam Lockdown workflow',
-      'Links LLM-generated plans to persisted extracted question IDs',
-    ],
-    caseStudy: {
-      problem:
-        'College AI started from a real study problem. In one of my classes, slides were basically the study guide, so I first built it as a flashcard generator for deeper review. As I used it for more classes, especially math-heavy classes where practice mattered more than memorization, it expanded into homework tutoring, mastery tracking, and exam-focused workflows.',
-      built:
-        'I built a full-stack AI study platform that ingests class notes, homework, practice attempts, and exam materials to power tutoring, practice, concept extraction, mastery tracking, flashcards, analytics, and evidence-based exam prep.',
-      architecture:
-        'The frontend uses Next.js and TypeScript. The backend uses FastAPI, async SQLAlchemy, PostgreSQL, pgvector, file extraction services, and OpenAI workflows tied back to persisted class artifacts and class-scoped learning data.',
-      challenge:
-        'The hardest challenge was grounding AI extraction in the actual course materials. I wanted extracted notes, topics, and recommended questions to be supported by evidence from uploaded materials instead of unsupported AI guesses. I worked on a retrieval and embedding-based pipeline, source-aware extraction, filtering for unnecessary information, and boosting important review sections so generated study plans could stay connected to real class artifacts.',
-      boundaries:
-        'The product is designed around user-scoped and class-scoped data with evidence-grounded outputs. Private materials, database contents, prompts, and source code stay out of the public portfolio. This is still a prototype/MVP, so it should not be presented as a hardened production system yet; production use would require deeper upload security, retention controls, deletion flows, and privacy review.',
-    },
-  },
+  
   {
     id: 'personal-keyword-blocker',
     name: 'Personal Keyword Blocker',
@@ -322,8 +284,8 @@ export const githubCards = [
     text: 'Selected public samples will be added when they can represent the work without exposing active private product IP.',
   },
   {
-    title: 'Private Product Architecture Available On Request',
-    text: 'Architecture diagrams, technical walkthroughs, and implementation decisions can be shared in interview settings.',
+    title: 'Technical Walkthroughs Available During Interviews',
+    text: 'I’m happy to discuss architecture, engineering tradeoffs, testing strategy, debugging, and selected implementation decisions during technical interviews.',
   },
   {
     title: 'Demo Walkthroughs Available',
