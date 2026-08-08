@@ -11,7 +11,7 @@ The portfolio focuses on:
 - Product descriptions and technical summaries.
 - Case studies for private or portfolio-ready products.
 - Clear source-code boundaries for private projects.
-- Resume download paths for three role-specific resume variants.
+- A download path for the current master software engineering resume.
 - Direct contact and profile links.
 - Static hosting on a privacy-conscious, noindex configuration.
 

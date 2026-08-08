@@ -61,9 +61,9 @@ export default function App() {
 
         <section className="section-pad resume-section" id="resume">
           <div className="shell">
-            <SectionHeader eyebrow="Resume" title="Three recruiter-friendly resume paths">
-              Use the version that best matches the internship or role focus. PDF files can be dropped into the public
-              resume folder when ready.
+            <SectionHeader eyebrow="Resume" title="Software Engineering Resume">
+              One focused resume covering my strongest work across native macOS systems, full-stack AI, browser platforms,
+              and data engineering.
             </SectionHeader>
 
             <div className="resume-grid">

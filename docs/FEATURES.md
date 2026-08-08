@@ -102,9 +102,9 @@
 
 ## Resume Downloads
 
-**What it does:** Offers three role-focused resume PDFs.
+**What it does:** Offers the current master software engineering resume PDF.
 
-**User-facing behavior:** Each card has a `Download PDF` button that downloads the configured file.
+**User-facing behavior:** A single centered card has a `Download PDF` button that downloads the configured master resume.
 
 **Important files:**
 

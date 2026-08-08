@@ -34,7 +34,7 @@ Shaurya's flagship projects are private or commercially sensitive. This site giv
 2. The visitor reads the About section to understand the range of work.
 3. The visitor scans Featured Products cards.
 4. The visitor jumps from a card to its case study.
-5. The visitor downloads a role-specific resume PDF.
+5. The visitor downloads the current master software engineering resume PDF.
 6. The visitor uses the GitHub, LinkedIn, email, or contact cards for follow-up.
 
 ## Product Behavior

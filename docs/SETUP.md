@@ -103,13 +103,11 @@ Resume PDFs should be placed in:
 public/resume/
 ```
 
-Current resume paths used by the app:
+Current resume path used by the app:
 
-- `public/resume/Shaurya_Das_Resume_A_Product_Builder.pdf`
-- `public/resume/Shaurya_Das_AI_Software_Engineer_Resume.pdf`
-- `public/resume/Shaurya_Das_Swift_Apple_Resume.pdf`
+- `public/resume/Shaurya_Das_Master_Resume.pdf`
 
-The resume cards use normal anchor links with the `download` attribute.
+The resume card uses a normal anchor link with the `download` attribute.
 
 ## Product Logos and Screenshots
 
