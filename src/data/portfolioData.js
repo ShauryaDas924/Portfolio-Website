@@ -122,6 +122,7 @@ export const products = [
     previewLabel: 'AI reflection workspace',
     logo: '/product-logos/evrana-logo.png',
     logoAlt: 'Evrana logo',
+    productUrl: 'https://reflectmind.app',
     highlights: [
       'AI chat, journaling, recall, trigger insights, growth tracking',
       'JWT/Google authentication',
@@ -152,6 +153,8 @@ export const products = [
     'Published Chrome extension that reduces distracting search loops while preserving direct access to useful websites.',
   logo: '/product-logos/browser-manager-logo.png',
   logoAlt: 'Browser Manager logo',
+  productUrl:
+    'https://chromewebstore.google.com/detail/bhbajnjccejpbnffiodmkgpnlgnemdaa?utm_source=item-share-cb',
   techStack: [
     'Chrome MV3',
     'JavaScript',
@@ -206,6 +209,8 @@ export const products = [
     previewLabel: 'extension controls and blocked page',
     logo: '/product-logos/keyword-blocker-logo.png',
     logoAlt: 'Personal Keyword Blocker logo',
+    productUrl:
+      'https://chromewebstore.google.com/detail/mkhalihbhhhbejdpbokmbmodenjlbaom?utm_source=item-share-cb',
     highlights: [
       'Local-only enforcement with no backend or telemetry',
       'Custom regex builder',
@@ -248,6 +253,8 @@ export const products = [
     previewLabel: 'Reddit, YouTube, and LinkedIn guardrails',
     logo: '/product-logos/discipline-feed-guard-logo.png',
     logoAlt: 'Discipline Feed Guard logo',
+    productUrl:
+      'https://chromewebstore.google.com/detail/lfbhmaggcghidgndclnhabgfhpnbdilp?utm_source=item-share-cb',
     sourceNote: 'Source repository private; architecture and implementation walkthrough available on request.',
     highlights: [
       'Reddit, YouTube, and LinkedIn distraction-surface blocking',

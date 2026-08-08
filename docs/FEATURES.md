@@ -63,7 +63,7 @@
 
 **What it does:** Presents compact summaries for each featured product.
 
-**User-facing behavior:** Each card shows artwork or a logo, product name, status, short description, tech chips, source note, and a case-study anchor.
+**User-facing behavior:** Each card shows artwork or a logo, product name, status, short description, tech chips, source note, and a case-study anchor. When a product has a public destination, its image area is a labeled external link with a small `Click me` badge and opens in a new tab.
 
 **Important files:**
 
@@ -72,9 +72,9 @@
 - `src/styles.css`
 - `public/product-logos/`
 
-**Internal logic summary:** `ProductCard.jsx` maps product props. If `product.logo` exists, it renders an image. If the image fails, it hides the image and shows the preview label fallback.
+**Internal logic summary:** `ProductCard.jsx` maps product props. If `product.logo` exists, it renders an image. If the image fails, it hides the image and shows the preview label fallback. An optional `productUrl` changes only the preview wrapper into a keyboard-accessible external link; products without it keep the non-interactive preview.
 
-**Configuration options:** Product fields include `name`, `description`, `shortDescription`, `techStack`, `status`, `accent`, `previewLabel`, optional `logo`, optional `logoAlt`, optional `sourceNote`, `highlights`, and `caseStudy`.
+**Configuration options:** Product fields include `name`, `description`, `shortDescription`, `techStack`, `status`, `accent`, `previewLabel`, optional `logo`, optional `logoAlt`, optional `productUrl`, optional `sourceNote`, `highlights`, and `caseStudy`.
 
 **Edge cases:** Missing logo files trigger fallback display. Missing `logoAlt` would reduce accessibility. Very long status text can wrap in the pill.
 

@@ -1,11 +1,24 @@
 import { ArrowRight } from 'lucide-react';
 
 export default function ProductCard({ product }) {
+  const PreviewElement = product.productUrl ? 'a' : 'div';
+
   return (
     <article className={`product-card accent-${product.accent}`}>
-      <div
-        className={`product-preview${product.logo ? ' product-preview-logo' : ''}`}
-        aria-label={product.logo ? undefined : `${product.name} screenshot placeholder`}
+      <PreviewElement
+        className={`product-preview${product.logo ? ' product-preview-logo' : ''}${
+          product.productUrl ? ' product-preview-link' : ''
+        }`}
+        {...(product.productUrl
+          ? {
+              href: product.productUrl,
+              target: '_blank',
+              rel: 'noopener noreferrer',
+              'aria-label': `Open ${product.name}`,
+            }
+          : {
+              'aria-label': product.logo ? undefined : `${product.name} screenshot placeholder`,
+            })}
       >
         {product.logo ? (
           <>
@@ -23,7 +36,12 @@ export default function ProductCard({ product }) {
         ) : (
           <span>{product.previewLabel}</span>
         )}
-      </div>
+        {product.productUrl ? (
+          <span className="product-preview-badge" aria-hidden="true">
+            Click me
+          </span>
+        ) : null}
+      </PreviewElement>
 
       <div className="product-card-body">
         <div className="product-title-row">
