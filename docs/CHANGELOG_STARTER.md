@@ -7,7 +7,7 @@ This file provides a starter changelog structure for future maintainers. It is n
 ```markdown
 ## [Version or Date] - YYYY-MM-DD
 
-### Added
+#### Added
 - New features, sections, docs, or assets.
 
 ### Changed
