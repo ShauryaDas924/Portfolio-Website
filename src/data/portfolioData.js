@@ -40,7 +40,7 @@ export const products = [
     'Reliable scheduled and overlapping restrictions',
     'Recovery across crashes, restarts, and interrupted states',
     'Setup, diagnostics, and repair-oriented user workflows',
-    '1,003 XCTest tests with 0 failures',
+    '1,101-test XCTest suite with 0 failures',
   ],
   caseStudy: {
     problem:
@@ -175,6 +175,7 @@ export const products = [
     'Schedule-based and indefinite browsing modes',
     'Automatic recovery across Chrome and Manifest V3 lifecycle changes',
     'Local-first settings and location decisions without movement-history tracking',
+    'Reached 58 installs',
   ],
   sourceNote:
     'Source repository private; product behavior and selected architecture decisions are documented publicly, with deeper implementation walkthroughs available during interviews.',
@@ -218,6 +219,7 @@ export const products = [
       'Trusted URL exceptions',
       'Sync/local storage fallback',
       'Append-only lock mode',
+      'Reached 219 installs with adoption across 8 countries',
     ],
     caseStudy: {
       problem:
@@ -263,6 +265,7 @@ export const products = [
       'Lock Mode with strengthening-only settings changes',
       'Sync/local storage fallback with strict merge behavior',
       'Node tests for migrations, lock rules, and LinkedIn route classification',
+      'Reached 111 installs',
     ],
     caseStudy: {
       problem:
