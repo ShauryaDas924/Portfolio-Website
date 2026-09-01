@@ -19,7 +19,8 @@ export const buildCards = [
 export const products = [
   {
   id: 'native-macos-website-restriction-platform',
-  name: 'Native macOS Website Restriction Platform',
+  name: 'FocusLock DNS Guard',
+  subtitle: 'Native macOS Website Restriction Platform',
   description:
     'Native Swift and SwiftUI macOS platform for reliable website restrictions, scheduling, browser coordination, lifecycle recovery, and privacy-conscious local enforcement.',
   shortDescription:
@@ -33,6 +34,7 @@ export const products = [
     'XCTest',
   ],
   status: 'Private product / In development',
+  metric: '1,101 XCTest tests · 0 failures',
   accent: 'blue',
   previewLabel: 'Private product — media withheld',
   highlights: [
@@ -40,7 +42,6 @@ export const products = [
     'Reliable scheduled and overlapping restrictions',
     'Recovery across crashes, restarts, and interrupted states',
     'Setup, diagnostics, and repair-oriented user workflows',
-    '1,101-test XCTest suite with 0 failures',
   ],
   caseStudy: {
     problem:
@@ -61,7 +62,8 @@ export const products = [
 },
   {
   id: 'native-macos-application-management-platform',
-  name: 'Native macOS Application Management Platform',
+  name: 'MacAppTimeGuard',
+  subtitle: 'Native macOS Application Management Platform',
   description:
     'Native SwiftUI and AppKit macOS application-management product for usage limits, schedules, focused sessions, protected settings, and reliable lifecycle behavior.',
   shortDescription:
@@ -166,6 +168,7 @@ export const products = [
     'Node tests',
   ],
   status: 'Published extension',
+  metric: '58 installs',
   accent: 'blue',
   previewLabel: 'direct-access and location controls',
   highlights: [
@@ -175,25 +178,24 @@ export const products = [
     'Schedule-based and indefinite browsing modes',
     'Automatic recovery across Chrome and Manifest V3 lifecycle changes',
     'Local-first settings and location decisions without movement-history tracking',
-    'Reached 58 installs',
   ],
   sourceNote:
     'Source repository private; product behavior and selected architecture decisions are documented publicly, with deeper implementation walkthroughs available during interviews.',
   caseStudy: {
     problem:
-      'I wanted a browser extension that made it harder to drift into unnecessary browsing when I opened my computer for a specific task. My problem was not that I needed the entire internet blocked; I still needed direct access to useful websites like documentation, email, course pages, and work tools. What distracted me was the search loop itself—opening a search engine, looking up something unrelated, and gradually ending up on news, reference pages, or other content I never intended to visit. That led me to the idea of a direct-access browser mode: instead of freely searching for anything, I could still open websites I intentionally chose while search routes remained restricted. Using the browser this way helped me stay much more focused because I had to decide where I wanted to go before I started browsing.',
+      'I wanted a browser extension that reduced distracting search loops without blocking useful sites. Direct access to documentation, email, course pages, and work tools still mattered; open-ended search was the part that pulled me off task. That led to a direct-access mode built around intentional destinations.',
 
     built:
-      'I built a Chrome Manifest V3 extension that supports a direct-access browsing mode where users can open saved websites and navigate directly to useful destinations while distracting search routes remain restricted. The extension includes configurable schedules, saved links, location-aware Safe and Lock areas, local import/export, protected settings, and automatic recovery across browser restarts and background-worker lifecycle changes. I designed the product so those controls work together rather than behaving like separate features, with location state, schedules, saved websites, and browser enforcement resolving into one current browsing policy.',
+      'I built a Chrome Manifest V3 extension with saved sites, search-route limits, schedules, and privacy-conscious location controls. Users can move directly to useful destinations while local settings keep the current browsing mode understandable.',
 
     architecture:
-      'The extension uses a Manifest V3 service worker as the central policy and state coordinator, Chrome Declarative Net Request for browser-level route enforcement, Chrome storage for persistent local configuration, and an offscreen document for continuous geolocation while location-aware behavior is active. A shared settings layer handles versioned configuration, validation, import/export, and safe persistence. Because Manifest V3 background workers can be suspended and restarted, the extension reconstructs its effective state from persisted configuration rather than assuming the worker will remain alive. Location monitoring is kept in a single dedicated offscreen context so the product does not create competing geolocation watchers or store unnecessary movement history.',
+      'Chrome Manifest V3 components coordinate route controls, saved sites, schedules, local settings, and geolocation. The design accounts for background lifecycle interruptions and restores expected behavior without keeping a remote browsing or movement history.',
 
     challenge:
-      'The hardest engineering challenge was making location-aware behavior reliable enough that it did not constantly disrupt normal browsing. Browser geolocation is not perfectly continuous or perfectly precise, and Manifest V3 service workers can suspend between events. That created an important product decision: if the extension had already confirmed that the user was in a Safe Location, should the browser immediately return to a restricted checking state whenever the next location refresh began? I solved this by treating a recently confirmed Safe Location as a continuity state instead of discarding it during every routine refresh. The extension continues checking location in the background, but a previously confirmed safe state remains active while it is still considered fresh and trustworthy. Only meaningful new location evidence or an expired state causes the browsing policy to change. The larger lesson was that location features are not just about reading coordinates; the difficult part is deciding how much confidence the product should place in imperfect sensor data while keeping the user experience predictable.',
+      'Handled imperfect geolocation and Manifest V3 lifecycle interruptions while keeping browsing behavior predictable. The work centered on recovering cleanly after browser restarts or suspended background work and presenting location-aware controls without exposing users to internal state changes.',
 
     boundaries:
-      'The extension is designed around local browser enforcement and does not maintain a remote history of the user’s browsing or movement. Saved websites, schedules, location configuration, and enforcement state are stored locally through Chrome extension storage. Location is used only to determine the current browsing policy rather than to build or upload a movement timeline. The product treats location controls as a self-control feature rather than a physical-security guarantee, since browser geolocation depends on the permissions and accuracy available through Chrome and users with control of the browser or device can ultimately remove or modify an extension. Public portfolio material intentionally leaves out exact location thresholds, policy precedence, internal rule IDs, storage schemas, and recovery logic.',
+      'Settings and location decisions stay local. Location is used only for current behavior, not movement tracking. These controls are self-control tools rather than physical-security guarantees. Exact policy rules, thresholds, storage details, and recovery mechanisms remain private.',
   },
 },
 
@@ -206,6 +208,7 @@ export const products = [
       'Published privacy-first Chrome MV3 extension for local keyword blocking and self-control lists.',
     techStack: ['Chrome MV3', 'JavaScript', 'Chrome APIs', 'HTML', 'CSS'],
     status: 'Published extension',
+    metric: '219 installs · 8-country adoption',
     accent: 'lavender',
     previewLabel: 'extension controls and blocked page',
     logo: '/product-logos/keyword-blocker-logo.png',
@@ -219,11 +222,10 @@ export const products = [
       'Trusted URL exceptions',
       'Sync/local storage fallback',
       'Append-only lock mode',
-      'Reached 219 installs with adoption across 8 countries',
     ],
     caseStudy: {
       problem:
-        'I wanted a keyword blocker that was more versatile than simple word matching. Many blockers only check exact words or obvious pages, which means variations, separators, accents, or larger word forms can bypass them. I wanted users to choose between stricter boundary-safe matching and a stronger max-security mode for terms they intentionally want matched more broadly.',
+        'I wanted a keyword blocker that was more versatile than simple word matching. Many blockers only check exact words or obvious pages, which means variations, separators, accents, or larger word forms can bypass them. I wanted users to choose between boundary-safe matching and a broader matching mode for terms they intentionally want matched more widely.',
       built:
         'I built a Chrome Manifest V3 extension that checks URLs, search queries, page titles, typed text, form submissions, and optional page text locally against user-defined lists.',
       architecture:
@@ -250,7 +252,8 @@ export const products = [
       'MutationObserver',
       'Node tests',
     ],
-    status: 'Published extension / Store-ready local build',
+    status: 'Published extension',
+    metric: '111 installs',
     accent: 'mint',
     previewLabel: 'Reddit, YouTube, and LinkedIn guardrails',
     logo: '/product-logos/discipline-feed-guard-logo.png',
@@ -265,7 +268,6 @@ export const products = [
       'Lock Mode with strengthening-only settings changes',
       'Sync/local storage fallback with strict merge behavior',
       'Node tests for migrations, lock rules, and LinkedIn route classification',
-      'Reached 111 installs',
     ],
     caseStudy: {
       problem:
@@ -295,8 +297,16 @@ export const resumes = [
 
 export const githubCards = [
   {
-    title: 'Public Samples Coming Soon',
-    text: 'Selected public samples will be added when they can represent the work without exposing active private product IP.',
+    title: 'College AI — Archived Public Codebase',
+    text: 'Most of my active product repositories remain private because they contain commercial product code. College AI is an archived full-stack project that I keep public so recruiters and engineers can inspect a real codebase directly.',
+    details: [
+      'Next.js / TypeScript frontend',
+      'FastAPI / PostgreSQL backend',
+      'Persistent class-scoped learning workflows',
+      '58 deterministic backend tests',
+    ],
+    href: 'https://github.com/ShauryaDas924/study-app',
+    linkLabel: 'View on GitHub',
   },
   {
     title: 'Technical Walkthroughs Available During Interviews',

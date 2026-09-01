@@ -7,7 +7,7 @@
   --paper: #ffffff;
   --cream: #fbfaf6;
   --sky: #7ec8e3;
-  --sky-strong: #1e88b8;
+  --sky-strong: #177aa6;
   --yellow: #ffe873;
   --yellow-strong: #8a6f00;
   --mint: #a8f1c6;
@@ -51,6 +51,24 @@ body::selection {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  background: var(--navy);
+  color: #fff;
+  font-weight: 850;
+  transform: translateY(-160%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 button,
@@ -608,8 +626,29 @@ p {
   color: var(--navy);
 }
 
+.product-subtitle,
+.case-study-subtitle {
+  margin: 5px 0 0;
+  color: #485466;
+  font-size: 0.9rem;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
 .product-card-body p {
   color: var(--muted);
+}
+
+.product-card-body .product-metric {
+  width: fit-content;
+  margin: -2px 0 16px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #eef8fc;
+  color: #155f82;
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1.25;
 }
 
 .status-pill {
@@ -692,6 +731,14 @@ p {
   max-width: 780px;
   margin-bottom: 0;
   color: var(--muted);
+}
+
+.case-study-header .case-study-subtitle {
+  margin-bottom: 6px;
+  color: #485466;
+  font-size: 0.9rem;
+  font-weight: 750;
+  line-height: 1.35;
 }
 
 .case-study-grid {
@@ -790,6 +837,15 @@ p {
 .resume-card p,
 .github-card p {
   color: var(--muted);
+}
+
+.github-card-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 20px;
+  color: #485466;
+  line-height: 1.5;
 }
 
 .github-layout {
@@ -902,8 +958,8 @@ p {
   .nav-links {
     order: 3;
     width: 100%;
-    justify-content: flex-start;
-    overflow-x: auto;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .hero {
@@ -963,6 +1019,15 @@ p {
 
   .hero-panel {
     margin-top: 8px;
+  }
+
+  .nav-links {
+    gap: 4px;
+  }
+
+  .nav-links a {
+    padding: 7px 9px;
+    font-size: 0.86rem;
   }
 
   .signal-grid,

@@ -12,8 +12,11 @@ import { buildCards, contactItems, githubCards, products, resumes } from './data
 export default function App() {
   return (
     <>
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex="-1">
         <Hero />
 
         <section className="section-pad about-section" id="about">
@@ -78,8 +81,8 @@ export default function App() {
           <div className="shell github-layout">
             <div>
               <SectionHeader eyebrow="GitHub" title="Private where it should be">
-                Many flagship product repositories are private because they are active commercial projects. I’m happy to
-                walk through architecture, demos, implementation details, and selected code samples during interviews.
+                Most active product repositories remain private. College AI is the archived public-code exception,
+                available for direct inspection alongside recruiter-friendly case studies for the shipped products.
               </SectionHeader>
               <a className="button button-primary" href="https://github.com/ShauryaDas924" target="_blank" rel="noreferrer">
                 <Github size={18} aria-hidden="true" />
@@ -90,9 +93,22 @@ export default function App() {
             <div className="github-card-grid">
               {githubCards.map((card) => (
                 <article className="github-card" key={card.title}>
-                  <LockKeyhole size={18} aria-hidden="true" />
+                  {card.href ? <Github size={18} aria-hidden="true" /> : <LockKeyhole size={18} aria-hidden="true" />}
                   <h3>{card.title}</h3>
                   <p>{card.text}</p>
+                  {card.details ? (
+                    <ul className="github-card-list">
+                      {card.details.map((detail) => (
+                        <li key={detail}>{detail}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  {card.href ? (
+                    <a className="text-link" href={card.href} target="_blank" rel="noreferrer">
+                      {card.linkLabel}
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  ) : null}
                 </article>
               ))}
             </div>

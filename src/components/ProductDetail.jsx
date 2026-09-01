@@ -15,6 +15,7 @@ export default function ProductDetail({ product }) {
         <div>
           <p className="eyebrow">Case study</p>
           <h3>{product.name}</h3>
+          {product.subtitle ? <p className="case-study-subtitle">{product.subtitle}</p> : null}
           <p>{product.description}</p>
         </div>
         <span className="status-pill">{product.status}</span>

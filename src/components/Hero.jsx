@@ -59,7 +59,7 @@ export default function Hero() {
             </div>
             <div className="signal-card">
               <span>04</span>
-              Product storytelling
+              Published browser extensions
             </div>
           </div>
         </div>

@@ -23,17 +23,20 @@ The portfolio focuses on:
 - Collaborators requesting product demos or architecture walkthroughs.
 - Future maintainers and AI coding agents working on this repo.
 
-## Featured Product Areas
+## Featured Products
 
 The product content is defined in [`src/data/portfolioData.js`](src/data/portfolioData.js).
 
-- FocusLock DNS Guard: native macOS focus-blocking app with privileged helper, LaunchDaemon, hosts-file blocking, browser allow-list mode, Chrome MV3 integration, and native messaging.
+- FocusLock DNS Guard: native macOS app with background system coordination, browser integration, scheduling, diagnostics, and local privacy.
 - MacAppTimeGuard: local-only macOS menu-bar app for app limits, schedules, Pomodoro-only access, temporary blocks, and admin-protected rule changes.
 - Evrana: cross-platform AI habit-support and reflection product spanning React, FastAPI, PostgreSQL, OpenAI workflows, and SwiftUI iOS.
-- College AI: full-stack AI study platform for notes, tutoring, practice, mastery tracking, flashcards, analytics, and evidence-based exam prep.
 - Personal Keyword Blocker: privacy-first Chrome MV3 extension for local keyword blocking across URLs, search queries, page titles, typed text, forms, and optional page text.
+- Browser Manager: published Chrome MV3 extension for direct website access, saved sites, search-route limits, and privacy-conscious location controls.
 - Discipline Feed Guard: local-only Chrome MV3 extension for reducing distracting Reddit, YouTube, and LinkedIn surfaces while preserving useful routes.
-- Apple Lockdown Kit Website: React/Vite marketing and buyer-support site for a multi-layer Apple productivity kit.
+
+## Archived Public Code Exception
+
+College AI is an archived full-stack study platform kept public as a substantial source-code example. Its Next.js and TypeScript frontend, FastAPI and PostgreSQL backend, persistent class-scoped learning workflows, and 58 deterministic backend tests can be inspected at [github.com/ShauryaDas924/study-app](https://github.com/ShauryaDas924/study-app). It is not part of the deployed/published product showcase.
 
 ## Tech Stack
 

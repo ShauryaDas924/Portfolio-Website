@@ -45,10 +45,14 @@ export default function ProductCard({ product }) {
 
       <div className="product-card-body">
         <div className="product-title-row">
-          <h3>{product.name}</h3>
+          <div>
+            <h3>{product.name}</h3>
+            {product.subtitle ? <p className="product-subtitle">{product.subtitle}</p> : null}
+          </div>
           <span className="status-pill">{product.status}</span>
         </div>
         <p>{product.shortDescription}</p>
+        {product.metric ? <p className="product-metric">{product.metric}</p> : null}
 
         <div className="chip-row" aria-label={`${product.name} tech stack`}>
           {product.techStack.slice(0, 5).map((tech) => (
