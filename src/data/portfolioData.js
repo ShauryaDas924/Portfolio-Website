@@ -138,9 +138,9 @@ export const products = [
       built:
         'I built a cross-platform AI support and reflection product with AI chat, journaling, recall, trigger insights, golden moments, growth tracking, authenticated web flows, backend services, SQL persistence, and a native SwiftUI iOS client.',
       architecture:
-        'React powers the web client, FastAPI handles domain services and OpenAI workflows, PostgreSQL persists user data, JWT/Google authentication protects routes, and SwiftUI iOS stores app tokens through Keychain while sharing backend API contracts with the web product.',
+        'React powers the web client, FastAPI handles backend services and AI workflows, PostgreSQL stores application data, JWT/Google authentication protects user access, and the SwiftUI iOS client stores tokens in Keychain while using the same backend services as the web product.',
       challenge:
-        'The hardest engineering challenge was keeping AI behavior separated across different modes. I thought of this as avoiding mode bleed: I did not want one mode\'s tone, assumptions, or safety behavior to leak into another mode, especially around sensitive flows. I handled this with backend-defined mode boundaries, separated prompt construction, endpoint-level validation, and defensive checks around mode selection and crisis-sensitive behavior.',
+        'The hardest engineering challenge was keeping different AI experiences consistent without letting behavior from one mode bleed into another. I focused on clear separation between modes, predictable backend behavior, and careful handling of sensitive flows so each experience stayed aligned with its intended purpose.',
       boundaries:
         'The product treats reflection data as sensitive. The portfolio does not expose private prompts, private workflows, secrets, database contents, or repository source. The product is positioned as supportive reflection software, not crisis response or a replacement for qualified support.',
     },
