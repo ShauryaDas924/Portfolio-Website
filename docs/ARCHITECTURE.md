@@ -70,6 +70,7 @@ Static files in `public/` are copied into `dist/` during `npm run build`.
 | GitHub profile | External links to `https://github.com/ShauryaDas924`. |
 | LinkedIn profile | External links to `https://www.linkedin.com/in/shauryadas/`. |
 | Email | `mailto:` link in contact data. |
+| Public product destinations | Outbound links to live products, including Whoopberry and Chrome Web Store listings; no data is fetched from them. |
 | Cloudflare Pages headers | `public/_headers` for `X-Robots-Tag` noindex headers. |
 
 No analytics or tracking integrations are present in the repo.

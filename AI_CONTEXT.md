@@ -98,6 +98,7 @@ External integrations:
 - GitHub profile links.
 - LinkedIn profile links.
 - Email `mailto:` link.
+- Outbound public product links, including Whoopberry and Chrome Web Store listings; the portfolio does not fetch data from them.
 - Cloudflare Pages `_headers` file for noindex headers.
 
 Permission-sensitive areas:

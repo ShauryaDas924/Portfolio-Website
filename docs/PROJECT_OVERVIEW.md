@@ -62,7 +62,7 @@ There is no backend, form submission, account system, analytics script, database
 - Resume PDF download links.
 - Public product logo assets.
 - Screenshot placeholder support.
-- Contact and profile links.
+- Public product, contact, and profile links.
 - Cloudflare Pages noindex/static header files.
 - Documentation for safe maintenance.
 

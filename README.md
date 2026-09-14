@@ -33,6 +33,7 @@ The product content is defined in [`src/data/portfolioData.js`](src/data/portfol
 - Personal Keyword Blocker: privacy-first Chrome MV3 extension for local keyword blocking across URLs, search queries, page titles, typed text, forms, and optional page text.
 - Browser Manager: published Chrome MV3 extension for direct website access, saved sites, search-route limits, and privacy-conscious location controls.
 - Discipline Feed Guard: local-only Chrome MV3 extension for reducing distracting Reddit, YouTube, and LinkedIn surfaces while preserving useful routes.
+- Whoopberry: live student-focused directory of 61 curated external internship and early-career resources, organized across 13 broad career paths with search and filtering.
 
 ## Archived Public Code Exception
 

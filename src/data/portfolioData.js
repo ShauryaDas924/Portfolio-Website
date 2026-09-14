@@ -282,6 +282,46 @@ export const products = [
         'The extension is local-only and has no analytics, telemetry, remote server, external APIs, account system, tracking pixels, or third-party runtime dependencies. Settings are stored in Chrome storage, using sync as the primary path and local storage as fallback. Content scripts run only on declared Reddit, YouTube, and LinkedIn hosts. Lock Mode is a self-control strengthening workflow, not a cryptographic security guarantee.',
     },
   },
+  {
+    id: 'whoopberry',
+    name: 'Whoopberry',
+    subtitle: 'Student Career Resource Directory',
+    description:
+      'Student-focused career resource directory that organizes 61 manually curated external starting points across 13 broad career paths, with search, filters, and direct links to the original destinations.',
+    shortDescription:
+      'Student-focused directory that makes useful internship and early-career resources easier to find without another account or feed.',
+    techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Vinext / Vite', 'Cloudflare Workers'],
+    status: 'Live public website',
+    metric: '61 curated resources · 13 career paths',
+    accent: 'yellow',
+    previewLabel: 'Whoopberry career resource guide',
+    logo: '/product-logos/whoopberry-logo.png',
+    logoAlt: 'Whoopberry pinwheel logo',
+    productUrl: 'https://whoopberry.com/',
+    caseStudyLinkLabel: 'Visit whoopberry.com',
+    sourceNote:
+      'Live site available; source repository private. Architecture and implementation walkthrough available on request.',
+    highlights: [
+      '61 manually curated external resources across 13 broad career paths',
+      'Search across resource details, use cases, majors, roles, and aliases',
+      'Category filters that combine with text search',
+      'Direct external links with descriptive new-tab labels',
+      'Typed catalog data with tests for integrity, search, and rendered output',
+      'Responsive layouts, visible keyboard focus, and reduced-motion support',
+    ],
+    caseStudy: {
+      problem:
+        'Career resources are scattered across professional organizations, government sites, job platforms, and maintained internship lists. I wanted a simpler way for students and early-career people to find useful starting points without opening another account or relying on another feed.',
+      built:
+        'I built Whoopberry as a directory of 61 manually curated external resources across 13 broad career paths. People can search by major, role, or topic, combine search with category filters, see what each resource is best for, and follow a direct link to the original site. Whoopberry does not host job listings or handle applications.',
+      architecture:
+        'Whoopberry uses Next.js 16 and React 19 with TypeScript, built through Vinext and Vite for a Cloudflare Worker. A single route is server-rendered and then hydrated for search and filter interactions. The resource catalog is checked-in TypeScript data; there is no application database, resource API, account system, or runtime content feed.',
+      challenge:
+        'The main challenge was keeping 61 resources useful without creating a top-level category for every major. I grouped entries into 13 broad paths, indexed resource-specific details and aliases, and made direct matches win before broader category fallback. The catalog is maintained manually; four Node tests run after a production build to catch duplicate records, missing fields, category and search regressions, and missing external-link safeguards. Link freshness still needs periodic manual review.',
+      boundaries:
+        'Search and filters stay in React memory. The audited application has no accounts, saved searches, application database, browser storage, submission endpoint, or custom analytics, and it sends visitors to external destinations rather than collecting applications. The hosting provider and destination sites retain their own logging and privacy policies.',
+    },
+  },
   
 ];
 

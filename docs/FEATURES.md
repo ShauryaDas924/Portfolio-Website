@@ -63,7 +63,7 @@
 
 **What it does:** Presents compact summaries for each featured product.
 
-**User-facing behavior:** Each card shows artwork or a logo, product name, status, short description, tech chips, source note, and a case-study anchor. When a product has a public destination, its image area is a labeled external link with a small `Click me` badge and opens in a new tab.
+**User-facing behavior:** Each card shows artwork or a logo, product name, status, short description, optional supporting details, tech chips, source note, and a case-study anchor. When a product has a public destination, its image area is a labeled external link with a small `Click me` badge and opens in a new tab.
 
 **Important files:**
 
@@ -74,7 +74,7 @@
 
 **Internal logic summary:** `ProductCard.jsx` maps product props. If `product.logo` exists, it renders an image. If the image fails, it hides the image and shows the preview label fallback. An optional `productUrl` changes only the preview wrapper into a keyboard-accessible external link; products without it keep the non-interactive preview.
 
-**Configuration options:** Product fields include `name`, `description`, `shortDescription`, `techStack`, `status`, `accent`, `previewLabel`, optional `logo`, optional `logoAlt`, optional `productUrl`, optional `sourceNote`, `highlights`, and `caseStudy`.
+**Configuration options:** Product fields include `id`, `name`, `description`, `shortDescription`, `techStack`, `status`, `accent`, `previewLabel`, optional `subtitle`, optional `metric`, optional `logo`, optional `logoAlt`, optional `productUrl`, optional `caseStudyLinkLabel`, optional `sourceNote`, `highlights`, and `caseStudy`.
 
 **Edge cases:** Missing logo files trigger fallback display. Missing `logoAlt` would reduce accessibility. Very long status text can wrap in the pill.
 
@@ -84,7 +84,7 @@
 
 **What it does:** Gives recruiter-friendly detail for each product.
 
-**User-facing behavior:** Each case study includes Problem, What I built, Technical architecture, Hardest engineering challenge, Privacy/security/product boundaries, Highlights, Tech stack, and Source code note.
+**User-facing behavior:** Each case study includes Problem, What I built, Technical architecture, Hardest engineering challenge, Privacy/security/product boundaries, Highlights, Tech stack, and Source code note. A product can also opt into a labeled live-site link.
 
 **Important files:**
 
@@ -92,9 +92,9 @@
 - `src/components/ProductDetail.jsx`
 - `src/styles.css`
 
-**Internal logic summary:** `ProductDetail.jsx` uses a fixed `caseRows` mapping and renders each product's `caseStudy` object.
+**Internal logic summary:** `ProductDetail.jsx` uses a fixed `caseRows` mapping and renders each product's `caseStudy` object. When both `caseStudyLinkLabel` and `productUrl` are present, it also renders a safe new-tab link to the live product.
 
-**Configuration options:** Update product `caseStudy`, `highlights`, `techStack`, and `sourceNote`.
+**Configuration options:** Update product `caseStudy`, `highlights`, `techStack`, `sourceNote`, and optional live-site fields.
 
 **Edge cases:** Missing `caseStudy` keys would render empty or undefined text. Long highlight bullets can make the aside visually heavy.
 

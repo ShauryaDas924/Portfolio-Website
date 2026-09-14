@@ -55,6 +55,16 @@ export default function ProductDetail({ product }) {
             </div>
           </div>
 
+          {product.caseStudyLinkLabel && product.productUrl ? (
+            <div>
+              <h4>Live site</h4>
+              <a className="text-link" href={product.productUrl} target="_blank" rel="noopener noreferrer">
+                {product.caseStudyLinkLabel}
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          ) : null}
+
           <div className="private-note">
             <h4>Source code note</h4>
             <p>{product.sourceNote ?? 'Private repository; architecture/demo available on request.'}</p>
