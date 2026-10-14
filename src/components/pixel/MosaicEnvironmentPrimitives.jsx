@@ -1,3 +1,44 @@
+import { useId } from 'react';
+import { MaterialTexture } from './MaterialTextures.jsx';
+
+/** A material layer clipped to an existing authored silhouette in local SVG coordinates. */
+export function MosaicSurfaceTexture({
+  path,
+  material,
+  x,
+  y,
+  width,
+  height,
+  density = 'low',
+  tone = 'var(--navy)',
+  opacity = 0.14,
+  className = '',
+}) {
+  const clipId = `mosaic-surface-${useId().replace(/:/g, '')}`;
+
+  return (
+    <>
+      <defs>
+        <clipPath id={clipId}>
+          <path d={path} />
+        </clipPath>
+      </defs>
+      <MaterialTexture
+        material={material}
+        x={x}
+        y={y}
+        width={width}
+        height={height}
+        density={density}
+        tone={tone}
+        opacity={opacity}
+        clipPath={`url(#${clipId})`}
+        className={className}
+      />
+    </>
+  );
+}
+
 /** Curated environmental cells shared by the hero, About, and project scenes. */
 export function MosaicCloud({ x, y, scale = 1, className = '' }) {
   return (
@@ -21,12 +62,19 @@ export function MosaicTree({ x, y, scale = 1, className = '' }) {
       <path d="M35 143L37 86L31 65L39 61L46 87L53 143Z" fill="var(--mosaic-trunk-dark, var(--pixel-ground-shadow))" />
       <path d="M39 67L45 84L43 141H36L38 88Z" fill="var(--mosaic-trunk-light, var(--pixel-ground))" />
       <path d="M45 88L53 143H44L43 117Z" fill="var(--mosaic-trunk-mid, var(--pixel-path))" />
+      <path d="M38 77L39 91L37 112M43 79L44 96L45 113M39 117L38 133M47 112L49 134" fill="none" stroke="var(--mosaic-trunk-dark, var(--pixel-ground-shadow))" strokeOpacity="0.31" strokeWidth="1" strokeLinecap="round" />
       <path d="M12 80C5 75 7 62 14 56C12 43 20 36 30 37C30 25 39 17 50 20C57 8 73 10 77 21C88 24 92 37 86 45C96 55 93 69 84 74C82 86 68 92 58 87C45 98 30 95 24 86C19 88 15 85 12 80Z" fill="var(--mosaic-leaf-deep, var(--pixel-flora))" />
       <path d="M14 57C20 50 29 51 34 57L39 73L25 86C17 88 8 77 10 68Z" fill="var(--mosaic-leaf-mid, var(--pixel-vine))" />
       <path d="M30 38C34 26 43 19 52 21L62 33L55 51L35 57C29 52 27 45 30 38Z" fill="var(--mosaic-leaf-light, var(--pixel-scene-flora))" />
       <path d="M52 21C59 10 74 12 77 23C86 25 90 35 86 45L71 53L55 51L62 33Z" fill="var(--mosaic-leaf-mid, var(--pixel-vine))" />
       <path d="M35 57L55 51L71 53L80 68L58 86L39 73Z" fill="var(--mosaic-leaf-mid, var(--pixel-flora))" />
       <path d="M71 53L86 45C96 54 93 68 84 74C82 86 68 91 58 86L80 68Z" fill="var(--mosaic-leaf-deep, var(--pixel-flora))" />
+      <MosaicSurfaceTexture
+        path="M12 80C5 75 7 62 14 56C12 43 20 36 30 37C30 25 39 17 50 20C57 8 73 10 77 21C88 24 92 37 86 45C96 55 93 69 84 74C82 86 68 92 58 87C45 98 30 95 24 86C19 88 15 85 12 80Z"
+        material="fiber"
+        x={8} y={10} width={86} height={87}
+        density="low" tone="var(--cream)" opacity={0.13}
+      />
       <path d="M35 57L39 73L25 86M55 51L58 86M71 53L80 68M62 33L55 51" fill="none" stroke="var(--mosaic-leaf-seam, var(--navy))" strokeOpacity="0.25" strokeWidth="1.5" strokeLinecap="round" />
     </g>
   );
@@ -42,6 +90,12 @@ export function MosaicFern({ x, y, scale = 1, className = '' }) {
       <path d="M32 16C41 10 53 13 59 22C47 24 39 26 31 25Z" fill="var(--mosaic-leaf-light, var(--pixel-vine))" />
       <path d="M31 30C45 25 56 30 63 40C50 39 41 40 30 37Z" fill="var(--mosaic-leaf-mid, var(--pixel-flora))" />
       <path d="M30 43C43 40 52 46 56 54C45 53 36 52 29 50Z" fill="var(--mosaic-leaf-deep, var(--pixel-flora))" />
+      <MosaicSurfaceTexture
+        path="M31 18C18 14 9 17 4 27C14 27 23 27 30 25ZM30 29C17 26 6 31 1 43C14 40 23 39 29 36ZM29 42C18 41 9 48 7 57C17 54 24 52 29 49ZM32 16C41 10 53 13 59 22C47 24 39 26 31 25ZM31 30C45 25 56 30 63 40C50 39 41 40 30 37ZM30 43C43 40 52 46 56 54C45 53 36 52 29 50Z"
+        material="fiber"
+        x={1} y={12} width={62} height={45}
+        density="low" tone="var(--cream)" opacity={0.15}
+      />
       <path d="M4 27L30 25M1 43L29 36M59 22L31 25M63 40L30 37" stroke="var(--mosaic-leaf-seam, var(--navy))" strokeOpacity="0.22" strokeWidth="1" />
     </g>
   );
@@ -54,6 +108,18 @@ export function MosaicRock({ x, y, scale = 1, className = '' }) {
       <path d="M10 29L27 25L37 9L53 12L43 30L22 38L1 46Z" fill="var(--mosaic-rock-light, var(--pixel-ridge-light))" />
       <path d="M53 12L63 8L76 20L70 38L43 30Z" fill="var(--mosaic-rock-mid, var(--pixel-rock))" />
       <path d="M22 38L43 30L70 38L94 47H1Z" fill="var(--mosaic-rock-shadow, var(--pixel-ground-shadow))" />
+      <MosaicSurfaceTexture
+        path="M1 46L10 29L27 25L37 9L63 8L76 20L89 28L94 47Z"
+        material="weathered"
+        x={1} y={8} width={93} height={39}
+        density="low" tone="var(--cream)" opacity={0.17}
+      />
+      <MosaicSurfaceTexture
+        path="M1 46L10 29L27 25L37 9L63 8L76 20L89 28L94 47Z"
+        material="grain"
+        x={1} y={8} width={93} height={39}
+        density="low" tone="var(--navy)" opacity={0.1}
+      />
       <path d="M43 30L53 12M43 30L22 38M70 38L76 20" fill="none" stroke="var(--mosaic-rock-seam, var(--navy))" strokeOpacity="0.36" strokeWidth="1.4" />
     </g>
   );
@@ -93,6 +159,7 @@ export function MosaicGroundNetwork({ x = 0, y = 0, scaleX = 1, scaleY = 1 }) {
       <path d="M148 59Q178 79 207 76Q244 82 274 71Q269 96 265 120H170Q161 83 148 59Z" fill="var(--mosaic-ground-mid, var(--pixel-ground))" />
       <path d="M274 71Q298 72 319 72Q329 92 350 120H265Q269 96 274 71Z" fill="var(--mosaic-ground-deep, var(--pixel-ground-shadow))" />
       <path d="M319 72Q353 76 390 82V120H350Q329 92 319 72Z" fill="var(--mosaic-ground-light, var(--gold))" />
+      <MaterialTexture material="grain" x={0} y={0} width={390} height={120} density="low" tone="var(--navy)" opacity={0.08} />
       <path d="M0 44Q29 32 55 29Q87 21 121 25Q159 30 192 41Q229 26 263 28Q302 30 340 37Q367 41 390 31M0 83Q44 73 76 68Q112 70 148 59Q178 79 207 76Q244 82 274 71Q298 72 319 72Q353 76 390 82M68 0Q64 17 55 29Q65 50 76 68Q65 94 52 120M140 0Q131 13 121 25Q128 44 148 59Q161 83 170 120M218 0Q219 20 192 41Q191 60 207 76M294 0Q283 18 263 28Q273 49 274 71Q269 96 265 120M340 37Q325 56 319 72Q329 92 350 120" fill="none" stroke="var(--mosaic-ground-seam, var(--navy))" strokeOpacity="0.2" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" />
     </g>
   );

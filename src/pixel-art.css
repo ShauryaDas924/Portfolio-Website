@@ -506,6 +506,15 @@
   .treasure-cache { right: 5%; width: 30%; }
 }
 
+/* Reduce fine material detail at narrow widths where it would alias. */
+@media (max-width: 700px) {
+  .material-texture__detail--high { display: none; }
+}
+
+@media (max-width: 430px) {
+  .treasure-scene--compact .material-texture__detail--medium { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .world-meteor {
     animation: none !important;

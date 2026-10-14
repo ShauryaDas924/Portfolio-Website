@@ -261,6 +261,35 @@ test('the mosaic artwork uses smooth authored cells and a shared site motif', as
   assert.ok(meteorSeconds >= 45 && meteorSeconds <= 70, 'meteor must keep its slow cycle');
 });
 
+test('all four material families remain deterministic, clipped, and decorative', async () => {
+  const [textures, sprites, environment, hero] = await Promise.all([
+    read('src/components/pixel/MaterialTextures.jsx'),
+    read('src/components/pixel/PixelSpriteLibrary.jsx'),
+    read('src/components/pixel/MosaicEnvironmentPrimitives.jsx'),
+    read('src/components/pixel/PrehistoricLandscape.jsx'),
+  ]);
+
+  for (const material of ['grain', 'weathered', 'woven', 'fiber']) {
+    assert.match(textures, new RegExp(`\\b${material}:\\s*\\{`));
+  }
+
+  assert.match(textures, /export function MaterialTexture/);
+  assert.match(textures, /clipPath=\{clipPath\}/);
+  assert.match(textures, /pointerEvents="none"/);
+  assert.match(textures, /aria-hidden="true"/);
+  assert.match(textures, /level !== 'low'/);
+  assert.match(textures, /level === 'high'/);
+  assert.doesNotMatch(textures, /Math\.random|crypto\.getRandomValues|<image\b|<filter\b/i);
+
+  assert.match(sprites, /function DinosaurMaterial/);
+  assert.match(sprites, /material="woven"/);
+  assert.match(sprites, /material="weathered"/);
+  assert.match(environment, /useId\(\)/);
+  assert.match(environment, /material="fiber"/);
+  assert.match(environment, /material="grain"/);
+  assert.match(hero, /material="weathered"/);
+});
+
 test('navigation, touch, contrast, and motion accessibility contracts remain explicit', async () => {
   const [coreCss, pixelCss, navbarSource, sectionHeaderSource] = await Promise.all([
     read('src/styles.css'),

@@ -8,6 +8,8 @@ The portfolio and Petalwind Developers have separate visual identities. Do not i
 
 Professional content has priority. Project facts, technical case studies, resume access, navigation, and contact links remain semantic HTML outside decorative scenes. Art supports recognition and atmosphere without becoming a required interaction.
 
+The four-family material layer is documented in [MATERIAL_INFUSED_GEOMETRIC_ART.md](MATERIAL_INFUSED_GEOMETRIC_ART.md). It extends this geometry rather than changing the silhouette, cell network, palette, or scene composition. Material marks are optional and removable surface detail, primarily inside illustrated objects.
+
 ## Palette
 
 | Role | Exact base color | Use |
@@ -43,10 +45,13 @@ Prefer a dark underlay, shared boundary paths, or clipped facets so adjacent cel
 - `src/components/pixel/AboutPrehistoricScene.jsx` composes a quieter Brachiosaurus vignette.
 - `src/components/pixel/ProjectTreasureScene.jsx` selects a decorative environment, dinosaur, chest treatment and reward by stable product ID through `src/data/projectArtwork.js`.
 - `src/components/pixel/MosaicEnvironmentPrimitives.jsx` provides reusable authored cloud, tree, fern, rock, flower and ground geometry across scenes.
+- `src/components/pixel/MaterialTextures.jsx` provides deterministic grain, weathered, woven, and fiber SVG marks for clipping inside existing geometry.
 - `src/assets/mosaic-network.svg` is the original, low-contrast shared-border network reused as a CSS mask around selected site regions.
 - `src/pixel-art.css` owns illustration placement, palette variants, CSS motion, interaction states, responsive recomposition and reduced-motion states. `src/styles.css` owns the page layout, reading surfaces and restrained mosaic accents.
 
 The SVG symbol registry keeps repeated characters and rewards in one place. CSS animations operate on logical objects or groups, never on dozens of individual cells. Decorative wrappers use `aria-hidden="true"` and cannot create focus stops.
+
+Material groups stay within their host silhouette or facet. Host-specific clip paths must have stable, page-unique identifiers when an illustration can repeat. Material should be drawn below the final outline and expression detail, and it moves with its parent SVG group. Keep sky and long-form reading surfaces clean.
 
 ## Project mapping
 
@@ -87,3 +92,5 @@ Prefer SVG `<use>` symbols, authored paths and CSS transforms/opacity. Avoid lay
 To add a dinosaur, draw and review its silhouette first, fit organic cells to anatomical regions, add expression and relevant accessories, register one deterministic symbol, then check it at actual hero and card sizes. To add a project illustration, choose a meaningful existing or newly authored dinosaur/environment/chest/reward combination, update the exact project-ID mapping, and verify the symbol references and touch/focus states. Never infer project capabilities from the art.
 
 Review the result in a browser at desktop, tablet and narrow mobile widths. Check object recognition, shared cell edges, text contrast, keyboard focus, one-tap links, reduced motion, and any horizontal overflow. Run `npm test` and `npm run build` after changes.
+
+For new surface detail, first decide whether grain, weathering, weaving, or fiber is physically appropriate. Use the shared material component and the host object's palette, select density for its actual rendered size, clip to the host shape, and inspect the texture without obscuring its mosaic cells. The [material guide](MATERIAL_INFUSED_GEOMETRIC_ART.md) records photo provenance, object mappings, clipping and ID rules, responsive density, and performance limits.

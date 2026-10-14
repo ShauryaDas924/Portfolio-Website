@@ -5,6 +5,7 @@ import {
   MosaicFlower,
   MosaicGroundNetwork,
   MosaicRock,
+  MosaicSurfaceTexture,
   MosaicTree,
 } from './MosaicEnvironmentPrimitives.jsx';
 
@@ -48,6 +49,12 @@ export default function PrehistoricLandscape() {
           <path className="meteor-facet" d="M96 84L115 93L121 111L104 108L96 101Z" fill="var(--mosaic-meteor-light, var(--gold))" />
           <path className="meteor-facet" d="M84 107L96 101L104 108L108 128L88 124L75 108Z" fill="var(--mosaic-meteor-mid, var(--terracotta))" />
           <path className="meteor-facet" d="M104 108L121 111L108 128Z" fill="var(--mosaic-meteor-dark, var(--pixel-meteor-rock))" />
+          <MosaicSurfaceTexture
+            path="M77 91L96 83L115 93L121 111L108 128L88 124L75 108Z"
+            material="weathered"
+            x={75} y={83} width={46} height={45}
+            density="medium" tone="var(--navy)" opacity={0.25}
+          />
           <path d="M96 84V101L84 107M96 101L104 108L108 128" fill="none" stroke="var(--navy)" strokeOpacity="0.3" strokeWidth="1.5" />
         </g>
 
@@ -57,6 +64,18 @@ export default function PrehistoricLandscape() {
           <path d="M210 175L254 224L302 195L350 154L329 239L278 270L193 253Z" fill="var(--mosaic-ridge-far-shade, var(--pixel-ridge-far))" />
           <path d="M350 154L391 213L438 188L481 161L462 245L414 272L329 239Z" fill="var(--mosaic-ridge-far-light, var(--pixel-ridge-light))" opacity="0.42" />
           <path d="M481 161L533 220L583 184L632 205L672 180L720 229V300L597 274L531 258L462 245Z" fill="var(--mosaic-ridge-far-shade, var(--pixel-ridge-far))" />
+          <MosaicSurfaceTexture
+            path="M0 286L43 263L79 231L122 256L171 201L210 175L254 224L302 195L350 154L391 213L438 188L481 161L533 220L583 184L632 205L672 180L720 229V360H0Z"
+            material="weathered"
+            x={105} y={170} width={245} height={145}
+            density="low" tone="var(--cream)" opacity={0.1}
+          />
+          <MosaicSurfaceTexture
+            path="M0 286L43 263L79 231L122 256L171 201L210 175L254 224L302 195L350 154L391 213L438 188L481 161L533 220L583 184L632 205L672 180L720 229V360H0Z"
+            material="weathered"
+            x={412} y={178} width={265} height={142}
+            density="low" tone="var(--cream)" opacity={0.1}
+          />
           <path d="M210 175L193 253L149 281M350 154L329 239L278 270M481 161L462 245L414 272M583 184L597 274" fill="none" stroke="var(--mosaic-ridge-seam, var(--periwinkle))" strokeOpacity="0.23" strokeWidth="2" />
         </g>
 
@@ -65,6 +84,12 @@ export default function PrehistoricLandscape() {
           <path d="M507 198L536 199L548 222L529 232L497 223Z" className="volcano-rim" />
           <path d="M501 223L529 232L511 288H446L476 253Z" fill="var(--mosaic-volcano-light, var(--pixel-ridge-light))" opacity="0.45" />
           <path d="M529 232L548 222L579 259L608 288H511Z" fill="var(--mosaic-volcano-dark, var(--pixel-volcano-rim))" opacity="0.72" />
+          <MosaicSurfaceTexture
+            path="M446 288L476 253L495 225L507 198L536 199L550 226L579 259L608 288Z"
+            material="weathered"
+            x={464} y={202} width={126} height={86}
+            density="low" tone="var(--cream)" opacity={0.13}
+          />
           <path d="M511 201L521 207L528 202L535 209L529 227L518 232Z" className="volcano-glow" />
           <g className="volcano-smoke">
             <path d="M514 185C507 178 510 170 518 168C514 159 519 151 527 151C532 142 545 140 550 148C561 147 567 155 563 163C570 169 566 179 556 180C551 189 536 190 530 184Z" />
@@ -75,6 +100,18 @@ export default function PrehistoricLandscape() {
         <g className="world-ridge world-ridge--near">
           <path d="M0 328L45 293L88 245L126 267L172 302L212 258L245 221L286 264L324 303L371 269L407 234L457 290L496 312L542 258L576 231L622 285L672 269L720 304V392H0Z" />
           <path className="ridge-light" d="M0 328L45 293L88 245L110 285L80 333L39 365L0 360ZM172 302L212 258L245 221L264 264L235 316L193 352L145 349ZM324 303L371 269L407 234L431 281L394 328L354 361L309 348ZM496 312L542 258L576 231L594 280L558 327L521 352L478 346Z" />
+          <MosaicSurfaceTexture
+            path="M0 328L45 293L88 245L126 267L172 302L212 258L245 221L286 264L324 303L371 269L407 234L457 290L496 312L542 258L576 231L622 285L672 269L720 304V392H0Z"
+            material="weathered"
+            x={70} y={250} width={250} height={125}
+            density="low" tone="var(--cream)" opacity={0.11}
+          />
+          <MosaicSurfaceTexture
+            path="M0 328L45 293L88 245L126 267L172 302L212 258L245 221L286 264L324 303L371 269L407 234L457 290L496 312L542 258L576 231L622 285L672 269L720 304V392H0Z"
+            material="weathered"
+            x={350} y={240} width={260} height={132}
+            density="low" tone="var(--cream)" opacity={0.11}
+          />
           <path d="M88 245L110 285L145 349M245 221L264 264L309 348M407 234L431 281L478 346M576 231L594 280L672 269" fill="none" stroke="var(--mosaic-ridge-seam, var(--navy))" strokeOpacity="0.16" strokeWidth="2" />
         </g>
 
@@ -88,6 +125,12 @@ export default function PrehistoricLandscape() {
         <g className="world-ground">
           <path d="M0 358C55 345 91 346 129 354C183 339 220 341 270 354C329 337 374 341 416 353C473 334 522 338 565 352C631 336 680 344 720 355V520H0Z" className="ground-body" />
           <path d="M0 358C55 345 91 346 129 354C183 339 220 341 270 354C329 337 374 341 416 353C473 334 522 338 565 352C631 336 680 344 720 355L720 381C658 367 622 372 565 378C501 362 463 367 416 379C351 363 318 371 270 380C211 362 175 370 129 380C77 365 35 370 0 381Z" className="ground-top" />
+          <MosaicSurfaceTexture
+            path="M0 358C55 345 91 346 129 354C183 339 220 341 270 354C329 337 374 341 416 353C473 334 522 338 565 352C631 336 680 344 720 355L720 381C658 367 622 372 565 378C501 362 463 367 416 379C351 363 318 371 270 380C211 362 175 370 129 380C77 365 35 370 0 381Z"
+            material="fiber"
+            x={472} y={343} width={112} height={39}
+            density="low" tone="var(--navy)" opacity={0.16}
+          />
           <MosaicGroundNetwork y={378} scaleX={720 / 390} scaleY={142 / 120} />
           <path d="M0 467C113 450 164 478 252 461C332 443 385 477 473 461C567 440 629 472 720 455V520H0Z" className="ground-shadow" opacity="0.36" />
           <path d="M280 520C294 484 306 461 330 437C346 417 361 402 390 391C420 403 439 419 452 440C472 464 485 490 494 520Z" className="world-path" />

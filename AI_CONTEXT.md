@@ -8,7 +8,7 @@ This file is written for AI coding agents. Read it before making changes.
 - **One-sentence description:** Static React/Vite portfolio site for presenting Shaurya Das's software engineering products, resumes, and contact links without exposing private source code.
 - **Main purpose:** Help recruiters and technical reviewers understand Shaurya's product-building work through public-safe summaries and case studies.
 - **Target users:** Recruiters, interviewers, technical reviewers, collaborators, Shaurya, future maintainers, and AI coding agents.
-- **Current status:** Private static portfolio repo suitable for local development and static deployment, with an original organic geometric mosaic React/SVG/CSS artwork system. No backend, database, authentication, or analytics are present in the repo.
+- **Current status:** Private static portfolio repo suitable for local development and static deployment, with an original organic geometric mosaic React/SVG/CSS artwork system and restrained four-family material detail. No backend, database, authentication, or analytics are present in the repo.
 
 ## 2. What This Project Does
 
@@ -61,9 +61,10 @@ Main components:
 - `src/data/projectArtwork.js`: Stable project-ID-to-decorative-scene mapping; never a source for project claims.
 - `src/components/*.jsx`: Presentational components.
 - `src/components/pixel/*.jsx`: Reusable mosaic dinosaurs, hero/About landscapes, meteor, and project treasure scenes; the directory name is retained for import compatibility.
+- `src/components/pixel/MaterialTextures.jsx`: Shared deterministic SVG grain, weathered, woven, and fiber marks clipped within existing art.
 - `src/styles.css`: Global styling and responsive layout.
 - `src/pixel-art.css`: Mosaic art tokens, geometry, animation, art breakpoints, and reduced-motion behavior; the filename is retained for import compatibility.
-- `tests/portfolio-integrity.test.mjs`: Eleven Node integrity tests for content, artwork, accessibility-source, privacy/noindex, and runtime-data-collection contracts.
+- `tests/portfolio-integrity.test.mjs`: Twelve Node integrity tests for content, artwork/material integration, accessibility-source, privacy/noindex, and runtime-data-collection contracts.
 - `public/`: Static assets and Cloudflare/noindex deployment files.
 
 Entry points:
@@ -150,6 +151,8 @@ Important files:
 - `src/styles.css`: edit this for visual design and responsive behavior.
 - `src/pixel-art.css`: edit this for mosaic artwork, environmental motion, treasure states, and art-specific responsive/reduced-motion rules.
 - `src/components/pixel/PixelSpriteLibrary.jsx`: reusable original mosaic dinosaur, chest, backpack, laptop, and reward symbols.
+- `src/components/pixel/MaterialTextures.jsx`: shared authored SVG material families; add density/tone/clip choices inside host artwork, not as a page-wide background.
+- `src/components/pixel/MosaicEnvironmentPrimitives.jsx`: shared clouds, trees, ferns, rocks, flowers, ground, and an instance-safe host-surface clipping helper.
 - `src/components/pixel/PrehistoricLandscape.jsx`: hero landscape with the meteor, developer T-Rex, chest, ferns, and flowers.
 - `src/components/pixel/AboutPrehistoricScene.jsx`: calm decorative Brachiosaurus landscape beside the About copy.
 - `src/components/pixel/ProjectTreasureScene.jsx`: decorative project-card artwork selected by stable project ID.
@@ -193,7 +196,7 @@ Preserve these rules unless the user explicitly requests otherwise:
 8. **Stable artwork mapping:** Product scenes are selected by exact product ID through `projectArtwork.js`, never by array position or a product-name guess.
 9. **Honest boundaries:** Case studies should not overstate security, privacy, anti-bypass, AI, or product guarantees.
 10. **No tracking:** Do not add analytics or tracking without explicit approval.
-11. **Original artwork boundary:** Read `docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md` before changing artwork. Do not copy Petalwind assets, CSS, coordinates, timings, palette, scenes, characters, branding, or layouts. Do not add an external sprite without documented provenance and public-use permission.
+11. **Original artwork boundary:** Read `docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md` and `docs/MATERIAL_INFUSED_GEOMETRIC_ART.md` before changing artwork. The four supplied photos are structural inspiration only and are not production assets. Do not copy Petalwind assets, CSS, coordinates, timings, palette, scenes, characters, branding, or layouts. Do not add an external sprite without documented provenance and public-use permission.
 12. **Accessible motion:** Decorative motion cannot carry content, intercept project links, create tab stops, or remain animated under reduced motion. Hover chest states require keyboard and touch-safe equivalents.
 
 Special caution:
@@ -247,14 +250,16 @@ Check both desktop and mobile media queries.
 Read:
 
 - `docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md`
+- `docs/MATERIAL_INFUSED_GEOMETRIC_ART.md`
 - `src/pixel-art.css`
 - `src/components/pixel/PixelSpriteLibrary.jsx`
+- `src/components/pixel/MaterialTextures.jsx`
 - `src/components/pixel/PrehistoricLandscape.jsx`
 - `src/components/pixel/AboutPrehistoricScene.jsx`
 - `src/components/pixel/ProjectTreasureScene.jsx`
 - `src/data/projectArtwork.js`
 
-Keep authoritative product facts in `src/data/portfolioData.js`. Map scenes by stable project ID, preserve the exact palette roles and original-art boundary, provide hover/focus/touch/reduced-motion states together, and recompose rather than uniformly shrinking the desktop scene.
+Keep authoritative product facts in `src/data/portfolioData.js`. Map scenes by stable project ID, preserve the exact palette roles and original-art boundary, provide hover/focus/touch/reduced-motion states together, and recompose rather than uniformly shrinking the desktop scene. Material detail stays clipped inside the host object, beneath important outlines; use page-unique stable SVG IDs where needed and avoid texture on reading surfaces.
 
 ### To Change Product Logos
 
@@ -324,7 +329,7 @@ npm run build
 npm run preview
 ```
 
-`npm test` runs eleven integrity tests with Node's built-in test runner.
+`npm test` runs twelve integrity tests with Node's built-in test runner.
 
 Required validation after most changes:
 
@@ -339,6 +344,8 @@ Manual testing checklist:
 - Product cards render correctly.
 - The hero renders its meteor, developer T-Rex, chest, ferns, and flowers, and the About section renders its calm Brachiosaurus scene.
 - All dinosaur, chest, and reward SVG references resolve to registered sprite symbols.
+- The four material families render at appropriate density, stay inside their host geometry, and leave face, cell boundaries, and small reward symbols readable.
+- Chest lining and lid texture remain attached during opening; meteor weathering moves with its core; material detail reduces cleanly at narrow mobile sizes.
 - Unknown artwork IDs use the documented generic visual fallback without affecting product content.
 - Product case-study links jump to the right sections.
 - Resume buttons download PDFs.
@@ -396,3 +403,4 @@ What could not be validated from the repo:
 - [Troubleshooting](docs/TROUBLESHOOTING.md)
 - [Changelog Starter](docs/CHANGELOG_STARTER.md)
 - [Organic Geometric Mosaic Design](docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md)
+- [Material-Infused Geometric Art](docs/MATERIAL_INFUSED_GEOMETRIC_ART.md)
