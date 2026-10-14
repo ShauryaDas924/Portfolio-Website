@@ -76,7 +76,7 @@ vite preview --host 127.0.0.1
 
 ## Running Tests
 
-Run the ten Node integrity tests:
+Run the eleven Node integrity tests:
 
 ```bash
 npm test

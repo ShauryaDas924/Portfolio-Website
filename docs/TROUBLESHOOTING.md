@@ -5,7 +5,7 @@
 When something breaks, check:
 
 1. Did dependencies install with `npm install`?
-2. Does `npm test` pass all ten integrity tests?
+2. Does `npm test` pass all eleven integrity tests?
 3. Does `npm run build` pass?
 4. Is the affected content in `src/data/portfolioData.js` or hard-coded in a component?
 5. Does the referenced public asset exist under `public/`?

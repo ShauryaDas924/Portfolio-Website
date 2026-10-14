@@ -1,8 +1,10 @@
-.pixel-sprite {
+/* Artwork wrappers retain their established class names while SVGs use mosaic geometry. */
+.pixel-sprite,
+.mosaic-sprite {
   display: block;
   overflow: visible;
-  image-rendering: pixelated;
-  shape-rendering: crispEdges;
+  image-rendering: auto;
+  shape-rendering: geometricPrecision;
 }
 
 .prehistoric-landscape {
@@ -13,11 +15,10 @@
   overflow: hidden;
   isolation: isolate;
   contain: layout paint;
-  border: 4px solid var(--navy);
-  border-radius: 2px;
-  background: var(--periwinkle);
+  border: 3px solid var(--navy);
+  border-radius: 24px 36px 26px 31px;
+  background: var(--mosaic-sky);
   box-shadow: var(--shadow-large);
-  image-rendering: pixelated;
 }
 
 .prehistoric-landscape::after {
@@ -25,135 +26,69 @@
   position: absolute;
   inset: 0;
   z-index: 8;
-  border: 8px solid var(--pixel-frame-glint);
+  border: 6px solid var(--mosaic-frame-glint);
+  border-radius: inherit;
   pointer-events: none;
 }
 
-.prehistoric-landscape__canvas {
+.prehistoric-landscape__canvas,
+.treasure-scene__environment {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  shape-rendering: geometricPrecision;
+  pointer-events: none;
 }
 
-.world-sky {
-  fill: var(--pixel-sky);
-}
-
-.world-haze {
-  fill: var(--pixel-haze);
-  opacity: 0.64;
-}
-
-.world-sun {
-  fill: var(--gold);
-}
-
-.world-cloud {
-  fill: var(--cream);
-  opacity: 0.74;
-}
-
-.world-cloud--one {
-  transform: translate(0, 0);
-}
-
-.world-cloud--two {
-  opacity: 0.48;
-}
-
+.world-sky { fill: var(--mosaic-sky); }
+.world-haze { fill: var(--mosaic-haze); opacity: 0.64; }
+.world-sun { fill: var(--gold); }
+.world-cloud { fill: var(--cream); opacity: 0.78; }
+.world-cloud--two { opacity: 0.5; }
 .world-meteor {
   pointer-events: none;
   animation: meteor-crossing 58s linear infinite;
   will-change: transform, opacity;
 }
-
-.meteor-tail--far {
-  fill: var(--gold);
-  opacity: 0.45;
-}
-
-.meteor-tail {
-  fill: var(--pixel-meteor-tail);
-}
-
-.meteor-core {
-  fill: var(--terracotta);
-}
-
-.meteor-rock {
-  fill: var(--pixel-meteor-rock);
-}
-
-.world-ridge--far {
-  fill: var(--pixel-ridge-far);
-}
-
-.world-ridge--near {
-  fill: var(--pixel-ridge-near);
-}
-
-.world-ridge--near .ridge-light {
-  fill: var(--pixel-ridge-light);
-}
-
-.volcano-body {
-  fill: var(--pixel-volcano);
-}
-
-.volcano-rim {
-  fill: var(--pixel-volcano-rim);
-}
-
-.volcano-glow {
-  fill: var(--terracotta);
-}
-
-.volcano-smoke {
-  fill: var(--pixel-smoke);
-  opacity: 0.68;
-}
-
-.ground-top {
-  fill: var(--gold);
-}
-
-.ground-body {
-  fill: var(--pixel-ground);
-}
-
-.ground-shadow {
-  fill: var(--pixel-ground-shadow);
-}
-
-.world-path {
-  fill: var(--pixel-path);
-}
-
-.world-flora {
-  fill: var(--pixel-flora);
-}
-
-.world-rocks {
-  fill: var(--pixel-rock);
-}
-
-.world-ferns {
-  fill: var(--pixel-flora);
-}
-
-.world-flowers {
-  fill: var(--terracotta);
-}
-
-.world-flower-centers {
-  fill: var(--cream);
+.world-meteor-glow { fill: var(--mosaic-sun-glow); opacity: 0.24; }
+.world-meteor-fragment { fill: var(--mosaic-meteor-tail); }
+.meteor-tail--far { fill: var(--gold); opacity: 0.52; }
+.meteor-tail { fill: var(--mosaic-meteor-tail); }
+.meteor-core { fill: var(--terracotta); }
+.meteor-rock { fill: var(--mosaic-meteor-rock); }
+.world-ridge--far { fill: var(--mosaic-ridge-far); }
+.world-ridge--near { fill: var(--mosaic-ridge-near); }
+.world-ridge--near .ridge-light { fill: var(--mosaic-ridge-light); }
+.volcano-body { fill: var(--mosaic-volcano); }
+.volcano-rim { fill: var(--mosaic-volcano-rim); }
+.volcano-glow { fill: var(--terracotta); }
+.volcano-smoke { fill: var(--mosaic-smoke); opacity: 0.65; }
+.ground-top { fill: var(--gold); }
+.ground-body { fill: var(--mosaic-ground); }
+.ground-shadow { fill: var(--mosaic-ground-shadow); }
+.world-path { fill: var(--mosaic-path); }
+.world-flora,
+.world-ferns { fill: var(--mosaic-flora); }
+.world-rocks { fill: var(--mosaic-rock); }
+.world-flowers { fill: var(--terracotta); }
+.world-flower-centers { fill: var(--cream); }
+.mosaic-ground-network { opacity: 0.34; }
+.mosaic-cloud,
+.mosaic-tree,
+.mosaic-fern,
+.mosaic-rock,
+.mosaic-flower,
+.meteor-facet,
+.scene-ground-facet,
+.scene-hill-facet {
+  shape-rendering: geometricPrecision;
 }
 
 .hero-mascot {
   position: absolute;
   left: 15%;
-  bottom: 11.5%;
+  bottom: 10%;
   z-index: 5;
   width: 43%;
   aspect-ratio: 64 / 48;
@@ -165,11 +100,11 @@
   width: 100%;
   height: 100%;
   --pixel-mid: var(--terracotta);
-  --pixel-shadow: var(--pixel-terracotta-shadow);
-  --pixel-light: var(--pixel-terracotta-light);
+  --pixel-shadow: var(--mosaic-terracotta-shadow);
+  --pixel-light: var(--mosaic-terracotta-light);
   --pixel-accent: var(--periwinkle);
   --pixel-gold: var(--gold);
-  animation: mascot-idle 5.2s steps(2, end) infinite;
+  animation: mascot-idle 5.8s ease-in-out infinite;
   transform-origin: 50% 100%;
 }
 
@@ -181,8 +116,8 @@
   width: 23%;
   height: auto;
   --pixel-mid: var(--periwinkle);
-  --pixel-shadow: var(--pixel-periwinkle-shadow);
-  --pixel-light: var(--pixel-periwinkle-light);
+  --pixel-shadow: var(--mosaic-periwinkle-shadow);
+  --pixel-light: var(--mosaic-periwinkle-light);
   --pixel-accent: var(--gold);
 }
 
@@ -195,7 +130,7 @@
   height: auto;
   transform: rotate(-2deg);
   --pixel-accent: var(--periwinkle);
-  --pixel-shadow: var(--pixel-metal-shadow);
+  --pixel-shadow: var(--mosaic-metal-shadow);
   --pixel-light: var(--cream);
 }
 
@@ -206,10 +141,11 @@
   z-index: 5;
   display: grid;
   gap: 3px;
-  padding: 8px 10px;
-  border: 3px solid var(--navy);
+  padding: 9px 12px;
+  border: 2px solid var(--navy);
+  border-radius: 11px 16px 13px 17px;
   background: var(--cream);
-  box-shadow: 4px 4px 0 var(--navy);
+  box-shadow: 0 7px 18px var(--shadow-color);
   color: var(--navy);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   line-height: 1.1;
@@ -222,14 +158,12 @@
   letter-spacing: 0.14em;
 }
 
-.hero-field-marker strong {
-  font-size: clamp(0.55rem, 1.1vw, 0.72rem);
-}
+.hero-field-marker strong { font-size: clamp(0.55rem, 1.1vw, 0.72rem); }
 
 .hero-cache {
   position: absolute;
   right: 11%;
-  bottom: 11%;
+  bottom: 10%;
   z-index: 5;
   width: 19%;
   aspect-ratio: 40 / 36;
@@ -238,87 +172,46 @@
 .hero-cache__chest {
   width: 100%;
   height: 100%;
-  --pixel-shadow: var(--pixel-gold-shadow);
-  --pixel-highlight: var(--pixel-sun-glow);
+  --pixel-shadow: var(--mosaic-gold-shadow);
+  --pixel-highlight: var(--mosaic-sun-glow);
 }
 
 .hero-cache__sparkle,
 .hero-cache__sparkle::before,
 .hero-cache__sparkle::after {
   position: absolute;
-  width: 7px;
-  height: 7px;
+  width: 13px;
+  height: 14px;
   background: var(--cream);
+  clip-path: polygon(47% 0, 66% 29%, 100% 42%, 71% 59%, 52% 100%, 35% 65%, 0 47%, 31% 32%);
   content: "";
 }
 
 .hero-cache__sparkle {
   top: -10%;
   left: 8%;
-  animation: chest-sparkle 4.8s steps(2, end) infinite;
+  animation: chest-sparkle 5.4s ease-in-out infinite;
 }
+.hero-cache__sparkle::before { top: -7px; left: 18px; transform: scale(0.58) rotate(27deg); }
+.hero-cache__sparkle::after { top: 17px; left: -9px; transform: scale(0.42) rotate(-24deg); }
 
-.hero-cache__sparkle::before {
-  top: -7px;
-  left: 0;
-}
-
-.hero-cache__sparkle::after {
-  top: 0;
-  left: -7px;
-}
-
+/* The last visible position is behind the near ridge; the reset is hidden. */
 @keyframes meteor-crossing {
-  0% {
-    opacity: 0;
-    transform: translate3d(-150px, -36px, 0);
-  }
-
-  7% {
-    opacity: 1;
-  }
-
-  60% {
-    opacity: 1;
-    transform: translate3d(570px, 142px, 0);
-  }
-
-  69% {
-    opacity: 0;
-    transform: translate3d(700px, 202px, 0);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate3d(700px, 202px, 0);
-  }
+  0% { opacity: 0; transform: translate3d(-150px, -36px, 0); }
+  7% { opacity: 1; }
+  60% { opacity: 1; transform: translate3d(570px, 142px, 0); }
+  69% { opacity: 0; transform: translate3d(700px, 202px, 0); }
+  100% { opacity: 0; transform: translate3d(700px, 202px, 0); }
 }
 
 @keyframes mascot-idle {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-3px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
 }
 
 @keyframes chest-sparkle {
-  0%,
-  38%,
-  62%,
-  100% {
-    opacity: 0;
-    transform: translateY(3px) scale(0.8);
-  }
-
-  44%,
-  56% {
-    opacity: 0.92;
-    transform: translateY(0) scale(1);
-  }
+  0%, 38%, 64%, 100% { opacity: 0; transform: translateY(4px) scale(0.76); }
+  47%, 56% { opacity: 0.9; transform: translateY(0) scale(1); }
 }
 
 .treasure-scene {
@@ -330,13 +223,12 @@
   overflow: hidden;
   isolation: isolate;
   contain: layout paint;
-  background: var(--pixel-scene-base);
-  image-rendering: pixelated;
+  background: var(--mosaic-scene-base);
   --pixel-ink: var(--navy);
   --pixel-mid: var(--terracotta);
-  --pixel-shadow: var(--pixel-terracotta-mid-shadow);
-  --pixel-light: var(--pixel-terracotta-soft);
-  --pixel-highlight: var(--pixel-sun-glow);
+  --pixel-shadow: var(--mosaic-terracotta-shadow);
+  --pixel-light: var(--mosaic-terracotta-light);
+  --pixel-highlight: var(--mosaic-sun-glow);
   --pixel-accent: var(--periwinkle);
   --pixel-gold: var(--gold);
   --pixel-cream: var(--cream);
@@ -344,126 +236,43 @@
 
 .treasure-scene[data-accent="periwinkle"] {
   --pixel-mid: var(--periwinkle);
-  --pixel-shadow: var(--pixel-periwinkle-mid-shadow);
-  --pixel-light: var(--pixel-periwinkle-soft);
+  --pixel-shadow: var(--mosaic-periwinkle-shadow);
+  --pixel-light: var(--mosaic-periwinkle-light);
   --pixel-accent: var(--terracotta);
 }
-
 .treasure-scene[data-accent="terracotta"] {
   --pixel-mid: var(--terracotta);
-  --pixel-shadow: var(--pixel-terracotta-deep);
-  --pixel-light: var(--pixel-terracotta-light);
+  --pixel-shadow: var(--mosaic-terracotta-shadow);
+  --pixel-light: var(--mosaic-terracotta-light);
   --pixel-accent: var(--gold);
 }
-
 .treasure-scene[data-accent="gold"] {
   --pixel-mid: var(--gold);
-  --pixel-shadow: var(--pixel-gold-shadow);
-  --pixel-light: var(--pixel-gold-light);
+  --pixel-shadow: var(--mosaic-gold-shadow);
+  --pixel-light: var(--mosaic-gold-light);
   --pixel-accent: var(--terracotta);
 }
 
-.treasure-scene__environment {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.scene-sky {
-  fill: var(--pixel-scene-sky);
-}
-
-.scene-haze {
-  fill: var(--pixel-scene-haze);
-  opacity: 0.64;
-}
-
-.scene-hills {
-  fill: var(--pixel-scene-ridge);
-}
-
-.scene-ground {
-  fill: var(--gold);
-}
-
-.scene-ground-shadow {
-  fill: var(--pixel-scene-ground);
-}
-
-.scene-detail {
-  fill: var(--pixel-scene-flora);
-}
-
-.scene-detail--rocky {
-  fill: var(--pixel-scene-rock);
-}
-
-.scene-detail--meadow {
-  fill: var(--terracotta);
-}
-
-.scene-detail--trail > path:not(.scene-trail) {
-  fill: var(--pixel-scene-shadow);
-}
-
-.scene-trail {
-  fill: var(--pixel-scene-trail);
-}
-
-.scene-detail--canyon {
-  fill: var(--pixel-scene-canyon);
-}
-
-.scene-detail--canyon rect {
-  fill: var(--pixel-scene-canyon-light);
-}
-
-.scene-detail--ridge > path:first-child {
-  fill: var(--pixel-scene-ridge-dark);
-}
-
-.scene-cloud-mark {
-  fill: var(--cream);
-  opacity: 0.75;
-}
-
-.scene-detail--sunrise > rect {
-  fill: var(--gold);
-}
-
-.scene-detail--sunrise > path:not(.scene-trail) {
-  fill: var(--pixel-scene-sunrise);
-}
-
-.treasure-scene--forest .scene-sky {
-  fill: var(--pixel-forest-sky);
-}
-
-.treasure-scene--rocky .scene-sky {
-  fill: var(--pixel-rocky-sky);
-}
-
-.treasure-scene--meadow .scene-haze {
-  fill: var(--pixel-meadow-haze);
-}
-
-.treasure-scene--canyon .scene-sky {
-  fill: var(--pixel-canyon-sky);
-}
-
-.treasure-scene--ridge .scene-sky {
-  fill: var(--pixel-high-ridge-sky);
-}
-
-.treasure-scene--sunrise .scene-sky {
-  fill: var(--pixel-sunrise-sky);
-}
-
-.treasure-scene--sunrise .scene-haze {
-  fill: var(--pixel-sunrise-haze);
-}
+.treasure-scene__environment { z-index: 0; }
+.scene-sky { fill: var(--mosaic-scene-sky); }
+.scene-haze { fill: var(--mosaic-scene-haze); opacity: 0.62; }
+.scene-hills { fill: var(--mosaic-scene-ridge); }
+.scene-ground { fill: var(--gold); }
+.scene-ground-shadow { fill: var(--mosaic-scene-ground); }
+.scene-detail { fill: var(--mosaic-scene-flora); }
+.scene-detail--rocky { fill: var(--mosaic-scene-rock); }
+.scene-detail--meadow { fill: var(--terracotta); }
+.scene-trail { fill: var(--mosaic-scene-trail); }
+.scene-detail--canyon { fill: var(--mosaic-scene-canyon); }
+.scene-detail--ridge > path:first-child { fill: var(--mosaic-scene-ridge-dark); }
+.scene-cloud-mark { fill: var(--cream); opacity: 0.75; }
+.treasure-scene--forest .scene-sky { fill: var(--mosaic-forest-sky); }
+.treasure-scene--rocky .scene-sky { fill: var(--mosaic-rocky-sky); }
+.treasure-scene--meadow .scene-haze { fill: var(--mosaic-meadow-haze); }
+.treasure-scene--canyon .scene-sky { fill: var(--mosaic-canyon-sky); }
+.treasure-scene--ridge .scene-sky { fill: var(--mosaic-high-ridge-sky); }
+.treasure-scene--sunrise .scene-sky { fill: var(--mosaic-sunrise-sky); }
+.treasure-scene--sunrise .scene-haze { fill: var(--mosaic-sunrise-haze); }
 
 .treasure-dinosaur {
   position: absolute;
@@ -471,78 +280,36 @@
   bottom: 10%;
   z-index: 3;
   width: 46%;
-  transition: transform 580ms steps(4, end);
+  transition: transform 580ms cubic-bezier(0.2, 0.75, 0.2, 1);
   transform-origin: 50% 100%;
 }
-
-.treasure-dinosaur__sprite {
-  width: 100%;
-  height: auto;
-}
-
-.treasure-scene--forest .treasure-dinosaur {
-  left: 3%;
-  width: 48%;
-}
-
-.treasure-scene--rocky .treasure-dinosaur {
-  left: 5%;
-  bottom: 9%;
-  width: 48%;
-}
-
-.treasure-scene--meadow .treasure-dinosaur {
-  left: 1%;
-  bottom: 8%;
-  width: 45%;
-}
-
-.treasure-scene--trail .treasure-dinosaur {
-  left: 4%;
-  bottom: 8%;
-  width: 44%;
-}
-
-.treasure-scene--canyon .treasure-dinosaur {
-  left: 4%;
-  bottom: 9%;
-  width: 49%;
-}
-
-.treasure-scene--ridge .treasure-dinosaur {
-  left: 5%;
-  bottom: 35%;
-  width: 47%;
-}
-
-.treasure-scene--sunrise .treasure-dinosaur {
-  left: 3%;
-  bottom: 10%;
-  width: 43%;
-}
+.treasure-dinosaur__sprite { width: 100%; height: auto; }
+.treasure-scene--forest .treasure-dinosaur { left: 3%; width: 48%; }
+.treasure-scene--rocky .treasure-dinosaur { left: 5%; bottom: 9%; width: 48%; }
+.treasure-scene--meadow .treasure-dinosaur { left: 1%; bottom: 8%; width: 45%; }
+.treasure-scene--trail .treasure-dinosaur { left: 4%; bottom: 8%; width: 44%; }
+.treasure-scene--canyon .treasure-dinosaur { left: 4%; bottom: 9%; width: 49%; }
+.treasure-scene--ridge .treasure-dinosaur { left: 5%; bottom: 35%; width: 47%; }
+.treasure-scene--sunrise .treasure-dinosaur { left: 3%; bottom: 10%; width: 43%; }
 
 .dinosaur-reaction {
   position: absolute;
-  top: -8%;
+  top: -10%;
   right: 5%;
-  width: 8px;
-  height: 20px;
+  width: 16px;
+  height: 19px;
   background: var(--cream);
-  box-shadow: 0 0 0 3px var(--navy);
+  clip-path: polygon(32% 0, 100% 9%, 70% 58%, 38% 100%, 20% 58%, 0 28%);
   opacity: 0;
-  transform: translateY(7px);
-  transition: opacity 260ms steps(2, end), transform 420ms steps(3, end);
+  transform: translateY(7px) rotate(-12deg);
+  transition: opacity 260ms ease, transform 420ms ease;
 }
-
 .dinosaur-reaction::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: -12px;
-  width: 8px;
-  height: 8px;
-  background: var(--cream);
-  box-shadow: 0 0 0 3px var(--navy);
+  inset: 5px 6px 4px 6px;
+  background: var(--terracotta);
+  clip-path: polygon(40% 0, 100% 0, 60% 100%, 0 100%);
 }
 
 .treasure-cache {
@@ -553,61 +320,41 @@
   width: 28%;
   aspect-ratio: 1 / 1;
 }
-
 .treasure-cache::after {
   content: "";
   position: absolute;
-  right: 7%;
-  bottom: 17%;
+  right: 12%;
+  bottom: 18%;
   z-index: 6;
-  width: 11%;
-  height: 22%;
-  border: 2px solid var(--navy);
+  width: 12%;
+  height: 19%;
+  border: 1.5px solid var(--navy);
+  border-radius: 38% 56% 35% 49%;
   background: var(--periwinkle);
   pointer-events: none;
+  transition: opacity 220ms ease;
 }
-
 .treasure-scene[data-chest="timed"] .treasure-cache::after {
-  width: 17%;
-  height: 17%;
-  border-radius: 50%;
-  background: var(--cream);
+  width: 17%; height: 17%; border-radius: 50%; background: var(--cream);
 }
-
 .treasure-scene[data-chest="vine"] .treasure-cache::after {
-  width: 8%;
-  height: 31%;
-  border: 0;
-  background: var(--pixel-vine);
-  transform: rotate(38deg);
+  width: 9%; height: 30%; border: 0; border-radius: 100% 0 100% 0;
+  background: var(--mosaic-vine); transform: rotate(38deg);
 }
-
 .treasure-scene[data-chest="explorer"] .treasure-cache::after {
-  width: 28%;
-  height: 8%;
-  background: var(--terracotta);
+  width: 27%; height: 10%; border-radius: 30% 60% 20% 45%; background: var(--terracotta);
 }
-
 .treasure-scene[data-chest="sealed"] .treasure-cache::after {
-  width: 19%;
-  height: 19%;
-  background: var(--periwinkle);
-  transform: rotate(45deg);
+  width: 18%; height: 18%; border-radius: 22% 42% 26% 45%;
+  background: var(--periwinkle); transform: rotate(45deg);
 }
-
 .treasure-scene[data-chest="guard"] .treasure-cache::after {
-  width: 18%;
-  height: 24%;
-  background: var(--terracotta);
-  clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+  width: 18%; height: 24%; border-radius: 0; background: var(--terracotta);
+  clip-path: polygon(7% 0, 90% 4%, 100% 68%, 47% 100%, 0 65%);
 }
-
 .treasure-scene[data-chest="archive"] .treasure-cache::after {
-  width: 22%;
-  height: 24%;
-  border-color: var(--terracotta);
-  background: var(--cream);
-  box-shadow: -4px -4px 0 var(--cream), -6px -6px 0 var(--terracotta);
+  width: 22%; height: 24%; border-color: var(--terracotta); background: var(--cream);
+  clip-path: polygon(5% 0, 100% 12%, 89% 100%, 0 83%);
 }
 
 .treasure-chest {
@@ -618,16 +365,11 @@
   width: 100%;
   height: 100%;
   transform-origin: 50% 100%;
-  transition: opacity 260ms steps(2, end), transform 620ms steps(4, end);
+  transition: opacity 260ms ease, transform 620ms cubic-bezier(0.22, 0.7, 0.2, 1);
   --pixel-gold: var(--gold);
   --pixel-accent: var(--periwinkle);
 }
-
-.treasure-chest--open {
-  opacity: 0;
-  transform: translateY(4px) scale(0.94);
-}
-
+.treasure-chest--open { opacity: 0; transform: translateY(5px) scale(0.96); }
 .treasure-reward {
   position: absolute;
   left: 32%;
@@ -636,221 +378,132 @@
   width: 38%;
   height: 38%;
   opacity: 0;
-  transform: translateY(28px) scale(0.5);
+  transform: translateY(25px) scale(0.66);
   transform-origin: 50% 100%;
-  transition: opacity 360ms steps(3, end), transform 720ms steps(6, end);
+  transition: opacity 330ms ease, transform 680ms cubic-bezier(0.2, 0.75, 0.15, 1);
   --pixel-accent: var(--periwinkle);
   --pixel-mid: var(--terracotta);
 }
-
 .treasure-glow {
   position: absolute;
-  left: 33%;
-  bottom: 35%;
+  left: 28%;
+  bottom: 31%;
   z-index: 1;
-  width: 34%;
+  width: 48%;
   aspect-ratio: 1;
-  background: var(--pixel-reward-glow);
-  box-shadow: 0 0 0 8px var(--pixel-reward-ring), 0 0 0 16px var(--pixel-reward-fade);
+  border-radius: 46% 54% 42% 58%;
+  background: radial-gradient(circle, var(--mosaic-reward-glow) 0 24%, var(--mosaic-reward-ring) 45%, transparent 72%);
   opacity: 0;
-  transform: scale(0.45) rotate(45deg);
-  transition: opacity 420ms steps(3, end), transform 680ms steps(5, end);
+  transform: scale(0.55) rotate(-14deg);
+  transition: opacity 420ms ease, transform 680ms ease;
 }
-
 .scene-pixel {
   position: absolute;
   z-index: 5;
-  width: 6px;
-  height: 6px;
+  width: 9px;
+  height: 10px;
   background: var(--cream);
+  clip-path: polygon(50% 0, 100% 37%, 76% 100%, 17% 85%, 0 29%);
   opacity: 0;
-  transition: opacity 300ms steps(2, end), transform 700ms steps(5, end);
+  transition: opacity 300ms ease, transform 680ms cubic-bezier(0.16, 0.7, 0.23, 1);
 }
-
-.scene-pixel--one {
-  right: 24%;
-  bottom: 33%;
-}
-
-.scene-pixel--two {
-  right: 15%;
-  bottom: 39%;
-}
-
-.scene-pixel--three {
-  right: 30%;
-  bottom: 48%;
-}
+.scene-pixel--one { right: 24%; bottom: 33%; transform: rotate(12deg); }
+.scene-pixel--two { right: 15%; bottom: 39%; transform: rotate(-21deg) scale(0.72); }
+.scene-pixel--three { right: 30%; bottom: 48%; transform: rotate(36deg) scale(0.83); }
 
 .product-card:hover .treasure-dinosaur,
 .product-card:focus-within .treasure-dinosaur {
   transform: translate3d(-5px, -3px, 0) rotate(-1deg);
 }
-
 .product-card:hover .dinosaur-reaction,
 .product-card:focus-within .dinosaur-reaction {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) rotate(0);
 }
-
+.product-card:hover .treasure-cache::after,
+.product-card:focus-within .treasure-cache::after { opacity: 0; }
 .product-card:hover .treasure-chest--closed,
 .product-card:focus-within .treasure-chest--closed {
   opacity: 0;
-  transform: translateY(5px) scale(0.94);
+  transform: translateY(5px) scale(0.96);
 }
-
 .product-card:hover .treasure-chest--open,
 .product-card:focus-within .treasure-chest--open {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
-
 .product-card:hover .treasure-reward,
 .product-card:focus-within .treasure-reward {
   z-index: 5;
   opacity: 1;
   transform: translateY(-12px) scale(1);
 }
-
 .product-card:hover .treasure-glow,
 .product-card:focus-within .treasure-glow {
-  opacity: 1;
-  transform: scale(1) rotate(45deg);
+  opacity: 0.88;
+  transform: scale(1) rotate(0);
 }
-
 .product-card:hover .scene-pixel,
-.product-card:focus-within .scene-pixel {
-  opacity: 0.9;
-}
-
+.product-card:focus-within .scene-pixel { opacity: 0.92; }
 .product-card:hover .scene-pixel--one,
-.product-card:focus-within .scene-pixel--one {
-  transform: translate(-5px, -22px);
-}
-
+.product-card:focus-within .scene-pixel--one { transform: translate(-5px, -22px) rotate(32deg); }
 .product-card:hover .scene-pixel--two,
-.product-card:focus-within .scene-pixel--two {
-  transform: translate(7px, -30px);
-}
-
+.product-card:focus-within .scene-pixel--two { transform: translate(7px, -30px) rotate(-10deg) scale(0.72); }
 .product-card:hover .scene-pixel--three,
-.product-card:focus-within .scene-pixel--three {
-  transform: translate(-9px, -20px);
-}
+.product-card:focus-within .scene-pixel--three { transform: translate(-9px, -20px) rotate(54deg) scale(0.83); }
 
 .treasure-scene--compact {
   min-height: 0;
   aspect-ratio: 390 / 210;
   border: 2px solid var(--navy);
+  border-radius: 15px 22px 17px 19px;
   background: var(--periwinkle);
 }
-
-.treasure-scene--compact .treasure-dinosaur {
-  transform: none;
-}
-
-.treasure-scene--compact .treasure-chest--closed {
-  opacity: 0;
-}
-
+.treasure-scene--compact .treasure-dinosaur { transform: none; }
+.treasure-scene--compact .treasure-cache::after,
+.treasure-scene--compact .treasure-chest--closed { opacity: 0; }
 .treasure-scene--compact .treasure-chest--open,
 .treasure-scene--compact .treasure-reward,
-.treasure-scene--compact .treasure-glow {
-  opacity: 1;
-}
-
-.treasure-scene--compact .treasure-chest--open {
-  transform: none;
-}
-
+.treasure-scene--compact .treasure-glow { opacity: 1; }
+.treasure-scene--compact .treasure-chest--open { transform: none; }
 .treasure-scene--compact .treasure-reward {
   z-index: 5;
   transform: translateY(-8px) scale(0.9);
 }
-
-.treasure-scene--compact .treasure-glow {
-  transform: scale(0.82) rotate(45deg);
-}
-
+.treasure-scene--compact .treasure-glow { transform: scale(0.82); }
 .treasure-scene--compact .dinosaur-reaction,
-.treasure-scene--compact .scene-pixel {
-  display: none;
-}
+.treasure-scene--compact .scene-pixel { display: none; }
 
 @media (hover: none), (pointer: coarse) {
-  .product-card .treasure-chest--closed {
-    opacity: 0;
-    transform: translateY(5px) scale(0.94);
-  }
-
-  .product-card .treasure-chest--open {
-    opacity: 1;
-    transform: none;
-  }
-
+  .product-card .treasure-cache::after,
+  .product-card .treasure-chest--closed { opacity: 0; }
+  .product-card .treasure-chest--open { opacity: 1; transform: none; }
   .product-card .treasure-reward {
     z-index: 5;
     opacity: 1;
     transform: translateY(-10px) scale(0.94);
   }
-
-  .product-card .treasure-glow {
-    opacity: 0.72;
-    transform: scale(0.86) rotate(45deg);
-  }
-
+  .product-card .treasure-glow { opacity: 0.72; transform: scale(0.86); }
   .product-card .dinosaur-reaction,
-  .product-card .scene-pixel {
-    display: none;
-  }
+  .product-card .scene-pixel { display: none; }
 }
 
 @media (max-width: 700px) {
-  .prehistoric-landscape {
-    aspect-ratio: 680 / 540;
-  }
-
-  .hero-mascot {
-    left: 12%;
-    bottom: 10%;
-    width: 48%;
-  }
-
-  .hero-field-marker {
-    top: 4%;
-    left: 4%;
-  }
-
-  .treasure-scene--compact {
-    aspect-ratio: 390 / 220;
-  }
+  .prehistoric-landscape { aspect-ratio: 680 / 540; }
+  .hero-mascot { left: 11%; bottom: 9%; width: 49%; }
+  .hero-cache { right: 7%; bottom: 10%; width: 22%; }
+  .hero-field-marker { top: 4%; left: 4%; }
+  .treasure-scene--compact { aspect-ratio: 390 / 220; }
 }
 
 @media (max-width: 430px) {
   .world-cloud--two,
   .world-flora--right,
-  .volcano-smoke {
-    display: none;
-  }
-
-  .hero-mascot {
-    left: 8%;
-    width: 54%;
-  }
-
-  .hero-field-marker {
-    transform: scale(0.86);
-    transform-origin: top left;
-  }
-
-  .treasure-dinosaur {
-    width: 48%;
-  }
-
-  .treasure-cache {
-    right: 5%;
-    width: 30%;
-  }
+  .volcano-smoke { display: none; }
+  .hero-mascot { left: 7%; width: 55%; }
+  .hero-field-marker { transform: scale(0.86); transform-origin: top left; }
+  .treasure-dinosaur { width: 48%; }
+  .treasure-cache { right: 5%; width: 30%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -860,24 +513,21 @@
     transform: translate3d(320px, 18px, 0);
     will-change: auto;
   }
-
-  .hero-mascot__dinosaur {
-    animation: none !important;
-  }
-
-  .hero-cache__sparkle {
-    animation: none !important;
-    opacity: 0.92;
-    transform: none;
-  }
-
+  .hero-mascot__dinosaur,
+  .hero-cache__sparkle { animation: none !important; }
+  .hero-cache__sparkle { opacity: 0.92; transform: none; }
   .treasure-dinosaur,
   .treasure-chest,
   .treasure-reward,
   .treasure-glow,
   .scene-pixel,
-  .dinosaur-reaction {
-    transition: none !important;
-    will-change: auto;
-  }
+  .dinosaur-reaction,
+  .treasure-cache::after { transition: none !important; will-change: auto; }
+  .product-card .treasure-cache::after,
+  .product-card .treasure-chest--closed { opacity: 0; }
+  .product-card .treasure-chest--open { opacity: 1; transform: none; }
+  .product-card .treasure-reward { z-index: 5; opacity: 1; transform: translateY(-9px) scale(0.94); }
+  .product-card .treasure-glow { opacity: 0.72; transform: scale(0.86); }
+  .product-card .scene-pixel,
+  .product-card .dinosaur-reaction { display: none; }
 }

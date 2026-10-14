@@ -6,7 +6,7 @@ This repository is a static portfolio. Most changes should be small, content-foc
 
 ## How to Work on This Project
 
-1. Read [AI_CONTEXT.md](../AI_CONTEXT.md), [README.md](../README.md), and [ARCHITECTURE.md](ARCHITECTURE.md). For artwork, motion, card scenes, or broad visual changes, also read [PREHISTORIC_PIXEL_ART_BIBLE.md](PREHISTORIC_PIXEL_ART_BIBLE.md).
+1. Read [AI_CONTEXT.md](../AI_CONTEXT.md), [README.md](../README.md), and [ARCHITECTURE.md](ARCHITECTURE.md). For artwork, motion, card scenes, or broad visual changes, also read [ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md](ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md).
 2. Identify whether the change is content, component behavior, styling, asset, or deployment configuration.
 3. Inspect the exact files involved before editing.
 4. Make the smallest focused change.
@@ -19,7 +19,7 @@ This repository is a static portfolio. Most changes should be small, content-foc
 - React components are simple function components.
 - Shared display data lives in `src/data/portfolioData.js`.
 - Styling is centralized in `src/styles.css`.
-- Original prehistoric artwork is centralized in `src/pixel-art.css`, reusable pixel components, and `src/data/projectArtwork.js`.
+- Original organic geometric mosaic artwork is centralized in `src/pixel-art.css`, reusable SVG components under the retained `pixel/` path, and `src/data/projectArtwork.js`.
 - Decorative project scenes are selected by stable project ID, never array index.
 - Components are presentation-focused and receive data through props.
 - Icons come from `lucide-react`.
@@ -40,7 +40,7 @@ This repository is a static portfolio. Most changes should be small, content-foc
 | Resume cards | `src/data/portfolioData.js`, `src/components/ResumeCard.jsx`, `public/resume/` |
 | Contact items | `src/data/portfolioData.js`, `src/components/ContactCard.jsx` |
 | Visual styling | `src/styles.css` |
-| Prehistoric artwork or motion | `src/pixel-art.css`, `src/components/pixel/*.jsx`, `src/data/projectArtwork.js`, `docs/PREHISTORIC_PIXEL_ART_BIBLE.md` |
+| Mosaic artwork or motion | `src/pixel-art.css`, `src/components/pixel/*.jsx`, `src/data/projectArtwork.js`, `docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md` |
 | Noindex/static hosting behavior | `index.html`, `public/robots.txt`, `public/_headers` |
 | Documentation | `README.md`, `AI_CONTEXT.md`, `docs/*.md` |
 
@@ -84,7 +84,7 @@ For resume download issues:
 
 ## Testing Changes
 
-Run the ten Node integrity tests and the production build:
+Run the eleven Node integrity tests and the production build:
 
 ```bash
 npm test
@@ -99,7 +99,7 @@ Manual regression checklist:
 - Header navigation anchors scroll to the correct sections.
 - Hero CTAs work.
 - Product cards render in desktop and mobile grids.
-- Product logos load or fall back cleanly.
+- Decorative product scenes render and reference registered SVG symbols.
 - Case-study links jump to the right product section.
 - Resume buttons download the expected PDFs.
 - External profile links open correctly.
@@ -124,9 +124,9 @@ Before changing product copy, preserve:
 
 `src/styles.css` controls the entire layout. Small style changes can affect all product cards or all case studies. Inspect responsive media queries before editing component dimensions or grid behavior.
 
-### Prehistoric Artwork
+### Mosaic Artwork
 
-The art system is original to this portfolio. Do not import or recreate Petalwind artwork, CSS, palette, geometry, timing, branding, or layouts. Keep product facts in `portfolioData.js` and decorative mappings in `projectArtwork.js`. Any new animation must include hover-capable, keyboard-focus, touch-safe, and reduced-motion behavior in the same change. Recompose art at breakpoints instead of uniformly shrinking the desktop scene.
+The organic geometric mosaic art system is original to this portfolio. Do not import or recreate Petalwind artwork, CSS, palette, geometry, timing, branding, or layouts. Keep product facts in `portfolioData.js` and decorative mappings in `projectArtwork.js`. Any new animation must include hover-capable, keyboard-focus, touch-safe, and reduced-motion behavior in the same change. Recompose art at breakpoints instead of uniformly shrinking the desktop scene.
 
 ### Deployment Controls
 

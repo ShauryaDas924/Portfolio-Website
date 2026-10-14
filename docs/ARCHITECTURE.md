@@ -15,8 +15,8 @@ flowchart TD
   App --> ArtworkData["src/data/projectArtwork.js"]
   App --> Components["src/components/*.jsx"]
   Components --> Styles["src/styles.css"]
-  Components --> PixelComponents["src/components/pixel/*.jsx"]
-  PixelComponents --> PixelStyles["src/pixel-art.css"]
+  Components --> MosaicComponents["src/components/pixel/*.jsx"]
+  MosaicComponents --> MosaicStyles["src/pixel-art.css"]
   Components --> PublicAssets["public/product-logos and public/resume"]
   PublicAssets --> Build["dist/ copied static assets"]
   Headers["public/_headers"] --> Build
@@ -33,8 +33,8 @@ flowchart TD
 | `src/data/portfolioData.js` | Source of truth for navigation labels, product data, resume links, GitHub cards, and contact items. |
 | `src/data/projectArtwork.js` | Stable decorative mapping from project IDs to dinosaur, environment, chest, and reward variants. |
 | `src/styles.css` | Global styling, layout, responsive behavior, and component classes. |
-| `src/pixel-art.css` | Original prehistoric artwork tokens, geometry, CSS motion, responsive recomposition, and reduced-motion rules. |
-| `tests/portfolio-integrity.test.mjs` | Ten dependency-free Node integrity tests for content, artwork, accessibility-source, privacy, and noindex contracts. |
+| `src/pixel-art.css` | Original geometric mosaic artwork tokens, geometry, CSS motion, responsive recomposition, and reduced-motion rules. |
+| `tests/portfolio-integrity.test.mjs` | Eleven dependency-free Node integrity tests for content, artwork, accessibility-source, privacy, and noindex contracts. |
 
 ## Major Modules
 
@@ -44,10 +44,12 @@ flowchart TD
 | `Hero.jsx` | First-screen positioning, CTA buttons, and product-builder signal cards. |
 | `SectionHeader.jsx` | Shared section heading component. |
 | `ProductCard.jsx` | Compact product cards with a mapped decorative treasure scene, tech chips, source note, live-product link when available, and case-study anchor. |
-| `pixel/PixelSpriteLibrary.jsx` | Reusable original dinosaur, chest, reward, and environmental primitives. |
+| `pixel/PixelSpriteLibrary.jsx` | Reusable organic dinosaur and angular chest/reward SVG symbols. |
 | `pixel/PrehistoricLandscape.jsx` | Hero landscape, developer T-Rex, chest, ferns, flowers, environmental layers, and the signature meteor. |
 | `pixel/AboutPrehistoricScene.jsx` | Calm decorative Brachiosaurus landscape paired with the About copy. |
 | `pixel/ProjectTreasureScene.jsx` | Project-specific decorative composition selected from the stable artwork mapping. |
+| `pixel/MosaicEnvironmentPrimitives.jsx` | Shared authored cloud, tree, fern, rock, flower, and ground geometry. |
+| `src/assets/mosaic-network.svg` | Original irregular cell network used at low contrast as a decorative mask. |
 | `ProductDetail.jsx` | Detailed case study sections with highlights, tech stack, and source-code note. |
 | `ResumeCard.jsx` | Resume download cards using normal anchor downloads. |
 | `ContactCard.jsx` | Contact/profile/location cards. |
@@ -60,7 +62,7 @@ flowchart TD
 3. Components receive data as props.
 4. Components render static markup and links.
 5. `src/data/projectArtwork.js` selects decorative scene variants by stable product ID without duplicating product facts.
-6. CSS in `src/styles.css` controls semantic page layout and reading surfaces; `src/pixel-art.css` controls the original art grammar, motion, art breakpoints, and reduced-motion states.
+6. CSS in `src/styles.css` controls semantic page layout and reading surfaces; `src/pixel-art.css` controls mosaic art grammar, motion, art breakpoints, and reduced-motion states.
 
 The app does not fetch remote data at runtime.
 
@@ -114,9 +116,9 @@ Other links and content are static. There is no runtime error boundary or networ
 
 ## Decorative Artwork and Motion
 
-The prehistoric artwork is static React markup with grid-aligned inline SVG symbols and scenery, styled and animated by CSS. Repeated sprites are declared once and rendered through safe SVG `<use>` references with crisp-edge rendering. The system introduces no game loop, canvas runtime, animation package, interval, scheduler, or recurring React state update. The long-running meteor and small environmental effects are CSS animations using transforms and opacity. Treasure-chest reactions are CSS states driven by hover-capable pointer interaction and the card's existing `:focus-within` state; touch layouts remain complete without a preliminary hover tap.
+The organic geometric mosaic artwork is static React markup with authored irregular SVG symbols and scenery, styled and animated by CSS. Repeated figures are declared once and rendered through safe SVG `<use>` references with smooth vector rendering. The system introduces no game loop, canvas runtime, animation package, interval, scheduler, or recurring React state update. The long-running meteor and small environmental effects are CSS animations using transforms and opacity. Treasure-chest reactions are CSS states driven by hover-capable pointer interaction and the card's existing `:focus-within` state; touch layouts remain complete without a preliminary hover tap.
 
-Decorative scene boundaries are `aria-hidden` and do not contain meaningful labels or links. Project names, descriptions, technologies, metrics, source disclosures, and destinations remain semantic content outside the art. The full design, provenance, motion, accessibility, and responsive contract is in [PREHISTORIC_PIXEL_ART_BIBLE.md](PREHISTORIC_PIXEL_ART_BIBLE.md).
+Decorative scene boundaries are `aria-hidden` and do not contain meaningful labels or links. Project names, descriptions, technologies, metrics, source disclosures, and destinations remain semantic content outside the art. The full design, provenance, motion, accessibility, and responsive contract is in [ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md](ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md).
 
 ## Background Jobs, Timers, and Schedulers
 

@@ -79,7 +79,7 @@ There is no backend, form submission, account system, analytics script, database
 
 ## Current Limitations
 
-- The ten Node integrity tests protect key content, artwork, accessibility-source, privacy, and noindex contracts, but rendered visual-regression, axe, screen-reader, and device-emulation checks remain manual.
+- The eleven Node integrity tests protect key content, artwork, accessibility-source, privacy, and noindex contracts, but rendered visual-regression, axe, screen-reader, and device-emulation checks remain manual.
 - No `LICENSE` file exists.
 - The site does not include a sitemap.
 - The noindex configuration discourages search indexing but is not authentication.

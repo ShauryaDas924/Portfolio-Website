@@ -1,67 +1,94 @@
 import { getProjectArtwork } from '../../data/projectArtwork.js';
 import { PixelSprite } from './PixelSpriteLibrary.jsx';
+import {
+  MosaicCloud,
+  MosaicFern,
+  MosaicFlower,
+  MosaicGroundNetwork,
+  MosaicRock,
+  MosaicTree,
+} from './MosaicEnvironmentPrimitives.jsx';
 
 function EnvironmentDetails({ environment }) {
   switch (environment) {
     case 'forest':
       return (
         <g className="scene-detail scene-detail--forest">
-          <path d="M36 166H50V132H62V98H76V132H88V166Z" />
-          <path d="M312 166H326V126H338V88H352V126H364V166Z" />
-          <rect x="54" y="158" width="10" height="42" />
-          <rect x="336" y="156" width="10" height="44" />
+          <MosaicTree x={-3} y={64} scale={0.99} />
+          <MosaicTree x={308} y={53} scale={1.08} />
+          <MosaicFern x={102} y={157} scale={0.57} />
+          <MosaicFern x={270} y={161} scale={0.52} />
         </g>
       );
     case 'rocky':
       return (
         <g className="scene-detail scene-detail--rocky">
-          <path d="M22 190H48V166H72V178H88V204H18Z" />
-          <path d="M290 194H310V170H344V158H364V204H282Z" />
-          <path d="M178 88H194V72H210V88H226V102H178Z" />
+          <path d="M153 123L179 89L202 72L230 106L251 126Z" fill="var(--mosaic-rock-dark, var(--mosaic-scene-rock))" />
+          <path d="M179 89L202 72L206 105L186 121L153 123Z" fill="var(--mosaic-rock-light, var(--pixel-ridge-light))" opacity="0.68" />
+          <path d="M206 105L202 72L230 106L251 126H186Z" fill="var(--mosaic-rock-mid, var(--mosaic-scene-rock))" />
+          <MosaicRock x={14} y={158} scale={0.8} />
+          <MosaicRock x={285} y={145} scale={1.05} />
+          <MosaicRock x={262} y={181} scale={0.52} />
         </g>
       );
     case 'meadow':
       return (
         <g className="scene-detail scene-detail--meadow">
-          <rect x="48" y="164" width="8" height="32" />
-          <rect x="42" y="158" width="20" height="10" />
-          <rect x="104" y="178" width="8" height="24" />
-          <rect x="98" y="172" width="20" height="10" />
-          <rect x="314" y="168" width="8" height="30" />
-          <rect x="308" y="162" width="20" height="10" />
+          <MosaicFern x={22} y={155} scale={0.58} />
+          <MosaicFlower x={62} y={160} scale={0.6} />
+          <MosaicFlower x={108} y={168} scale={0.48} />
+          <MosaicFlower x={304} y={159} scale={0.61} />
+          <MosaicFern x={338} y={151} scale={0.64} />
         </g>
       );
     case 'trail':
       return (
         <g className="scene-detail scene-detail--trail">
-          <path d="M0 126H34V112H68V128H104V114H140V142H0Z" />
-          <path d="M254 130H286V106H318V120H350V98H390V144H254Z" />
-          <path d="M172 220H240V200H226V180H206V164H192V180H180V202H172Z" className="scene-trail" />
+          <g>
+            <path d="M0 157L34 132L69 137L104 120L140 147L151 178H0Z" fill="var(--mosaic-ridge-far-shade, var(--mosaic-scene-shadow))" />
+            <path d="M267 154L301 116L331 126L359 99L390 126V179H256Z" fill="var(--mosaic-ridge-far-shade, var(--mosaic-scene-shadow))" />
+            <path d="M34 132L69 137L51 160L0 169V157ZM301 116L331 126L313 156L267 154Z" fill="var(--mosaic-ridge-far-light, var(--pixel-ridge-light))" opacity="0.62" />
+          </g>
+          <path d="M167 240C171 217 183 198 197 185C206 176 216 165 226 157C240 164 249 176 254 190C266 212 269 226 273 240Z" className="scene-trail" />
+          <g>
+            <path d="M197 185C206 176 216 165 226 157C232 160 237 164 241 169L224 184L208 205L197 240H167C171 217 183 198 197 185Z" fill="var(--mosaic-path-light, var(--pixel-path))" opacity="0.54" />
+          </g>
         </g>
       );
     case 'canyon':
       return (
         <g className="scene-detail scene-detail--canyon">
-          <path d="M0 82H52V100H76V126H98V210H0Z" />
-          <path d="M390 76H344V96H320V124H298V210H390Z" />
-          <rect x="42" y="116" width="16" height="14" />
-          <rect x="330" y="106" width="18" height="12" />
+          <path d="M0 89L51 88L67 109L81 135L105 152L110 240H0Z" fill="var(--mosaic-canyon-dark, var(--mosaic-scene-canyon))" />
+          <path d="M0 89L51 88L43 127L69 156L59 240H0Z" fill="var(--mosaic-canyon-light, var(--mosaic-scene-canyon-light))" opacity="0.64" />
+          <path d="M390 78L346 84L330 106L312 129L289 158L282 240H390Z" fill="var(--mosaic-canyon-dark, var(--mosaic-scene-canyon))" />
+          <path d="M390 78L346 84L356 120L328 152L339 240H390Z" fill="var(--mosaic-canyon-light, var(--mosaic-scene-canyon-light))" opacity="0.61" />
+          <path d="M51 88L43 127L69 156M346 84L356 120L328 152" fill="none" stroke="var(--mosaic-rock-seam, var(--navy))" strokeOpacity="0.27" strokeWidth="1.5" />
+          <MosaicRock x={111} y={181} scale={0.53} />
         </g>
       );
     case 'ridge':
       return (
         <g className="scene-detail scene-detail--ridge">
-          <path d="M0 152H54V128H108V148H156V120H204V150H254V126H304V146H350V118H390V212H0Z" />
-          <path d="M270 74H292V58H310V74H330V88H270Z" className="scene-cloud-mark" />
+          <path d="M0 176L53 137L91 155L146 115L203 164L250 124L304 151L350 112L390 145V210H0Z" fill="var(--mosaic-ridge-near, var(--mosaic-scene-ridge-dark))" />
+          <path d="M0 176L53 137L73 165L41 196H0ZM91 155L146 115L163 154L133 184ZM203 164L250 124L274 159L236 189ZM304 151L350 112L369 149L339 182Z" fill="var(--mosaic-ridge-near-light, var(--pixel-ridge-light))" opacity="0.59" />
+          <MosaicCloud x={249} y={42} scale={0.5} className="scene-cloud-mark" />
         </g>
       );
     case 'sunrise':
       return (
         <g className="scene-detail scene-detail--sunrise">
-          <rect x="286" y="42" width="52" height="52" />
-          <rect x="276" y="52" width="72" height="32" />
-          <path d="M0 152H46V128H88V150H132V116H176V146H218V126H262V150H308V118H350V140H390V212H0Z" />
-          <path d="M180 210H234V190H222V170H210V156H198V174H188V194H180Z" className="scene-trail" />
+          <g>
+            <path d="M287 57L300 39L323 35L343 48L352 71L343 93L321 103L299 94L283 77Z" fill="var(--gold)" />
+            <path d="M300 39L323 35L322 67L299 94L283 77L287 57Z" fill="var(--mosaic-sun-light, var(--cream))" opacity="0.38" />
+            <path d="M322 67L343 48L352 71L343 93L321 103Z" fill="var(--mosaic-sun-shadow, var(--pixel-gold-shadow))" opacity="0.42" />
+            <path d="M0 159L44 132L88 155L131 116L177 149L220 126L268 151L311 119L352 143L390 129V207H0Z" fill="var(--mosaic-sunrise-hill, var(--mosaic-scene-sunrise))" />
+            <path d="M44 132L88 155L59 183L13 184ZM131 116L177 149L151 177L106 169ZM220 126L268 151L244 181L201 177ZM311 119L352 143L333 172L288 169Z" fill="var(--mosaic-sunrise-light, var(--pixel-ridge-light))" opacity="0.47" />
+          </g>
+          <path d="M168 240C178 215 186 199 197 184C208 171 215 161 224 153C238 166 250 182 257 199C263 217 268 229 273 240Z" className="scene-trail" />
+          <g>
+            <path d="M197 184C208 171 215 161 224 153L235 165L217 190L198 240H168C178 215 186 199 197 184Z" fill="var(--mosaic-path-light, var(--pixel-path))" opacity="0.49" />
+          </g>
+          <MosaicFlower x={311} y={172} scale={0.45} />
         </g>
       );
     default:
@@ -85,14 +112,17 @@ export default function ProjectTreasureScene({ projectId, compact = false }) {
         viewBox="0 0 390 240"
         preserveAspectRatio="xMidYMid slice"
         focusable="false"
-        shapeRendering="crispEdges"
       >
         <rect width="390" height="240" className="scene-sky" />
-        <rect y="86" width="390" height="70" className="scene-haze" />
-        <path d="M0 150H40V132H78V112H112V134H148V104H184V128H222V114H258V136H296V110H334V132H390V210H0Z" className="scene-hills" />
+        <path d="M0 31L53 18L108 42L171 17L239 35L310 14L390 37M53 18L74 86L144 72L171 17L196 87L268 79L310 14L345 85L390 37" fill="none" stroke="var(--cream)" strokeOpacity="0.1" strokeWidth="1" />
+        <path d="M0 92C75 79 135 97 194 86C263 73 323 97 390 81V176H0Z" className="scene-haze" />
+        <path d="M0 166L41 144L81 117L118 145L151 112L188 137L223 121L260 149L299 111L339 139L390 119V212H0Z" className="scene-hills" />
+        <path className="scene-hill-facet" d="M41 144L81 117L91 151L64 181L20 176ZM118 145L151 112L165 151L136 184ZM223 121L260 149L235 177L197 172ZM299 111L339 139L316 178L278 168Z" fill="var(--mosaic-ridge-far-light, var(--pixel-ridge-light))" opacity="0.53" />
+        <path className="scene-ground" d="M0 190C37 180 68 183 98 191C143 177 175 180 207 190C254 176 281 183 316 190C350 180 372 183 390 189V240H0Z" />
+        <path className="scene-ground-facet" d="M0 190C37 180 68 183 98 191C143 177 175 180 207 190C254 176 281 183 316 190C350 180 372 183 390 189V205C359 198 342 200 316 206C276 197 244 199 207 206C170 196 136 199 98 206C58 196 28 198 0 205Z" fill="var(--mosaic-ground-light, var(--gold))" />
+        <MosaicGroundNetwork y={204} scaleY={36 / 120} />
+        <path d="M0 228C52 220 90 231 143 223C193 217 228 232 278 224C325 217 353 230 390 220V240H0Z" className="scene-ground-shadow" opacity="0.3" />
         <EnvironmentDetails environment={artwork.environment} />
-        <path d="M0 190H44V178H94V188H146V174H204V188H258V176H314V188H356V178H390V240H0Z" className="scene-ground" />
-        <rect y="214" width="390" height="26" className="scene-ground-shadow" />
       </svg>
 
       <div className="treasure-dinosaur">

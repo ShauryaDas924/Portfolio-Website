@@ -1,4 +1,12 @@
 import { PixelSprite } from './PixelSpriteLibrary.jsx';
+import {
+  MosaicCloud,
+  MosaicFern,
+  MosaicFlower,
+  MosaicGroundNetwork,
+  MosaicRock,
+  MosaicTree,
+} from './MosaicEnvironmentPrimitives.jsx';
 
 export default function AboutPrehistoricScene() {
   return (
@@ -8,40 +16,34 @@ export default function AboutPrehistoricScene() {
         viewBox="0 0 480 190"
         preserveAspectRatio="xMidYMid slice"
         focusable="false"
-        shapeRendering="crispEdges"
       >
         <rect width="480" height="190" className="about-scene-sky" />
-        <rect x="374" y="26" width="54" height="54" className="about-scene-sun" />
-        <path
-          className="about-scene-ridge"
-          d="M0 104H38V86H76V66H112V84H148V74H188V96H226V80H264V62H300V82H338V94H376V76H414V92H450V82H480V138H0Z"
-        />
-        <path
-          className="about-scene-ground"
-          d="M0 126H54V116H118V130H180V118H244V128H310V116H370V130H426V120H480V190H0Z"
-        />
-        <rect y="144" width="480" height="46" className="about-scene-ground-shadow" />
+        <path d="M0 49L61 34L126 49L190 25L257 42L322 23L389 42L480 27M61 34L81 92L149 71L190 25L219 81L298 67L322 23L359 87L431 79L480 27" fill="none" stroke="var(--cream)" strokeOpacity="0.1" strokeWidth="1.2" />
+        <g className="about-scene-sun">
+          <path d="M382 34L393 23L412 20L427 31L432 47L426 62L410 69L391 64L381 50Z" />
+          <path d="M393 23L412 20L410 44L381 50L382 34Z" fill="var(--mosaic-sun-light, var(--cream))" opacity="0.42" />
+          <path d="M410 44L427 31L432 47L426 62L410 69Z" fill="var(--mosaic-sun-shadow, var(--pixel-gold-shadow))" opacity="0.45" />
+        </g>
+        <MosaicCloud x={59} y={25} scale={0.57} className="about-scene-cloud" />
+        <path className="about-scene-ridge" d="M0 116L43 93L80 68L119 96L165 83L211 101L262 61L302 90L348 74L385 99L437 83L480 106V157H0Z" />
+        <path d="M43 93L80 68L95 104L68 125L20 123ZM165 83L211 101L262 61L276 99L238 124L188 124ZM302 90L348 74L385 99L374 128L327 122Z" fill="var(--mosaic-ridge-far-light, var(--pixel-ridge-light))" opacity="0.52" />
+        <path d="M80 68L95 104M262 61L276 99M348 74L374 128" fill="none" stroke="var(--mosaic-ridge-seam, var(--navy))" strokeOpacity="0.16" strokeWidth="1.4" />
 
         <g className="about-scene-flora">
-          <path d="M36 146H43V111H50V119H61V126H48V133H64V140H45V156H38V140H24V133H36V126H27V119H36Z" />
-          <path d="M324 150H331V113H338V121H350V128H336V135H354V142H333V158H326V142H312V135H324V128H315V121H324Z" />
-          <rect x="444" y="98" width="8" height="56" />
-          <rect x="428" y="112" width="16" height="8" />
-          <rect x="452" y="126" width="18" height="8" />
-          <rect x="436" y="90" width="24" height="14" />
+          <MosaicTree x={417} y={51} scale={0.72} />
         </g>
-
+        <path className="about-scene-ground" d="M0 131C46 120 75 124 111 129C166 118 194 123 235 130C281 117 325 122 362 130C414 120 451 123 480 131V190H0Z" />
+        <path d="M0 131C46 120 75 124 111 129C166 118 194 123 235 130C281 117 325 122 362 130C414 120 451 123 480 131V146C429 137 401 141 362 147C318 137 277 139 235 146C182 135 152 138 111 146C66 137 31 138 0 147Z" fill="var(--mosaic-ground-light, var(--gold))" />
+        <MosaicGroundNetwork y={144} scaleX={480 / 390} scaleY={46 / 120} />
+        <path className="about-scene-ground-shadow" d="M0 173C83 161 137 180 219 168C305 160 375 181 480 165V190H0Z" opacity="0.34" />
+        <g className="about-scene-flora">
+          <MosaicFern x={28} y={103} scale={0.72} />
+          <MosaicFern x={322} y={108} scale={0.66} />
+          <MosaicRock x={356} y={149} scale={0.55} />
+        </g>
         <g className="about-scene-flower">
-          <rect x="278" y="136" width="8" height="8" />
-          <rect x="270" y="144" width="24" height="8" />
-          <rect x="278" y="152" width="8" height="8" />
-          <rect x="394" y="142" width="8" height="8" />
-          <rect x="386" y="150" width="24" height="8" />
-          <rect x="394" y="158" width="8" height="8" />
-        </g>
-        <g className="about-scene-flower-center">
-          <rect x="278" y="144" width="8" height="8" />
-          <rect x="394" y="150" width="8" height="8" />
+          <MosaicFlower x={273} y={128} scale={0.6} />
+          <MosaicFlower x={393} y={132} scale={0.55} />
         </g>
       </svg>
 

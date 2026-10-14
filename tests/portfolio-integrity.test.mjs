@@ -192,7 +192,7 @@ test('project artwork covers the product inventory with presentation-only fields
   assert.equal(getProjectArtwork('unknown-project'), fallbackProjectArtwork);
 });
 
-test('the required prehistoric primary colors are exact once prehistoric styles exist', async (context) => {
+test('the required mosaic primary colors remain exact', async (context) => {
   const coreCss = await read('src/styles.css');
   const pixelCss = await readIfPresent('src/pixel-art.css');
   const combinedCss = `${coreCss}\n${pixelCss ?? ''}`.toLowerCase();
@@ -210,7 +210,7 @@ test('the required prehistoric primary colors are exact once prehistoric styles 
   }
 });
 
-test('the hero and About artwork include the required prehistoric story details', async () => {
+test('the hero and About artwork retain the required prehistoric story details', async () => {
   const [heroScene, aboutScene] = await Promise.all([
     read('src/components/pixel/PrehistoricLandscape.jsx'),
     read('src/components/pixel/AboutPrehistoricScene.jsx'),
@@ -231,6 +231,34 @@ test('the hero and About artwork include the required prehistoric story details'
   assert.ok(aboutScene.includes('name="brachiosaurus"'));
   assert.ok(aboutScene.includes('about-scene-flower'));
   assert.ok(aboutScene.includes('aria-hidden="true"'));
+});
+
+test('the mosaic artwork uses smooth authored cells and a shared site motif', async () => {
+  const [sprites, hero, about, projects, primitives, network, coreCss, artCss] = await Promise.all([
+    read('src/components/pixel/PixelSpriteLibrary.jsx'),
+    read('src/components/pixel/PrehistoricLandscape.jsx'),
+    read('src/components/pixel/AboutPrehistoricScene.jsx'),
+    read('src/components/pixel/ProjectTreasureScene.jsx'),
+    read('src/components/pixel/MosaicEnvironmentPrimitives.jsx'),
+    read('src/assets/mosaic-network.svg'),
+    read('src/styles.css'),
+    read('src/pixel-art.css'),
+  ]);
+
+  for (const source of [sprites, hero, about, projects, primitives, artCss]) {
+    assert.doesNotMatch(source, /crispEdges|image-rendering:\s*pixelated/i);
+  }
+
+  assert.match(sprites, /<clipPath/);
+  assert.match(sprites, /mosaic-cell/);
+  assert.match(primitives, /MosaicGroundNetwork/);
+  assert.match(network, /<path[^>]*Q\d/);
+  assert.doesNotMatch(network, /<rect\b/i);
+  assert.match(coreCss, /--mosaic-network:\s*url\('\.\/assets\/mosaic-network\.svg'\)/);
+  assert.ok((coreCss.match(/mask-image:\s*var\(--mosaic-network\)/g) ?? []).length >= 4);
+
+  const meteorSeconds = Number(artCss.match(/\.world-meteor\s*\{[^}]*animation:\s*meteor-crossing\s+([\d.]+)s/s)?.[1]);
+  assert.ok(meteorSeconds >= 45 && meteorSeconds <= 70, 'meteor must keep its slow cycle');
 });
 
 test('navigation, touch, contrast, and motion accessibility contracts remain explicit', async () => {

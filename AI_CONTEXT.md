@@ -8,7 +8,7 @@ This file is written for AI coding agents. Read it before making changes.
 - **One-sentence description:** Static React/Vite portfolio site for presenting Shaurya Das's software engineering products, resumes, and contact links without exposing private source code.
 - **Main purpose:** Help recruiters and technical reviewers understand Shaurya's product-building work through public-safe summaries and case studies.
 - **Target users:** Recruiters, interviewers, technical reviewers, collaborators, Shaurya, future maintainers, and AI coding agents.
-- **Current status:** Private static portfolio repo suitable for local development and static deployment, with an original prehistoric React/SVG/CSS artwork system. No backend, database, authentication, or analytics are present in the repo.
+- **Current status:** Private static portfolio repo suitable for local development and static deployment, with an original organic geometric mosaic React/SVG/CSS artwork system. No backend, database, authentication, or analytics are present in the repo.
 
 ## 2. What This Project Does
 
@@ -60,10 +60,10 @@ Main components:
 - `src/data/portfolioData.js`: Source of truth for most display data.
 - `src/data/projectArtwork.js`: Stable project-ID-to-decorative-scene mapping; never a source for project claims.
 - `src/components/*.jsx`: Presentational components.
-- `src/components/pixel/*.jsx`: Original reusable dinosaurs, hero/About landscapes, meteor, and project treasure scenes.
+- `src/components/pixel/*.jsx`: Reusable mosaic dinosaurs, hero/About landscapes, meteor, and project treasure scenes; the directory name is retained for import compatibility.
 - `src/styles.css`: Global styling and responsive layout.
-- `src/pixel-art.css`: Prehistoric art tokens, geometry, animation, art breakpoints, and reduced-motion behavior.
-- `tests/portfolio-integrity.test.mjs`: Ten Node integrity tests for content, artwork, accessibility-source, privacy/noindex, and runtime-data-collection contracts.
+- `src/pixel-art.css`: Mosaic art tokens, geometry, animation, art breakpoints, and reduced-motion behavior; the filename is retained for import compatibility.
+- `tests/portfolio-integrity.test.mjs`: Eleven Node integrity tests for content, artwork, accessibility-source, privacy/noindex, and runtime-data-collection contracts.
 - `public/`: Static assets and Cloudflare/noindex deployment files.
 
 Entry points:
@@ -130,7 +130,7 @@ Privacy-sensitive areas:
 Important folders:
 
 - `src/components/`: reusable React components.
-- `src/components/pixel/`: portfolio-authored decorative scene and sprite components.
+- `src/components/pixel/`: portfolio-authored decorative mosaic scenes and reusable SVG symbols.
 - `src/data/`: centralized portfolio data.
 - `public/product-logos/`: public logo assets.
 - `public/resume/`: public resume PDFs.
@@ -148,8 +148,8 @@ Important files:
 - `src/components/ProductDetail.jsx`: edit this for case-study rendering.
 - `src/components/ResumeCard.jsx`: edit this for resume download behavior.
 - `src/styles.css`: edit this for visual design and responsive behavior.
-- `src/pixel-art.css`: edit this for sprite geometry, environmental motion, treasure states, and art-specific responsive/reduced-motion rules.
-- `src/components/pixel/PixelSpriteLibrary.jsx`: reusable original dinosaur, chest, reward, and environmental primitives.
+- `src/pixel-art.css`: edit this for mosaic artwork, environmental motion, treasure states, and art-specific responsive/reduced-motion rules.
+- `src/components/pixel/PixelSpriteLibrary.jsx`: reusable original mosaic dinosaur, chest, backpack, laptop, and reward symbols.
 - `src/components/pixel/PrehistoricLandscape.jsx`: hero landscape with the meteor, developer T-Rex, chest, ferns, and flowers.
 - `src/components/pixel/AboutPrehistoricScene.jsx`: calm decorative Brachiosaurus landscape beside the About copy.
 - `src/components/pixel/ProjectTreasureScene.jsx`: decorative project-card artwork selected by stable project ID.
@@ -193,7 +193,7 @@ Preserve these rules unless the user explicitly requests otherwise:
 8. **Stable artwork mapping:** Product scenes are selected by exact product ID through `projectArtwork.js`, never by array position or a product-name guess.
 9. **Honest boundaries:** Case studies should not overstate security, privacy, anti-bypass, AI, or product guarantees.
 10. **No tracking:** Do not add analytics or tracking without explicit approval.
-11. **Original artwork boundary:** Read `docs/PREHISTORIC_PIXEL_ART_BIBLE.md` before changing artwork. Do not copy Petalwind assets, CSS, coordinates, timings, palette, scenes, characters, branding, or layouts. Do not add an external sprite without documented provenance and public-use permission.
+11. **Original artwork boundary:** Read `docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md` before changing artwork. Do not copy Petalwind assets, CSS, coordinates, timings, palette, scenes, characters, branding, or layouts. Do not add an external sprite without documented provenance and public-use permission.
 12. **Accessible motion:** Decorative motion cannot carry content, intercept project links, create tab stops, or remain animated under reduced motion. Hover chest states require keyboard and touch-safe equivalents.
 
 Special caution:
@@ -242,11 +242,11 @@ Inspect:
 
 Check both desktop and mobile media queries.
 
-### To Change Prehistoric Artwork or Motion
+### To Change Mosaic Artwork or Motion
 
 Read:
 
-- `docs/PREHISTORIC_PIXEL_ART_BIBLE.md`
+- `docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md`
 - `src/pixel-art.css`
 - `src/components/pixel/PixelSpriteLibrary.jsx`
 - `src/components/pixel/PrehistoricLandscape.jsx`
@@ -324,7 +324,7 @@ npm run build
 npm run preview
 ```
 
-`npm test` runs ten integrity tests with Node's built-in test runner.
+`npm test` runs eleven integrity tests with Node's built-in test runner.
 
 Required validation after most changes:
 
@@ -395,4 +395,4 @@ What could not be validated from the repo:
 - [File Map](docs/FILE_MAP.md)
 - [Troubleshooting](docs/TROUBLESHOOTING.md)
 - [Changelog Starter](docs/CHANGELOG_STARTER.md)
-- [Prehistoric Pixel Art Bible](docs/PREHISTORIC_PIXEL_ART_BIBLE.md)
+- [Organic Geometric Mosaic Design](docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md)

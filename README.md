@@ -1,6 +1,6 @@
 # Shaurya Das Portfolio Website
 
-Personal software engineering portfolio for Shaurya Das, built as a static React/Vite site. It presents recruiter-friendly product cards, concise case studies, resume downloads, GitHub/LinkedIn links, and contact information without exposing private or commercial source code. An original warm prehistoric React/SVG/CSS pixel-art system gives the site a distinctive visual identity while keeping the engineering content and actions conventional and readable.
+Personal software engineering portfolio for Shaurya Das, built as a static React/Vite site. It presents recruiter-friendly product cards, concise case studies, resume downloads, GitHub/LinkedIn links, and contact information without exposing private or commercial source code. An original warm prehistoric organic geometric mosaic system gives the site a distinctive visual identity while keeping the engineering content and actions conventional and readable.
 
 ## What This Project Does
 
@@ -45,7 +45,7 @@ College AI is an archived full-stack study platform kept public as a substantial
 | --- | --- |
 | Frontend | React 18, JSX |
 | Build tool | Vite |
-| Styling | Plain CSS in `src/styles.css` plus the original artwork system in `src/pixel-art.css` |
+| Styling | Plain CSS in `src/styles.css` plus the mosaic artwork and motion system in `src/pixel-art.css` |
 | Icons | `lucide-react` |
 | Runtime | Static client-side site; no backend in this repo |
 | Static assets | Vite `public/` directory |
@@ -84,13 +84,13 @@ These scripts are defined in [`package.json`](package.json).
 | Command | Purpose |
 | --- | --- |
 | `npm run dev` | Starts Vite on `127.0.0.1` for local development. |
-| `npm test` | Runs the ten Node integrity tests in `tests/portfolio-integrity.test.mjs`. |
+| `npm test` | Runs the eleven Node integrity tests in `tests/portfolio-integrity.test.mjs`. |
 | `npm run build` | Creates a production build in `dist/`. |
 | `npm run preview` | Serves the production build locally through Vite preview. |
 
 ## Testing Commands
 
-Run the ten repository integrity tests:
+Run the eleven repository integrity tests:
 
 ```bash
 npm test
@@ -104,7 +104,7 @@ Also validate the production bundle:
 npm run build
 ```
 
-Manual checks should cover navigation anchors, hero and calm Brachiosaurus About-scene rendering, project treasure-scene interaction, resume download behavior, responsive desktop/mobile layout, reduced motion, and noindex deployment files.
+Manual checks should cover navigation anchors, hero and Brachiosaurus mosaic rendering, chest hover/focus/touch behavior, resume download, desktop/tablet/mobile layout, reduced motion, and noindex deployment files.
 
 ## Project Structure Summary
 
@@ -120,12 +120,12 @@ Manual checks should cover navigation anchors, hero and calm Brachiosaurus About
 │   └── screenshots/
 ├── src/
 │   ├── components/
-│   │   └── pixel/
+│   │   └── pixel/  # retained import path; artwork is geometric mosaic
 │   ├── data/
 │   │   └── projectArtwork.js
 │   ├── App.jsx
 │   ├── main.jsx
-│   ├── pixel-art.css
+│   ├── pixel-art.css  # retained filename; mosaic art and motion
 │   └── styles.css
 ├── tests/
 │   └── portfolio-integrity.test.mjs
@@ -189,11 +189,12 @@ Start here:
 - [docs/FILE_MAP.md](docs/FILE_MAP.md): file and folder map for maintainers.
 - [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md): common issues and checks.
 - [docs/CHANGELOG_STARTER.md](docs/CHANGELOG_STARTER.md): starter changelog format.
-- [docs/PREHISTORIC_PIXEL_ART_BIBLE.md](docs/PREHISTORIC_PIXEL_ART_BIBLE.md): authoritative palette, original sprite grammar, project mappings, meteor, interaction, accessibility, responsive, and provenance rules.
+- [docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md](docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md): authoritative mosaic palette, geometry, project mappings, meteor, interaction, accessibility, responsive, and provenance rules.
+- [docs/PREHISTORIC_PIXEL_ART_BIBLE.md](docs/PREHISTORIC_PIXEL_ART_BIBLE.md): historical notice for the retired pixel-art direction.
 
 ## Current Status
 
-The repo is a private static portfolio website. It is suitable for local development and static deployment after `npm test` and `npm run build`. The repository does not contain backend services, database schemas, API routes, or authentication logic. It includes ten Node integrity tests, but rendered visual-regression, axe, screen-reader, and device-emulation checks remain manual.
+The repo is a private static portfolio website. It is suitable for local development and static deployment after `npm test` and `npm run build`. The repository does not contain backend services, database schemas, API routes, or authentication logic. It includes eleven Node integrity tests, but rendered visual-regression, axe, screen-reader, and device-emulation checks remain manual.
 
 ## Private Repository Note
 

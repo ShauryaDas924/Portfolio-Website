@@ -14,7 +14,7 @@
 - `src/styles.css`
 - `src/pixel-art.css`
 
-**Internal logic summary:** Static JSX renders text and anchors. Decorative React markup supplies the landscape and sprites, while CSS owns geometry and motion. No recurring JavaScript animation state is used.
+**Internal logic summary:** Static JSX renders text and anchors. Decorative SVG markup supplies curated mosaic geometry, while CSS owns palette, placement, and motion. No recurring JavaScript animation state is used.
 
 **Configuration options:** None outside editing the component.
 
@@ -89,15 +89,15 @@
 
 **Known limitations:** Cards show only the first five tech stack chips. Static tests protect interaction and contrast hooks, but rendered visual-regression, axe, screen-reader, and device-emulation checks remain manual.
 
-## Prehistoric Artwork System
+## Organic Geometric Mosaic Artwork System
 
 **What it does:** Gives the portfolio one original visual language without changing its factual engineering content.
 
-**User-facing behavior:** Uses a warm sunset palette, seven distinct dinosaur silhouettes, project-specific treasure scenes, restrained environmental motion, readable cream technical panels, and static fallbacks for touch and reduced motion.
+**User-facing behavior:** Uses a warm sunset palette, seven distinct organic dinosaur silhouettes, angular treasure scenes, a subtle irregular cell network, restrained environmental motion, readable cream technical panels, and static fallbacks for touch and reduced motion.
 
 **Important files:**
 
-- `docs/PREHISTORIC_PIXEL_ART_BIBLE.md`
+- `docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md`
 - `src/pixel-art.css`
 - `src/components/pixel/PixelSpriteLibrary.jsx`
 - `src/components/pixel/PrehistoricLandscape.jsx`
@@ -105,7 +105,7 @@
 - `src/components/pixel/ProjectTreasureScene.jsx`
 - `src/data/projectArtwork.js`
 
-**Internal logic summary:** Artwork uses deterministic React markup, reusable crisp-edged inline SVG symbols, and centralized CSS. The exact foundation colors are golden yellow `#D7CC65`, periwinkle `#6570D7`, terracotta `#E27E5A`, deep navy `#101827`, and warm cream `#FFF9ED`. CSS media queries recompose scene detail, and `prefers-reduced-motion` produces complete static frames.
+**Internal logic summary:** Artwork uses deterministic React markup, reusable authored irregular SVG symbols, and centralized CSS. The exact foundation colors are golden yellow `#D7CC65`, periwinkle `#6570D7`, terracotta `#E27E5A`, deep navy `#101827`, and warm cream `#FFF9ED`. CSS media queries recompose scene detail, and `prefers-reduced-motion` produces complete static frames.
 
 **Configuration options:** Add or adjust only documented sprite, environment, chest, and reward variants, then map them by stable product ID.
 
