@@ -4,6 +4,7 @@ import {
   MosaicCloud,
   MosaicFern,
   MosaicFlower,
+  MosaicGrass,
   MosaicGroundNetwork,
   MosaicRock,
   MosaicSurfaceTexture,
@@ -16,9 +17,11 @@ function EnvironmentDetails({ environment }) {
       return (
         <g className="scene-detail scene-detail--forest">
           <MosaicTree x={-3} y={64} scale={0.99} />
-          <MosaicTree x={308} y={53} scale={1.08} />
+          <MosaicTree x={308} y={53} scale={1.08} className="mosaic-wind--offset" />
           <MosaicFern x={102} y={157} scale={0.57} />
           <MosaicFern x={270} y={161} scale={0.52} />
+          <MosaicGrass x={186} y={175} scale={0.56} />
+          <MosaicGrass x={287} y={177} scale={0.53} className="mosaic-wind--offset" />
         </g>
       );
     case 'rocky':
@@ -43,9 +46,11 @@ function EnvironmentDetails({ environment }) {
         <g className="scene-detail scene-detail--meadow">
           <MosaicFern x={22} y={155} scale={0.58} />
           <MosaicFlower x={62} y={160} scale={0.6} />
-          <MosaicFlower x={108} y={168} scale={0.48} />
+          <MosaicFlower x={108} y={168} scale={0.48} className="mosaic-wind--offset" />
           <MosaicFlower x={304} y={159} scale={0.61} />
           <MosaicFern x={338} y={151} scale={0.64} />
+          <MosaicGrass x={162} y={171} scale={0.6} />
+          <MosaicGrass x={260} y={175} scale={0.5} className="mosaic-wind--offset" />
         </g>
       );
     case 'trail':

@@ -23,7 +23,7 @@ These photographs do not set the website's color palette. Keep golden yellow `#D
 
 | Object or region | Material approach | Avoid |
 | --- | --- | --- |
-| T-Rex and other dinosaurs | Fine, curated `grain` within body regions. Use less on faces and bellies; vary species and plate/frill density without changing silhouettes. | Uniform dot fields, dirty/diseased appearance, marks over eyes or cell outlines. |
+| T-Rex and other dinosaurs | Fine, curated `grain` within body regions. Use less on faces and bellies; vary species and plate/frill density without changing silhouettes. | Uniform dot fields, dirty/diseased appearance, marks over facial details or cell outlines. |
 | Meteor core | `weathered` patches and a few short fractures within the existing angular core. The trail remains simpler. | Copying a peeling-wall shape, excessive glow, independently animated scratches. |
 | Chest wood and lid | Low-density weathering and directionally appropriate marks that travel with each chest group. | Making panels look damaged or placing marks across fittings. |
 | Chest lining | Fine `woven` ridges clipped to the visible interior. | Blue cloth color, stripes across wood or metal, detached texture during opening. |
@@ -39,7 +39,7 @@ Case-study paragraphs, technology badges, links, and other reading surfaces stay
 
 The shared source of material geometry is `src/components/pixel/MaterialTextures.jsx`. Its `MaterialTexture` component accepts `material` (`grain`, `weathered`, `woven`, or `fiber`), `x`, `y`, `width`, `height`, `density`, `tone`, `opacity`, `clipPath`, and `className`. It renders deterministic, authored SVG marks in the coordinate space of the existing illustration. Scenes choose the host region, material, density, tone, and clipping; the shared component owns the four families' visual grammar. Do not scatter unrelated procedural dots across scene files or use runtime randomness.
 
-- **Grain:** short uneven flecks and small irregular clusters, with quiet gaps and varied orientation. Preserve eye/face clarity and mosaic seams.
+- **Grain:** short uneven flecks and small irregular clusters, with quiet gaps and varied orientation. Preserve facial contours and mosaic seams.
 - **Weathered:** a few asymmetric filled patches, stepped edges, and short crack-like strokes. Keep them inside a geological or wood plane; avoid long strokes over cell boundaries.
 - **Woven:** paired or staggered directional ridges and short connective marks. Match the host material's orientation and use less detail when the lining is small.
 - **Fiber:** short overlapping curved strands in loose clusters, following plant direction. Let the underlying leaf or grass contour remain visible.

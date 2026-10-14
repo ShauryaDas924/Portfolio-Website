@@ -77,15 +77,21 @@ Use a curated SVG network or a deterministic equivalent. Mix cell sizes and dire
 
 The meteor has an angular core, a small directional fragment trail and subtle ambient light. Its CSS animation travels diagonally for approximately 45–70 seconds per cycle. It is painted behind the distant mountain plane so it disappears and resets under occlusion. It never strikes the ground or covers text and actions.
 
+The authored clouds drift gently toward scene right on different, roughly minute-long back-and-forth cycles; their silhouettes, facets and colors stay intact. The breeze also leans small smoke groups slightly right as they rise from the volcano crater, expand and fade over staggered 6–12 second cycles. Clouds remain in the sky behind the independently moving meteor; smoke belongs to the volcano layer and the foreground ridge still occludes the lower scene. Neither effect crosses reading surfaces or controls.
+
+Flowers sway as whole plants from their stem bases in approximately 3–6 second cycles. Selected grass tufts follow the same breeze with smaller, varied motion, while tree canopies move more slowly and less than the flowers, approximately every 5–10 seconds. Tree trunks remain stable. Phase offsets keep neighboring plants from moving together; individual mosaic cells and material marks stay attached to their parent shapes.
+
 Project chests retain the existing CSS-driven state model: resting, dinosaur reaction, opened lid, illuminated facets and visible reward. Hover-capable pointers and keyboard `:focus-within` reveal equivalent states in approximately 400–800ms. Touch visitors can follow the product or case-study link in one tap without waiting for hover. No decorative piece is itself a separate interactive control.
 
-Under `prefers-reduced-motion: reduce`, stop meteor travel, dinosaur idle motion, chest movement, particles and other decorative transitions while leaving a complete static scene. Motion never carries product information or changes link behavior.
+Under `prefers-reduced-motion: reduce`, stop cloud drift, rising smoke, plant and canopy sway, meteor travel, dinosaur idle motion, chest movement, particles and other decorative transitions while leaving a complete static scene. Motion never carries product information or changes link behavior.
 
 ## Responsive and performance rules
 
 Desktop can show the full landscape and more background detail. Tablet removes secondary details and adjusts spacing. Mobile prioritizes name, headline, primary actions and project information, then recomposes the artwork so the T-Rex, chest and reward remain legible. Do not uniformly shrink the desktop scene until cells become visual noise. Keep decorative objects away from copy and avoid horizontal overflow.
 
-Prefer SVG `<use>` symbols, authored paths and CSS transforms/opacity. Avoid layout animation, expensive continuous filters, animation libraries, canvases, recurring React state updates and large repeated inline SVGs. Keep the site static and dependency-light.
+At narrow widths, simplify secondary clouds and vegetation motion when they crowd the composition; keep any visible smoke attached to the crater and the meteor behind the mountains. Inspect desktop, tablet and narrow mobile layouts over multiple animation phases, including a reduced-motion static frame.
+
+Prefer SVG `<use>` symbols, authored paths and CSS transforms/opacity on logical groups. Avoid layout animation, per-cell or per-blade motion, expensive continuous filters, animation libraries, canvases, recurring React state updates and large repeated inline SVGs. Keep the site static and dependency-light, including the repeated project scenes.
 
 ## Extending the system
 

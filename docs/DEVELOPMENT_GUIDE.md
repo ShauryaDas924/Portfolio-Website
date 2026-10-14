@@ -104,6 +104,8 @@ Manual regression checklist:
 - Material marks stay within dinosaur, meteor, chest, and landscape geometry at normal and enlarged sizes; the original cells and expressions remain readable.
 - The woven chest lining remains inside the open chest, while lid and meteor surface detail move with their parent groups.
 - Mobile art reduces fine detail without moiré or horizontal overflow; clouds, sky, and technical reading surfaces stay clear.
+- Sample the artwork at multiple moments: clouds drift gently, crater smoke rises and fades, flowers and selected grass tufts sway from their bases, and foliage moves while trunks stay rooted. The meteor keeps its original path and mountain occlusion.
+- At desktop, tablet, and narrow mobile widths, check that smoke stays at the crater, moving scenery stays within the illustration, and no decoration covers text, links, or focus indicators. With reduced motion enabled, the environment and meteor remain complete static artwork.
 - Case-study links jump to the right product section.
 - Resume buttons download the expected PDFs.
 - External profile links open correctly.
