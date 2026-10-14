@@ -1,6 +1,6 @@
 # Shaurya Das Portfolio Website
 
-Personal software engineering portfolio for Shaurya Das, built as a static React/Vite site. It presents recruiter-friendly product cards, concise case studies, resume downloads, GitHub/LinkedIn links, and contact information without exposing private or commercial source code. An original warm prehistoric organic geometric mosaic system gives the site a distinctive visual identity while keeping the engineering content and actions conventional and readable.
+Personal software engineering portfolio for Shaurya Das, built as a static React/Vite site. It presents recruiter-friendly product cards, concise case studies, resume downloads, GitHub/LinkedIn links, and contact information without exposing private or commercial source code. An original warm prehistoric organic geometric mosaic system, enhanced with restrained material-specific SVG detail, gives the site a distinctive visual identity while keeping the engineering content and actions conventional and readable.
 
 ## What This Project Does
 
@@ -45,7 +45,7 @@ College AI is an archived full-stack study platform kept public as a substantial
 | --- | --- |
 | Frontend | React 18, JSX |
 | Build tool | Vite |
-| Styling | Plain CSS in `src/styles.css` plus the mosaic artwork and motion system in `src/pixel-art.css` |
+| Styling and artwork | Plain CSS in `src/styles.css` and `src/pixel-art.css`; authored SVG mosaics and shared material textures under `src/components/pixel/` |
 | Icons | `lucide-react` |
 | Runtime | Static client-side site; no backend in this repo |
 | Static assets | Vite `public/` directory |
@@ -84,19 +84,19 @@ These scripts are defined in [`package.json`](package.json).
 | Command | Purpose |
 | --- | --- |
 | `npm run dev` | Starts Vite on `127.0.0.1` for local development. |
-| `npm test` | Runs the eleven Node integrity tests in `tests/portfolio-integrity.test.mjs`. |
+| `npm test` | Runs the twelve Node integrity tests in `tests/portfolio-integrity.test.mjs`. |
 | `npm run build` | Creates a production build in `dist/`. |
 | `npm run preview` | Serves the production build locally through Vite preview. |
 
 ## Testing Commands
 
-Run the eleven repository integrity tests:
+Run the twelve repository integrity tests:
 
 ```bash
 npm test
 ```
 
-The suite protects stable product IDs and case-study fields, project-art mappings and required colors, required hero/About scene details, navigation/touch/contrast/motion accessibility contracts, the resume path, public/private link boundaries, noindex controls, and the absence of runtime data collection or persistence. These are static source contracts; they do not replace rendered visual-regression, axe, screen-reader, or device-emulation testing.
+The suite protects stable product IDs and case-study fields, project-art mappings and required colors, the shared material-family contract, required hero/About scene details, navigation/touch/contrast/motion accessibility contracts, the resume path, public/private link boundaries, noindex controls, and the absence of runtime data collection or persistence. These are static source contracts; they do not replace rendered visual-regression, axe, screen-reader, or device-emulation testing.
 
 Also validate the production bundle:
 
@@ -104,7 +104,7 @@ Also validate the production bundle:
 npm run build
 ```
 
-Manual checks should cover navigation anchors, hero and Brachiosaurus mosaic rendering, chest hover/focus/touch behavior, resume download, desktop/tablet/mobile layout, reduced motion, and noindex deployment files.
+Manual checks should cover navigation anchors; hero and Brachiosaurus mosaic rendering; material detail at normal and enlarged sizes; meteor, chest lining, rock, bark, and foliage clipping; chest hover/focus/touch behavior; resume download; desktop/tablet/mobile layout; reduced motion; and noindex deployment files.
 
 ## Project Structure Summary
 
@@ -190,11 +190,12 @@ Start here:
 - [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md): common issues and checks.
 - [docs/CHANGELOG_STARTER.md](docs/CHANGELOG_STARTER.md): starter changelog format.
 - [docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md](docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md): authoritative mosaic palette, geometry, project mappings, meteor, interaction, accessibility, responsive, and provenance rules.
+- [docs/MATERIAL_INFUSED_GEOMETRIC_ART.md](docs/MATERIAL_INFUSED_GEOMETRIC_ART.md): companion guide to the four original SVG material families, object mapping, clipping, density, motion, accessibility, and photographic-reference provenance.
 - [docs/PREHISTORIC_PIXEL_ART_BIBLE.md](docs/PREHISTORIC_PIXEL_ART_BIBLE.md): historical notice for the retired pixel-art direction.
 
 ## Current Status
 
-The repo is a private static portfolio website. It is suitable for local development and static deployment after `npm test` and `npm run build`. The repository does not contain backend services, database schemas, API routes, or authentication logic. It includes eleven Node integrity tests, but rendered visual-regression, axe, screen-reader, and device-emulation checks remain manual.
+The repo is a private static portfolio website. It is suitable for local development and static deployment after `npm test` and `npm run build`. The repository does not contain backend services, database schemas, API routes, or authentication logic. It includes twelve Node integrity tests, but rendered visual-regression, axe, screen-reader, and device-emulation checks remain manual. The supplied material-reference photographs are not website assets.
 
 ## Private Repository Note
 

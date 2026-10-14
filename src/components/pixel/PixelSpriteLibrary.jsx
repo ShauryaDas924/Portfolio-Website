@@ -1,3 +1,5 @@
+import { MaterialTexture } from './MaterialTextures.jsx';
+
 /**
  * A small, deterministic SVG mosaic system. The published sprite names and
  * viewBoxes stay stable so the hero and project scenes can reuse their existing
@@ -45,7 +47,7 @@ const spriteStyles = [
   '.mosaic-pupil{fill:var(--pixel-ink,var(--navy,#101827))}',
 ].join('');
 
-function MosaicFigure({ id, silhouette, cells, children, strokeWidth }) {
+function MosaicFigure({ id, silhouette, cells, texture, children, strokeWidth }) {
   const clipId = 'sd-mosaic-clip-' + id;
 
   return (
@@ -57,9 +59,17 @@ function MosaicFigure({ id, silhouette, cells, children, strokeWidth }) {
       <path className="pixel-mid" d={silhouette} />
       <g clipPath={'url(#' + clipId + ')'}>
         {cells.map(([tone, d], index) => (
-          <path key={index} className={'mosaic-cell pixel-' + tone} d={d} />
+          <path key={index} className={'mosaic-cell pixel-' + tone} d={d} style={texture ? { stroke: 'none' } : undefined} />
         ))}
       </g>
+      {texture}
+      {texture && (
+        <g clipPath={'url(#' + clipId + ')'}>
+          {cells.map(([, d], index) => (
+            <path key={index} className="mosaic-cell" d={d} fill="none" />
+          ))}
+        </g>
+      )}
       <path
         className="mosaic-outline"
         d={silhouette}
@@ -257,6 +267,61 @@ const dinosaurs = {
   },
 };
 
+// Regions use each dinosaur's existing SVG coordinates. They vary the surface
+// density by anatomy while the original silhouette and cell paths stay intact.
+const dinosaurMaterialRegions = {
+  't-rex': [
+    ['grain', 2, 17, 19, 15, 'low', .13],       // tail
+    ['grain', 17, 18, 25, 18, 'high', .15],     // back and torso
+    ['grain', 13, 34, 29, 10, 'medium', .17],   // feet
+    ['grain', 40, 5, 23, 19, 'low', .075],      // expressive face
+  ],
+  triceratops: [
+    ['grain', 7, 19, 36, 18, 'medium', .13],
+    ['grain', 39, 8, 15, 19, 'high', .17],      // rougher frill
+    ['grain', 50, 17, 13, 13, 'low', .07],
+  ],
+  stegosaurus: [
+    ['grain', 7, 20, 48, 18, 'medium', .12],
+    ['weathered', 16, 8, 33, 15, 'low', .09],  // restrained angular plate marks
+  ],
+  brachiosaurus: [
+    ['grain', 6, 21, 41, 17, 'low', .11],
+    ['grain', 40, 5, 22, 28, 'low', .08],       // smoother neck and face
+  ],
+  ankylosaurus: [
+    ['grain', 11, 15, 42, 24, 'high', .16],
+    ['grain', 2, 22, 15, 13, 'medium', .12],
+  ],
+  pterodactyl: [
+    ['grain', 3, 8, 28, 17, 'low', .1],
+    ['grain', 33, 11, 29, 17, 'low', .1],
+  ],
+  raptor: [
+    ['grain', 3, 17, 40, 20, 'medium', .13],
+    ['grain', 38, 9, 24, 18, 'low', .075],
+    ['grain', 14, 33, 28, 10, 'low', .14],
+  ],
+};
+
+function DinosaurMaterial({ name }) {
+  return dinosaurMaterialRegions[name].map(([material, x, y, width, height, density, opacity], index) => (
+    <MaterialTexture
+      key={index}
+      material={material}
+      x={x}
+      y={y}
+      width={width}
+      height={height}
+      density={density}
+      opacity={opacity}
+      tone="var(--pixel-ink,var(--navy,#101827))"
+      clipPath={'url(#sd-mosaic-clip-' + name + ')'}
+      className="dinosaur-skin-texture"
+    />
+  ));
+}
+
 function DinosaurDetails({ name }) {
   if (name === 't-rex' || name === 'raptor') {
     return (
@@ -311,9 +376,14 @@ function DinosaurDetails({ name }) {
   );
 }
 
-function ChestBody() {
+function ChestBody({ open }) {
+  const woodClip = 'sd-material-chest-body-' + (open ? 'open' : 'closed');
+
   return (
     <>
+      <clipPath id={woodClip}>
+        <path d="M5 18 L35 18 L34 31 L31 33 L9 33 L6 31Z" />
+      </clipPath>
       <path className="mosaic-base" d="M4 17 L36 17 L35 32 L32 34 L8 34 L5 32Z" />
       <path className="pixel-shadow" d="M5 18 L35 18 L34 31 L31 33 L9 33 L6 31Z" />
       <path className="mosaic-cell pixel-mid" d="M7 19 L17 19 L19 26 L11 29 L6 25Z" />
@@ -322,6 +392,7 @@ function ChestBody() {
       <path className="mosaic-cell pixel-shadow" d="M6 25 L11 29 L18 27 L18 33 L9 33 L6 31Z" />
       <path className="mosaic-cell pixel-mid" d="M18 27 L23 27 L28 33 L18 33Z" />
       <path className="mosaic-cell pixel-gold" d="M23 27 L34 25 L34 31 L31 33 L28 33Z" />
+      <MaterialTexture material="weathered" x={6} y={18} width={29} height={15} density="medium" tone="var(--pixel-ink,var(--navy,#101827))" opacity={.105} clipPath={'url(#' + woodClip + ')'} className="chest-wood-texture" />
       <path className="mosaic-outline" d="M4 17 L36 17 L35 32 L32 34 L8 34 L5 32Z" />
       <path className="pixel-gold" stroke="var(--pixel-ink,var(--navy))" strokeWidth=".7" d="M6 17 L10 17 L10 33 L8 33 L6 31Z M30 17 L34 17 L34 31 L32 33 L30 33Z" />
       <path className="mosaic-detail" d="M10 23 L17 24 M24 28 L30 27" />
@@ -333,11 +404,15 @@ function ChestLid({ open }) {
   if (open) {
     return (
       <>
+        <clipPath id="sd-material-chest-open-lid">
+          <path d="M7 15 L10 8 L15 4 L31 5 L36 10 L33 15 L29 16 L9 16Z" />
+        </clipPath>
         <path className="mosaic-base" d="M5 16 L8 7 L14 2 L32 3 L38 10 L35 16 L30 18 L8 18Z" />
         <path className="pixel-gold" d="M7 15 L10 8 L15 4 L31 5 L36 10 L33 15 L29 16 L9 16Z" />
         <path className="mosaic-cell pixel-light" d="M10 8 L18 4 L21 10 L14 15 L7 15Z" />
         <path className="mosaic-cell pixel-mid" d="M18 4 L31 5 L31 11 L21 10Z" />
         <path className="mosaic-cell pixel-shadow" d="M21 10 L31 11 L36 10 L33 15 L29 16 L14 15Z" />
+        <MaterialTexture material="weathered" x={7} y={4} width={29} height={12} density="low" tone="var(--pixel-ink,var(--navy,#101827))" opacity={.1} clipPath="url(#sd-material-chest-open-lid)" className="chest-wood-texture" />
         <path className="mosaic-outline" d="M5 16 L8 7 L14 2 L32 3 L38 10 L35 16 L30 18 L8 18Z" />
         <path className="mosaic-detail" d="M8 14 L34 14 M15 4 L14 14 M31 5 L31 14" />
       </>
@@ -346,12 +421,16 @@ function ChestLid({ open }) {
 
   return (
     <>
+      <clipPath id="sd-material-chest-closed-lid">
+        <path d="M6 16 L8 10 L12 7 L29 7 L33 10 L35 16 L33 18 L8 18Z" />
+      </clipPath>
       <path className="mosaic-base" d="M4 17 L6 9 L11 5 L30 5 L35 9 L37 17 L34 20 L7 20Z" />
       <path className="pixel-gold" d="M6 16 L8 10 L12 7 L29 7 L33 10 L35 16 L33 18 L8 18Z" />
       <path className="mosaic-cell pixel-light" d="M8 10 L16 7 L20 11 L14 17 L6 16Z" />
       <path className="mosaic-cell pixel-mid" d="M16 7 L25 7 L27 13 L20 11Z" />
       <path className="mosaic-cell pixel-shadow" d="M25 7 L33 10 L35 16 L27 13Z" />
       <path className="mosaic-cell pixel-gold" d="M14 17 L20 11 L27 13 L33 18 L22 19Z" />
+      <MaterialTexture material="weathered" x={6} y={7} width={29} height={12} density="low" tone="var(--pixel-ink,var(--navy,#101827))" opacity={.1} clipPath="url(#sd-material-chest-closed-lid)" className="chest-wood-texture" />
       <path className="mosaic-outline" d="M4 17 L6 9 L11 5 L30 5 L35 9 L37 17 L34 20 L7 20Z" />
       <path className="mosaic-detail" d="M8 16 L34 16 M12 7 L14 16 M29 7 L27 16" />
     </>
@@ -362,11 +441,15 @@ function ChestSymbol({ open = false }) {
   return (
     <>
       {open && <ChestLid open />}
-      <ChestBody />
+      <ChestBody open={open} />
       {open ? (
         <>
+          <clipPath id="sd-material-chest-open-lining">
+            <path d="M10 18 L18 16 L31 18 L28 20 L12 20Z" />
+          </clipPath>
           <path className="pixel-ink" d="M7 17 Q20 13 34 17 L34 21 L7 21Z" />
           <path className="pixel-highlight" d="M10 18 L18 16 L31 18 L28 20 L12 20Z" />
+          <MaterialTexture material="woven" x={10} y={16} width={21} height={4} density="medium" tone="var(--pixel-ink,var(--navy,#101827))" opacity={.27} clipPath="url(#sd-material-chest-open-lining)" className="chest-lining-texture" />
         </>
       ) : <ChestLid />}
       <path className="pixel-ink" d={open ? 'M17 21 L23 21 L23 27 L21 29 L19 29 L17 27Z' : 'M17 18 L23 18 L23 27 L21 29 L19 29 L17 27Z'} />
@@ -501,7 +584,7 @@ export function PixelSpriteLibrary() {
         <style>{spriteStyles}</style>
         {Object.entries(dinosaurs).map(([name, art]) => (
           <symbol key={name} id={'sd-pixel-' + name} viewBox={SPRITE_VIEW_BOXES[name]}>
-            <MosaicFigure id={name} silhouette={art.silhouette} cells={art.cells}>
+            <MosaicFigure id={name} silhouette={art.silhouette} cells={art.cells} texture={<DinosaurMaterial name={name} />}>
               <DinosaurDetails name={name} />
             </MosaicFigure>
           </symbol>

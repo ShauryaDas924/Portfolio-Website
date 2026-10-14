@@ -6,7 +6,7 @@ This repository is a static portfolio. Most changes should be small, content-foc
 
 ## How to Work on This Project
 
-1. Read [AI_CONTEXT.md](../AI_CONTEXT.md), [README.md](../README.md), and [ARCHITECTURE.md](ARCHITECTURE.md). For artwork, motion, card scenes, or broad visual changes, also read [ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md](ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md).
+1. Read [AI_CONTEXT.md](../AI_CONTEXT.md), [README.md](../README.md), and [ARCHITECTURE.md](ARCHITECTURE.md). For artwork, motion, card scenes, or broad visual changes, also read [ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md](ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md) and its [material companion](MATERIAL_INFUSED_GEOMETRIC_ART.md).
 2. Identify whether the change is content, component behavior, styling, asset, or deployment configuration.
 3. Inspect the exact files involved before editing.
 4. Make the smallest focused change.
@@ -19,7 +19,7 @@ This repository is a static portfolio. Most changes should be small, content-foc
 - React components are simple function components.
 - Shared display data lives in `src/data/portfolioData.js`.
 - Styling is centralized in `src/styles.css`.
-- Original organic geometric mosaic artwork is centralized in `src/pixel-art.css`, reusable SVG components under the retained `pixel/` path, and `src/data/projectArtwork.js`.
+- Original organic geometric mosaic artwork is centralized in `src/pixel-art.css`, reusable SVG components under the retained `pixel/` path, and `src/data/projectArtwork.js`. `src/components/pixel/MaterialTextures.jsx` supplies the shared authored surface detail.
 - Decorative project scenes are selected by stable project ID, never array index.
 - Components are presentation-focused and receive data through props.
 - Icons come from `lucide-react`.
@@ -41,6 +41,7 @@ This repository is a static portfolio. Most changes should be small, content-foc
 | Contact items | `src/data/portfolioData.js`, `src/components/ContactCard.jsx` |
 | Visual styling | `src/styles.css` |
 | Mosaic artwork or motion | `src/pixel-art.css`, `src/components/pixel/*.jsx`, `src/data/projectArtwork.js`, `docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md` |
+| Material detail | `src/components/pixel/MaterialTextures.jsx`, the host SVG scene, `docs/MATERIAL_INFUSED_GEOMETRIC_ART.md` |
 | Noindex/static hosting behavior | `index.html`, `public/robots.txt`, `public/_headers` |
 | Documentation | `README.md`, `AI_CONTEXT.md`, `docs/*.md` |
 
@@ -84,14 +85,14 @@ For resume download issues:
 
 ## Testing Changes
 
-Run the eleven Node integrity tests and the production build:
+Run the twelve Node integrity tests and the production build:
 
 ```bash
 npm test
 npm run build
 ```
 
-The integrity suite checks stable product and case-study contracts, artwork mappings and palette presence, required hero/About artwork, navigation/touch/contrast/motion accessibility-source contracts, the resume path, public/private link boundaries, noindex controls, and the absence of runtime data collection or persistence. It does not render the UI, so visual-regression, axe, screen-reader, and device-emulation checks are still manual.
+The integrity suite checks stable product and case-study contracts, artwork mappings and palette presence, the four-family material component contract, required hero/About artwork, navigation/touch/contrast/motion accessibility-source contracts, the resume path, public/private link boundaries, noindex controls, and the absence of runtime data collection or persistence. It does not render the UI, so visual-regression, axe, screen-reader, and device-emulation checks are still manual.
 
 Manual regression checklist:
 
@@ -100,6 +101,9 @@ Manual regression checklist:
 - Hero CTAs work.
 - Product cards render in desktop and mobile grids.
 - Decorative product scenes render and reference registered SVG symbols.
+- Material marks stay within dinosaur, meteor, chest, and landscape geometry at normal and enlarged sizes; the original cells and expressions remain readable.
+- The woven chest lining remains inside the open chest, while lid and meteor surface detail move with their parent groups.
+- Mobile art reduces fine detail without moiré or horizontal overflow; clouds, sky, and technical reading surfaces stay clear.
 - Case-study links jump to the right product section.
 - Resume buttons download the expected PDFs.
 - External profile links open correctly.
@@ -128,6 +132,8 @@ Before changing product copy, preserve:
 
 The organic geometric mosaic art system is original to this portfolio. Do not import or recreate Petalwind artwork, CSS, palette, geometry, timing, branding, or layouts. Keep product facts in `portfolioData.js` and decorative mappings in `projectArtwork.js`. Any new animation must include hover-capable, keyboard-focus, touch-safe, and reduced-motion behavior in the same change. Recompose art at breakpoints instead of uniformly shrinking the desktop scene.
 
+The material layer uses original deterministic SVG marks inspired by four supplied photographs. Do not place those photos in `public/` or use them as CSS backgrounds. Preserve existing silhouettes and cell seams; clip marks inside host regions with stable unique SVG IDs, use the shared `MaterialTexture` family appropriate to the physical material, and keep texture groups attached to the object that moves. Skip texture on small symbols when it harms legibility.
+
 ### Deployment Controls
 
 The noindex posture is intentional. Do not remove or weaken it without explicit approval.
@@ -146,6 +152,7 @@ Files in `public/` are deployable. Treat them as public. Do not add sensitive in
 - Resume links still use the correct file names.
 - Decorative SVG scenes remain `aria-hidden`, and meaningful image assets retain accurate alt text.
 - Every product ID selects the intended dinosaur, environment, chest, and reward.
+- Granular, weathered, woven, and fiber marks are material-appropriate, clipped, unobtrusive, and less dense where artwork renders small.
 - Chest states preserve one-tap navigation and equivalent keyboard focus behavior.
 - Meteor travel stays behind content, resets while occluded, and becomes static under reduced motion.
 - Decorative artwork creates no extra tab stops, horizontal overflow, or hidden meaningful content.

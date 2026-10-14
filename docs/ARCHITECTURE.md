@@ -17,6 +17,7 @@ flowchart TD
   Components --> Styles["src/styles.css"]
   Components --> MosaicComponents["src/components/pixel/*.jsx"]
   MosaicComponents --> MosaicStyles["src/pixel-art.css"]
+  MosaicComponents --> MaterialTextures["MaterialTextures.jsx"]
   Components --> PublicAssets["public/product-logos and public/resume"]
   PublicAssets --> Build["dist/ copied static assets"]
   Headers["public/_headers"] --> Build
@@ -34,7 +35,7 @@ flowchart TD
 | `src/data/projectArtwork.js` | Stable decorative mapping from project IDs to dinosaur, environment, chest, and reward variants. |
 | `src/styles.css` | Global styling, layout, responsive behavior, and component classes. |
 | `src/pixel-art.css` | Original geometric mosaic artwork tokens, geometry, CSS motion, responsive recomposition, and reduced-motion rules. |
-| `tests/portfolio-integrity.test.mjs` | Eleven dependency-free Node integrity tests for content, artwork, accessibility-source, privacy, and noindex contracts. |
+| `tests/portfolio-integrity.test.mjs` | Twelve dependency-free Node integrity tests for content, artwork/material integration, accessibility-source, privacy, and noindex contracts. |
 
 ## Major Modules
 
@@ -49,6 +50,7 @@ flowchart TD
 | `pixel/AboutPrehistoricScene.jsx` | Calm decorative Brachiosaurus landscape paired with the About copy. |
 | `pixel/ProjectTreasureScene.jsx` | Project-specific decorative composition selected from the stable artwork mapping. |
 | `pixel/MosaicEnvironmentPrimitives.jsx` | Shared authored cloud, tree, fern, rock, flower, and ground geometry. |
+| `pixel/MaterialTextures.jsx` | Shared deterministic grain, weathered, woven, and fiber SVG surface marks clipped inside existing art. |
 | `src/assets/mosaic-network.svg` | Original irregular cell network used at low contrast as a decorative mask. |
 | `ProductDetail.jsx` | Detailed case study sections with highlights, tech stack, and source-code note. |
 | `ResumeCard.jsx` | Resume download cards using normal anchor downloads. |
@@ -116,9 +118,9 @@ Other links and content are static. There is no runtime error boundary or networ
 
 ## Decorative Artwork and Motion
 
-The organic geometric mosaic artwork is static React markup with authored irregular SVG symbols and scenery, styled and animated by CSS. Repeated figures are declared once and rendered through safe SVG `<use>` references with smooth vector rendering. The system introduces no game loop, canvas runtime, animation package, interval, scheduler, or recurring React state update. The long-running meteor and small environmental effects are CSS animations using transforms and opacity. Treasure-chest reactions are CSS states driven by hover-capable pointer interaction and the card's existing `:focus-within` state; touch layouts remain complete without a preliminary hover tap.
+The organic geometric mosaic artwork is static React markup with authored irregular SVG symbols and scenery, styled and animated by CSS. Repeated figures are declared once and rendered through safe SVG `<use>` references with smooth vector rendering. `MaterialTexture` adds curated, deterministic grain, weathered, woven, and fiber marks inside selected host shapes; each host supplies clipping and grouping so its material moves with the object. Texture introduces no separate scene engine or client state. The system introduces no game loop, canvas runtime, animation package, interval, scheduler, or recurring React state update. The long-running meteor and small environmental effects are CSS animations using transforms and opacity. Treasure-chest reactions are CSS states driven by hover-capable pointer interaction and the card's existing `:focus-within` state; touch layouts remain complete without a preliminary hover tap.
 
-Decorative scene boundaries are `aria-hidden` and do not contain meaningful labels or links. Project names, descriptions, technologies, metrics, source disclosures, and destinations remain semantic content outside the art. The full design, provenance, motion, accessibility, and responsive contract is in [ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md](ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md).
+Decorative scene boundaries are `aria-hidden` and do not contain meaningful labels or links. Project names, descriptions, technologies, metrics, source disclosures, and destinations remain semantic content outside the art. The geometric foundation is specified in [ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md](ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md); [MATERIAL_INFUSED_GEOMETRIC_ART.md](MATERIAL_INFUSED_GEOMETRIC_ART.md) documents the material layer, photo provenance, clipping, density, and limitations.
 
 ## Background Jobs, Timers, and Schedulers
 

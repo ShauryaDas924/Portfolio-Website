@@ -16,7 +16,7 @@
 
 | Path | Type | Purpose | Edit Guidance |
 | --- | --- | --- | --- |
-| `tests/portfolio-integrity.test.mjs` | Node test suite | Eleven integrity tests for product/case-study contracts, artwork mappings and palette, required hero/About art, accessibility-source hooks, resume/public-link boundaries, noindex controls, and runtime-data-collection safeguards. | Run with `npm test`; rendered visual, axe, screen-reader, and device-emulation QA remain manual. |
+| `tests/portfolio-integrity.test.mjs` | Node test suite | Twelve integrity tests for product/case-study contracts, artwork mappings and palette, the material-family contract, required hero/About art, accessibility-source hooks, resume/public-link boundaries, noindex controls, and runtime-data-collection safeguards. | Run with `npm test`; rendered visual, axe, screen-reader, and device-emulation QA remain manual. |
 
 ## `src/`
 
@@ -45,6 +45,7 @@
 | `pixel/AboutPrehistoricScene.jsx` | Source component | Calm Brachiosaurus landscape supporting the About section. | Keep it decorative and separate from meaningful About copy. |
 | `pixel/ProjectTreasureScene.jsx` | Source component | Decorative per-project dinosaur/chest/reward composition. | Select by stable project ID; never add links or project facts inside the scene. |
 | `pixel/MosaicEnvironmentPrimitives.jsx` | Source component | Reusable organic clouds, trees, ferns, flowers and ground plus angular rocks. | Preserve curated shared-edge geometry and scene consistency. |
+| `pixel/MaterialTextures.jsx` | Source component | Reusable authored grain, weathered, woven, and fiber SVG marks. | Clip to the appropriate host silhouette, keep ID references unique, and select density for rendered size. |
 
 ## `src/data/`
 
@@ -78,6 +79,7 @@ Vite copies `public/` files to the root of `dist/`.
 | `docs/TROUBLESHOOTING.md` | Documentation | Practical debugging guide. | Add issues as they are discovered. |
 | `docs/CHANGELOG_STARTER.md` | Documentation | Changelog template and first entry. | Convert to real changelog if releases are introduced. |
 | `docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md` | Documentation | Current art identity, geometry, mappings, motion, accessibility, responsive, performance, and provenance rules. | Read before changing mosaic artwork or motion. |
+| `docs/MATERIAL_INFUSED_GEOMETRIC_ART.md` | Documentation | Companion specification for the four material families, object mapping, SVG clipping, density, motion, accessibility, and photo-reference provenance. | Read with the mosaic design document before changing material detail. |
 | `docs/PREHISTORIC_PIXEL_ART_BIBLE.md` | Documentation | Historical notice for the retired pixel-art direction. | Use the mosaic design document for current rules. |
 
 ## Generated or External Folders

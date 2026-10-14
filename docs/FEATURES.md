@@ -93,23 +93,25 @@
 
 **What it does:** Gives the portfolio one original visual language without changing its factual engineering content.
 
-**User-facing behavior:** Uses a warm sunset palette, seven distinct organic dinosaur silhouettes, angular treasure scenes, a subtle irregular cell network, restrained environmental motion, readable cream technical panels, and static fallbacks for touch and reduced motion.
+**User-facing behavior:** Uses a warm sunset palette, seven distinct organic dinosaur silhouettes, angular treasure scenes, a subtle irregular cell network, and restrained original grain, weathered, woven, and fiber detail on suitable surfaces. Environmental motion remains restrained, technical panels remain readable, and touch and reduced-motion visitors receive complete static artwork.
 
 **Important files:**
 
 - `docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md`
+- `docs/MATERIAL_INFUSED_GEOMETRIC_ART.md`
 - `src/pixel-art.css`
+- `src/components/pixel/MaterialTextures.jsx`
 - `src/components/pixel/PixelSpriteLibrary.jsx`
 - `src/components/pixel/PrehistoricLandscape.jsx`
 - `src/components/pixel/AboutPrehistoricScene.jsx`
 - `src/components/pixel/ProjectTreasureScene.jsx`
 - `src/data/projectArtwork.js`
 
-**Internal logic summary:** Artwork uses deterministic React markup, reusable authored irregular SVG symbols, and centralized CSS. The exact foundation colors are golden yellow `#D7CC65`, periwinkle `#6570D7`, terracotta `#E27E5A`, deep navy `#101827`, and warm cream `#FFF9ED`. CSS media queries recompose scene detail, and `prefers-reduced-motion` produces complete static frames.
+**Internal logic summary:** Artwork uses deterministic React markup, reusable authored irregular SVG symbols, shared clipped material marks, and centralized CSS. Geometry retains the silhouette and cells; material is secondary detail. The exact foundation colors are golden yellow `#D7CC65`, periwinkle `#6570D7`, terracotta `#E27E5A`, deep navy `#101827`, and warm cream `#FFF9ED`. CSS media queries recompose scene detail, and `prefers-reduced-motion` produces complete static frames.
 
-**Configuration options:** Add or adjust only documented sprite, environment, chest, and reward variants, then map them by stable product ID.
+**Configuration options:** Add or adjust only documented sprite, environment, chest, and reward variants, then map them by stable product ID. For surface detail, choose the existing shared material family, host clip, tone, opacity, and density appropriate to the rendered size.
 
-**Edge cases:** New colors need real contrast verification. Touch cannot rely on hover. Meteor reset must stay hidden behind the occlusion layer. Decorative wrappers must not hide meaningful content.
+**Edge cases:** New colors need real contrast verification. Touch cannot rely on hover. Meteor reset must stay hidden behind the occlusion layer. Decorative wrappers must not hide meaningful content. Repeated SVG instances need unique stable clipping IDs; texture must not leak, obscure cell seams, or intercept pointer events.
 
 **Known limitations:** The repository has static contracts for required artwork and accessibility hooks, but no rendered visual-regression, axe, screen-reader, or device-emulation suite; browser QA remains required.
 

@@ -4,6 +4,8 @@
 
 Shaurya Das Portfolio Website is a static React/Vite portfolio site. It presents Shaurya's software engineering work through product cards, concise case studies, resume downloads, GitHub/LinkedIn links, and contact information.
 
+Its original prehistoric organic geometric mosaics include a restrained material layer: granular dinosaur skin, weathered geological surfaces, woven chest lining, and fibrous vegetation. These authored SVG details preserve the existing silhouettes, palette, interactions, and clean technical reading surfaces. The supplied photos were references only and are not deployed assets.
+
 The project is not a product backend, SaaS app, browser extension, native app, or database-backed system. It is a public-facing presentation layer for describing those projects without exposing their private repositories.
 
 ## Why It Exists
@@ -79,7 +81,7 @@ There is no backend, form submission, account system, analytics script, database
 
 ## Current Limitations
 
-- The eleven Node integrity tests protect key content, artwork, accessibility-source, privacy, and noindex contracts, but rendered visual-regression, axe, screen-reader, and device-emulation checks remain manual.
+- The twelve Node integrity tests protect key content, artwork/material integration, accessibility-source, privacy, and noindex contracts, but rendered visual-regression, axe, screen-reader, and device-emulation checks remain manual.
 - No `LICENSE` file exists.
 - The site does not include a sitemap.
 - The noindex configuration discourages search indexing but is not authentication.

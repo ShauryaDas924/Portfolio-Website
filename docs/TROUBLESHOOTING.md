@@ -5,7 +5,7 @@
 When something breaks, check:
 
 1. Did dependencies install with `npm install`?
-2. Does `npm test` pass all eleven integrity tests?
+2. Does `npm test` pass all twelve integrity tests?
 3. Does `npm run build` pass?
 4. Is the affected content in `src/data/portfolioData.js` or hard-coded in a component?
 5. Does the referenced public asset exist under `public/`?
@@ -14,7 +14,7 @@ When something breaks, check:
 
 ### `npm test` fails
 
-The test script uses Node's built-in test runner on `tests/portfolio-integrity.test.mjs`. Read the named failing contract before changing code or data; failures commonly identify a changed product ID, artwork mapping, required hero/About detail, accessibility-source hook, resume/public link, noindex directive, or runtime data-collection boundary. The suite does not provide rendered visual-regression, axe, screen-reader, or device-emulation coverage.
+The test script uses Node's built-in test runner on `tests/portfolio-integrity.test.mjs`. Read the named failing contract before changing code or data; failures commonly identify a changed product ID, artwork mapping, material-family or decorative-clipping contract, required hero/About detail, accessibility-source hook, resume/public link, noindex directive, or runtime data-collection boundary. The suite does not provide rendered visual-regression, axe, screen-reader, or device-emulation coverage.
 
 ## Install Issues
 

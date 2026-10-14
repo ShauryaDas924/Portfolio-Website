@@ -6,6 +6,7 @@ import {
   MosaicFlower,
   MosaicGroundNetwork,
   MosaicRock,
+  MosaicSurfaceTexture,
   MosaicTree,
 } from './MosaicEnvironmentPrimitives.jsx';
 
@@ -26,6 +27,12 @@ function EnvironmentDetails({ environment }) {
           <path d="M153 123L179 89L202 72L230 106L251 126Z" fill="var(--mosaic-rock-dark, var(--mosaic-scene-rock))" />
           <path d="M179 89L202 72L206 105L186 121L153 123Z" fill="var(--mosaic-rock-light, var(--pixel-ridge-light))" opacity="0.68" />
           <path d="M206 105L202 72L230 106L251 126H186Z" fill="var(--mosaic-rock-mid, var(--mosaic-scene-rock))" />
+          <MosaicSurfaceTexture
+            path="M153 123L179 89L202 72L230 106L251 126Z"
+            material="weathered"
+            x={161} y={76} width={81} height={49}
+            density="low" tone="var(--cream)" opacity={0.2}
+          />
           <MosaicRock x={14} y={158} scale={0.8} />
           <MosaicRock x={285} y={145} scale={1.05} />
           <MosaicRock x={262} y={181} scale={0.52} />
@@ -62,6 +69,18 @@ function EnvironmentDetails({ environment }) {
           <path d="M0 89L51 88L43 127L69 156L59 240H0Z" fill="var(--mosaic-canyon-light, var(--mosaic-scene-canyon-light))" opacity="0.64" />
           <path d="M390 78L346 84L330 106L312 129L289 158L282 240H390Z" fill="var(--mosaic-canyon-dark, var(--mosaic-scene-canyon))" />
           <path d="M390 78L346 84L356 120L328 152L339 240H390Z" fill="var(--mosaic-canyon-light, var(--mosaic-scene-canyon-light))" opacity="0.61" />
+          <MosaicSurfaceTexture
+            path="M0 89L51 88L67 109L81 135L105 152L110 240H0Z"
+            material="weathered"
+            x={0} y={94} width={103} height={140}
+            density="low" tone="var(--cream)" opacity={0.14}
+          />
+          <MosaicSurfaceTexture
+            path="M390 78L346 84L330 106L312 129L289 158L282 240H390Z"
+            material="weathered"
+            x={288} y={87} width={102} height={146}
+            density="low" tone="var(--cream)" opacity={0.14}
+          />
           <path d="M51 88L43 127L69 156M346 84L356 120L328 152" fill="none" stroke="var(--mosaic-rock-seam, var(--navy))" strokeOpacity="0.27" strokeWidth="1.5" />
           <MosaicRock x={111} y={181} scale={0.53} />
         </g>
@@ -71,6 +90,18 @@ function EnvironmentDetails({ environment }) {
         <g className="scene-detail scene-detail--ridge">
           <path d="M0 176L53 137L91 155L146 115L203 164L250 124L304 151L350 112L390 145V210H0Z" fill="var(--mosaic-ridge-near, var(--mosaic-scene-ridge-dark))" />
           <path d="M0 176L53 137L73 165L41 196H0ZM91 155L146 115L163 154L133 184ZM203 164L250 124L274 159L236 189ZM304 151L350 112L369 149L339 182Z" fill="var(--mosaic-ridge-near-light, var(--pixel-ridge-light))" opacity="0.59" />
+          <MosaicSurfaceTexture
+            path="M0 176L53 137L91 155L146 115L203 164L250 124L304 151L350 112L390 145V210H0Z"
+            material="weathered"
+            x={38} y={116} width={164} height={90}
+            density="low" tone="var(--cream)" opacity={0.12}
+          />
+          <MosaicSurfaceTexture
+            path="M0 176L53 137L91 155L146 115L203 164L250 124L304 151L350 112L390 145V210H0Z"
+            material="weathered"
+            x={213} y={115} width={167} height={91}
+            density="low" tone="var(--cream)" opacity={0.12}
+          />
           <MosaicCloud x={249} y={42} scale={0.5} className="scene-cloud-mark" />
         </g>
       );
@@ -118,8 +149,26 @@ export default function ProjectTreasureScene({ projectId, compact = false }) {
         <path d="M0 92C75 79 135 97 194 86C263 73 323 97 390 81V176H0Z" className="scene-haze" />
         <path d="M0 166L41 144L81 117L118 145L151 112L188 137L223 121L260 149L299 111L339 139L390 119V212H0Z" className="scene-hills" />
         <path className="scene-hill-facet" d="M41 144L81 117L91 151L64 181L20 176ZM118 145L151 112L165 151L136 184ZM223 121L260 149L235 177L197 172ZM299 111L339 139L316 178L278 168Z" fill="var(--mosaic-ridge-far-light, var(--pixel-ridge-light))" opacity="0.53" />
+        <MosaicSurfaceTexture
+          path="M0 166L41 144L81 117L118 145L151 112L188 137L223 121L260 149L299 111L339 139L390 119V212H0Z"
+          material="weathered"
+          x={32} y={117} width={163} height={86}
+          density="low" tone="var(--cream)" opacity={0.11}
+        />
+        <MosaicSurfaceTexture
+          path="M0 166L41 144L81 117L118 145L151 112L188 137L223 121L260 149L299 111L339 139L390 119V212H0Z"
+          material="weathered"
+          x={210} y={117} width={164} height={86}
+          density="low" tone="var(--cream)" opacity={0.11}
+        />
         <path className="scene-ground" d="M0 190C37 180 68 183 98 191C143 177 175 180 207 190C254 176 281 183 316 190C350 180 372 183 390 189V240H0Z" />
         <path className="scene-ground-facet" d="M0 190C37 180 68 183 98 191C143 177 175 180 207 190C254 176 281 183 316 190C350 180 372 183 390 189V205C359 198 342 200 316 206C276 197 244 199 207 206C170 196 136 199 98 206C58 196 28 198 0 205Z" fill="var(--mosaic-ground-light, var(--gold))" />
+        <MosaicSurfaceTexture
+          path="M0 190C37 180 68 183 98 191C143 177 175 180 207 190C254 176 281 183 316 190C350 180 372 183 390 189V205C359 198 342 200 316 206C276 197 244 199 207 206C170 196 136 199 98 206C58 196 28 198 0 205Z"
+          material="fiber"
+          x={185} y={181} width={92} height={28}
+          density="low" tone="var(--navy)" opacity={0.15}
+        />
         <MosaicGroundNetwork y={204} scaleY={36 / 120} />
         <path d="M0 228C52 220 90 231 143 223C193 217 228 232 278 224C325 217 353 230 390 220V240H0Z" className="scene-ground-shadow" opacity="0.3" />
         <EnvironmentDetails environment={artwork.environment} />
