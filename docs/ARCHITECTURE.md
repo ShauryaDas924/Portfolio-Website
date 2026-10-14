@@ -12,8 +12,11 @@ flowchart TD
   HTML --> ReactEntry["src/main.jsx"]
   ReactEntry --> App["src/App.jsx"]
   App --> Data["src/data/portfolioData.js"]
+  App --> ArtworkData["src/data/projectArtwork.js"]
   App --> Components["src/components/*.jsx"]
   Components --> Styles["src/styles.css"]
+  Components --> PixelComponents["src/components/pixel/*.jsx"]
+  PixelComponents --> PixelStyles["src/pixel-art.css"]
   Components --> PublicAssets["public/product-logos and public/resume"]
   PublicAssets --> Build["dist/ copied static assets"]
   Headers["public/_headers"] --> Build
@@ -28,7 +31,10 @@ flowchart TD
 | `src/main.jsx` | React root mounting point. |
 | `src/App.jsx` | Main page composition and section order. |
 | `src/data/portfolioData.js` | Source of truth for navigation labels, product data, resume links, GitHub cards, and contact items. |
+| `src/data/projectArtwork.js` | Stable decorative mapping from project IDs to dinosaur, environment, chest, and reward variants. |
 | `src/styles.css` | Global styling, layout, responsive behavior, and component classes. |
+| `src/pixel-art.css` | Original prehistoric artwork tokens, geometry, CSS motion, responsive recomposition, and reduced-motion rules. |
+| `tests/portfolio-integrity.test.mjs` | Ten dependency-free Node integrity tests for content, artwork, accessibility-source, privacy, and noindex contracts. |
 
 ## Major Modules
 
@@ -37,7 +43,11 @@ flowchart TD
 | `Navbar.jsx` | Sticky top navigation and profile icon links. |
 | `Hero.jsx` | First-screen positioning, CTA buttons, and product-builder signal cards. |
 | `SectionHeader.jsx` | Shared section heading component. |
-| `ProductCard.jsx` | Compact product cards with logo or placeholder artwork, tech chips, source note, and case-study anchor. |
+| `ProductCard.jsx` | Compact product cards with a mapped decorative treasure scene, tech chips, source note, live-product link when available, and case-study anchor. |
+| `pixel/PixelSpriteLibrary.jsx` | Reusable original dinosaur, chest, reward, and environmental primitives. |
+| `pixel/PrehistoricLandscape.jsx` | Hero landscape, developer T-Rex, chest, ferns, flowers, environmental layers, and the signature meteor. |
+| `pixel/AboutPrehistoricScene.jsx` | Calm decorative Brachiosaurus landscape paired with the About copy. |
+| `pixel/ProjectTreasureScene.jsx` | Project-specific decorative composition selected from the stable artwork mapping. |
 | `ProductDetail.jsx` | Detailed case study sections with highlights, tech stack, and source-code note. |
 | `ResumeCard.jsx` | Resume download cards using normal anchor downloads. |
 | `ContactCard.jsx` | Contact/profile/location cards. |
@@ -49,13 +59,16 @@ flowchart TD
 2. `src/App.jsx` imports that data and maps it into reusable components.
 3. Components receive data as props.
 4. Components render static markup and links.
-5. CSS classes in `src/styles.css` control layout, spacing, colors, responsive behavior, and hover states.
+5. `src/data/projectArtwork.js` selects decorative scene variants by stable product ID without duplicating product facts.
+6. CSS in `src/styles.css` controls semantic page layout and reading surfaces; `src/pixel-art.css` controls the original art grammar, motion, art breakpoints, and reduced-motion states.
 
 The app does not fetch remote data at runtime.
 
+The test suite imports the static data modules and inspects selected source/configuration files. Its accessibility checks are static contracts for navigation, touch, contrast, and motion hooks; it does not enter the browser runtime or provide rendered visual-regression, axe, screen-reader, or device-emulation coverage.
+
 ## State Flow
 
-The current app has no React state hooks, global state manager, context provider, or local persistence. Rendering is deterministic based on static data imports.
+The only React state is local to `Navbar.jsx`: it tracks whether the mobile menu is open and whether the mobile media query currently matches. Escape closes the menu and restores focus to its toggle; choosing a navigation link closes it. There is no global state manager, context provider, product state, or local persistence. Portfolio content and artwork rendering remain deterministic from static data imports.
 
 ## Persistence and Storage
 
@@ -95,13 +108,19 @@ Some product case studies describe browser extensions, native macOS helpers, pri
 
 ## Error Handling Patterns
 
-The main explicit UI fallback is in `ProductCard.jsx`: product logo image errors hide the image and show the preview label fallback by adding a `logo-failed` class to the preview container.
+The art registry returns a generic presentation-only scene for an unknown project ID, while authoritative product text and links remain unchanged. `PixelSprite` rejects unknown sprite names by rendering nothing instead of creating an arbitrary fragment reference.
 
 Other links and content are static. There is no runtime error boundary or network error handling in the current repo.
 
+## Decorative Artwork and Motion
+
+The prehistoric artwork is static React markup with grid-aligned inline SVG symbols and scenery, styled and animated by CSS. Repeated sprites are declared once and rendered through safe SVG `<use>` references with crisp-edge rendering. The system introduces no game loop, canvas runtime, animation package, interval, scheduler, or recurring React state update. The long-running meteor and small environmental effects are CSS animations using transforms and opacity. Treasure-chest reactions are CSS states driven by hover-capable pointer interaction and the card's existing `:focus-within` state; touch layouts remain complete without a preliminary hover tap.
+
+Decorative scene boundaries are `aria-hidden` and do not contain meaningful labels or links. Project names, descriptions, technologies, metrics, source disclosures, and destinations remain semantic content outside the art. The full design, provenance, motion, accessibility, and responsive contract is in [PREHISTORIC_PIXEL_ART_BIBLE.md](PREHISTORIC_PIXEL_ART_BIBLE.md).
+
 ## Background Jobs, Timers, and Schedulers
 
-None in this portfolio website.
+None. CSS animation is presentation and does not create a JavaScript background process.
 
 ## Platform-Specific Architecture
 

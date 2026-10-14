@@ -1,6 +1,6 @@
 # Shaurya Das Portfolio Website
 
-Personal software engineering portfolio for Shaurya Das, built as a static React/Vite site. It presents recruiter-friendly product cards, concise case studies, resume downloads, GitHub/LinkedIn links, and contact information without exposing private or commercial source code.
+Personal software engineering portfolio for Shaurya Das, built as a static React/Vite site. It presents recruiter-friendly product cards, concise case studies, resume downloads, GitHub/LinkedIn links, and contact information without exposing private or commercial source code. An original warm prehistoric React/SVG/CSS pixel-art system gives the site a distinctive visual identity while keeping the engineering content and actions conventional and readable.
 
 ## What This Project Does
 
@@ -45,7 +45,7 @@ College AI is an archived full-stack study platform kept public as a substantial
 | --- | --- |
 | Frontend | React 18, JSX |
 | Build tool | Vite |
-| Styling | Plain CSS in `src/styles.css` |
+| Styling | Plain CSS in `src/styles.css` plus the original artwork system in `src/pixel-art.css` |
 | Icons | `lucide-react` |
 | Runtime | Static client-side site; no backend in this repo |
 | Static assets | Vite `public/` directory |
@@ -84,20 +84,27 @@ These scripts are defined in [`package.json`](package.json).
 | Command | Purpose |
 | --- | --- |
 | `npm run dev` | Starts Vite on `127.0.0.1` for local development. |
+| `npm test` | Runs the ten Node integrity tests in `tests/portfolio-integrity.test.mjs`. |
 | `npm run build` | Creates a production build in `dist/`. |
 | `npm run preview` | Serves the production build locally through Vite preview. |
 
 ## Testing Commands
 
-No automated test command is defined in the current [`package.json`](package.json).
+Run the ten repository integrity tests:
 
-Recommended validation for this repo:
+```bash
+npm test
+```
+
+The suite protects stable product IDs and case-study fields, project-art mappings and required colors, required hero/About scene details, navigation/touch/contrast/motion accessibility contracts, the resume path, public/private link boundaries, noindex controls, and the absence of runtime data collection or persistence. These are static source contracts; they do not replace rendered visual-regression, axe, screen-reader, or device-emulation testing.
+
+Also validate the production bundle:
 
 ```bash
 npm run build
 ```
 
-Manual checks should cover navigation anchors, product card logo rendering, resume download behavior, responsive desktop/mobile layout, and noindex deployment files.
+Manual checks should cover navigation anchors, hero and calm Brachiosaurus About-scene rendering, project treasure-scene interaction, resume download behavior, responsive desktop/mobile layout, reduced motion, and noindex deployment files.
 
 ## Project Structure Summary
 
@@ -113,10 +120,15 @@ Manual checks should cover navigation anchors, product card logo rendering, resu
 │   └── screenshots/
 ├── src/
 │   ├── components/
+│   │   └── pixel/
 │   ├── data/
+│   │   └── projectArtwork.js
 │   ├── App.jsx
 │   ├── main.jsx
+│   ├── pixel-art.css
 │   └── styles.css
+├── tests/
+│   └── portfolio-integrity.test.mjs
 ├── index.html
 ├── package.json
 ├── package-lock.json
@@ -177,10 +189,11 @@ Start here:
 - [docs/FILE_MAP.md](docs/FILE_MAP.md): file and folder map for maintainers.
 - [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md): common issues and checks.
 - [docs/CHANGELOG_STARTER.md](docs/CHANGELOG_STARTER.md): starter changelog format.
+- [docs/PREHISTORIC_PIXEL_ART_BIBLE.md](docs/PREHISTORIC_PIXEL_ART_BIBLE.md): authoritative palette, original sprite grammar, project mappings, meteor, interaction, accessibility, responsive, and provenance rules.
 
 ## Current Status
 
-The repo is a private static portfolio website. It is suitable for local development and static deployment after `npm run build`. The repository does not contain backend services, database schemas, API routes, authentication logic, or automated tests.
+The repo is a private static portfolio website. It is suitable for local development and static deployment after `npm test` and `npm run build`. The repository does not contain backend services, database schemas, API routes, or authentication logic. It includes ten Node integrity tests, but rendered visual-regression, axe, screen-reader, and device-emulation checks remain manual.
 
 ## Private Repository Note
 

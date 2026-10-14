@@ -76,9 +76,15 @@ vite preview --host 127.0.0.1
 
 ## Running Tests
 
-No test script is defined in `package.json`.
+Run the ten Node integrity tests:
 
-Use this validation command:
+```bash
+npm test
+```
+
+They verify stable product and case-study contracts, decorative artwork mappings and required colors, required hero/About artwork, navigation/touch/contrast/motion accessibility-source contracts, the resume path, public/private link boundaries, noindex controls, and the absence of runtime data collection or persistence. They do not render the UI.
+
+Then validate the production build:
 
 ```bash
 npm run build
@@ -93,7 +99,10 @@ Manual validation should include:
 - Resume PDF downloads.
 - GitHub, LinkedIn, and email links.
 - Responsive desktop and mobile layouts.
+- Reduced-motion and touch-safe treasure states.
 - Noindex files copied into `dist/` after build.
+
+Rendered visual-regression, axe, screen-reader, and device-emulation coverage is not configured, so those checks remain manual.
 
 ## Resume Setup
 

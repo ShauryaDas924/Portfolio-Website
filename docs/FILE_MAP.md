@@ -12,6 +12,12 @@
 | `vite.config.js` | Config | Vite React plugin configuration. | Be careful; affects build behavior. |
 | `.gitignore` | Config | Ignores dependencies, build output, env files, logs, and `.DS_Store`. | Update only when project ignore rules change. |
 
+## `tests/`
+
+| Path | Type | Purpose | Edit Guidance |
+| --- | --- | --- | --- |
+| `tests/portfolio-integrity.test.mjs` | Node test suite | Ten integrity tests for product/case-study contracts, artwork mappings and palette, required hero/About art, accessibility-source hooks, resume/public-link boundaries, noindex controls, and runtime-data-collection safeguards. | Run with `npm test`; rendered visual, axe, screen-reader, and device-emulation QA remain manual. |
+
 ## `src/`
 
 | Path | Type | Purpose | Edit Guidance |
@@ -19,6 +25,7 @@
 | `src/main.jsx` | Source | Mounts React into `#root` and imports global CSS. | Rarely needs edits. |
 | `src/App.jsx` | Source | Composes page sections and maps data into cards. | Edit carefully; controls section order and IDs. |
 | `src/styles.css` | Source styling | Global visual system, responsive layout, cards, sections, buttons. | High impact; inspect responsive rules before changing. |
+| `src/pixel-art.css` | Source styling | Prehistoric palette, sprite geometry, meteor/chest/environment motion, art breakpoints, and reduced-motion states. | High impact; follow `docs/PREHISTORIC_PIXEL_ART_BIBLE.md`. |
 
 ## `src/components/`
 
@@ -28,16 +35,21 @@
 | `Footer.jsx` | Source component | Footer and back-to-top link. | Low risk. |
 | `Hero.jsx` | Source component | Hero copy, CTA buttons, signal cards. | Copy changes are safe; link changes need review. |
 | `Navbar.jsx` | Source component | Sticky navigation and profile links. | Keep anchors aligned with section IDs. |
-| `ProductCard.jsx` | Source component | Product card rendering, logo fallback, tech chips, source note. | Important for featured product presentation and accessibility. |
+| `ProductCard.jsx` | Source component | Product card facts, mapped treasure-scene integration, public-product link, tech chips, source note, and case-study action. | Important for featured product presentation and accessibility. |
 | `ProductDetail.jsx` | Source component | Case study rendering and fixed case-study heading map. | Be careful with heading/key changes; data depends on keys. |
 | `ResumeCard.jsx` | Source component | Resume download anchor. | Preserve `download` behavior unless asked. |
 | `SectionHeader.jsx` | Source component | Shared section header wrapper. | Low risk. |
+| `pixel/PixelSpriteLibrary.jsx` | Source component | Reusable original dinosaurs, chest/reward pieces, and environmental primitives. | Preserve the shared grid, light direction, and decorative accessibility boundary. |
+| `pixel/PrehistoricLandscape.jsx` | Source component | Hero prehistoric landscape with the developer T-Rex, chest, ferns, flowers, and occluded meteor. | Keep semantic hero copy outside the decorative scene. |
+| `pixel/AboutPrehistoricScene.jsx` | Source component | Calm Brachiosaurus landscape supporting the About section. | Keep it decorative and separate from meaningful About copy. |
+| `pixel/ProjectTreasureScene.jsx` | Source component | Decorative per-project dinosaur/chest/reward composition. | Select by stable project ID; never add links or project facts inside the scene. |
 
 ## `src/data/`
 
 | Path | Type | Purpose | Edit Guidance |
 | --- | --- | --- | --- |
 | `src/data/portfolioData.js` | Source data | Navigation, product summaries, product case studies, resume metadata, GitHub cards, contact items. | Highest-impact content file. Preserve private-source boundaries and honest limitations. |
+| `src/data/projectArtwork.js` | Source data | Stable mapping from project IDs to dinosaur, environment, chest, and reward variants. | Decorative configuration only; do not duplicate or invent product claims. |
 
 ## `public/`
 
@@ -63,6 +75,7 @@ Vite copies `public/` files to the root of `dist/`.
 | `docs/FILE_MAP.md` | Documentation | File/folder map and edit guidance. | Update after file structure changes. |
 | `docs/TROUBLESHOOTING.md` | Documentation | Practical debugging guide. | Add issues as they are discovered. |
 | `docs/CHANGELOG_STARTER.md` | Documentation | Changelog template and first entry. | Convert to real changelog if releases are introduced. |
+| `docs/PREHISTORIC_PIXEL_ART_BIBLE.md` | Documentation | Authoritative original-art, palette, sprite, mapping, motion, accessibility, responsive, performance, and provenance rules. | Read before changing any prehistoric artwork or motion. |
 
 ## Generated or External Folders
 

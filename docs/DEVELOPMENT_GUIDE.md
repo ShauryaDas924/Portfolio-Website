@@ -6,11 +6,11 @@ This repository is a static portfolio. Most changes should be small, content-foc
 
 ## How to Work on This Project
 
-1. Read [AI_CONTEXT.md](../AI_CONTEXT.md), [README.md](../README.md), and [ARCHITECTURE.md](ARCHITECTURE.md).
+1. Read [AI_CONTEXT.md](../AI_CONTEXT.md), [README.md](../README.md), and [ARCHITECTURE.md](ARCHITECTURE.md). For artwork, motion, card scenes, or broad visual changes, also read [PREHISTORIC_PIXEL_ART_BIBLE.md](PREHISTORIC_PIXEL_ART_BIBLE.md).
 2. Identify whether the change is content, component behavior, styling, asset, or deployment configuration.
 3. Inspect the exact files involved before editing.
 4. Make the smallest focused change.
-5. Run `npm run build`.
+5. Run `npm test` and `npm run build`.
 6. Manually check the affected section in the browser when possible.
 7. Update documentation if behavior or project structure changes.
 
@@ -19,6 +19,8 @@ This repository is a static portfolio. Most changes should be small, content-foc
 - React components are simple function components.
 - Shared display data lives in `src/data/portfolioData.js`.
 - Styling is centralized in `src/styles.css`.
+- Original prehistoric artwork is centralized in `src/pixel-art.css`, reusable pixel components, and `src/data/projectArtwork.js`.
+- Decorative project scenes are selected by stable project ID, never array index.
 - Components are presentation-focused and receive data through props.
 - Icons come from `lucide-react`.
 - Anchor links are used for internal section navigation.
@@ -38,6 +40,7 @@ This repository is a static portfolio. Most changes should be small, content-foc
 | Resume cards | `src/data/portfolioData.js`, `src/components/ResumeCard.jsx`, `public/resume/` |
 | Contact items | `src/data/portfolioData.js`, `src/components/ContactCard.jsx` |
 | Visual styling | `src/styles.css` |
+| Prehistoric artwork or motion | `src/pixel-art.css`, `src/components/pixel/*.jsx`, `src/data/projectArtwork.js`, `docs/PREHISTORIC_PIXEL_ART_BIBLE.md` |
 | Noindex/static hosting behavior | `index.html`, `public/robots.txt`, `public/_headers` |
 | Documentation | `README.md`, `AI_CONTEXT.md`, `docs/*.md` |
 
@@ -68,7 +71,9 @@ For broken assets:
 1. Confirm the file exists under `public/`.
 2. Confirm the data path starts with `/`, for example `/product-logos/keyword-blocker-logo.png`.
 3. Confirm Vite copies the file into `dist/` after `npm run build`.
-4. Check `ProductCard.jsx` fallback behavior for logo failures.
+4. Note that the current product cards use inline SVG treasure scenes; legacy logo files are not their artwork.
+
+For a broken project sprite, verify the project mapping in `src/data/projectArtwork.js`, the registered symbol name in `PixelSpriteLibrary.jsx`, and the corresponding `<use>` reference before changing CSS.
 
 For resume download issues:
 
@@ -79,11 +84,14 @@ For resume download issues:
 
 ## Testing Changes
 
-No automated test script exists. Use:
+Run the ten Node integrity tests and the production build:
 
 ```bash
+npm test
 npm run build
 ```
+
+The integrity suite checks stable product and case-study contracts, artwork mappings and palette presence, required hero/About artwork, navigation/touch/contrast/motion accessibility-source contracts, the resume path, public/private link boundaries, noindex controls, and the absence of runtime data collection or persistence. It does not render the UI, so visual-regression, axe, screen-reader, and device-emulation checks are still manual.
 
 Manual regression checklist:
 
@@ -116,6 +124,10 @@ Before changing product copy, preserve:
 
 `src/styles.css` controls the entire layout. Small style changes can affect all product cards or all case studies. Inspect responsive media queries before editing component dimensions or grid behavior.
 
+### Prehistoric Artwork
+
+The art system is original to this portfolio. Do not import or recreate Petalwind artwork, CSS, palette, geometry, timing, branding, or layouts. Keep product facts in `portfolioData.js` and decorative mappings in `projectArtwork.js`. Any new animation must include hover-capable, keyboard-focus, touch-safe, and reduced-motion behavior in the same change. Recompose art at breakpoints instead of uniformly shrinking the desktop scene.
+
 ### Deployment Controls
 
 The noindex posture is intentional. Do not remove or weaken it without explicit approval.
@@ -127,11 +139,16 @@ Files in `public/` are deployable. Treat them as public. Do not add sensitive in
 ## Review Checklist Before Committing
 
 - Only intended files changed.
+- `npm test` passes.
 - `npm run build` passes.
 - No private source code or secret material added.
 - No product copy claims a private repository is public.
 - Resume links still use the correct file names.
-- Product logo alt text remains meaningful.
+- Decorative SVG scenes remain `aria-hidden`, and meaningful image assets retain accurate alt text.
+- Every product ID selects the intended dinosaur, environment, chest, and reward.
+- Chest states preserve one-tap navigation and equivalent keyboard focus behavior.
+- Meteor travel stays behind content, resets while occluded, and becomes static under reduced motion.
+- Decorative artwork creates no extra tab stops, horizontal overflow, or hidden meaningful content.
 - Noindex files remain intact unless intentionally changed.
 - Documentation updated if structure, behavior, commands, or setup changed.
 
