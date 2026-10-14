@@ -43,8 +43,6 @@ const spriteStyles = [
   '.mosaic-cell{stroke:var(--pixel-ink,var(--navy,#101827));stroke-opacity:.28;stroke-width:.42;stroke-linejoin:round}',
   '.mosaic-outline{fill:none;stroke:var(--pixel-ink,var(--navy,#101827));stroke-width:1.25;stroke-linejoin:round;stroke-linecap:round}',
   '.mosaic-detail{fill:none;stroke:var(--pixel-ink,var(--navy,#101827));stroke-width:.82;stroke-linecap:round;stroke-linejoin:round}',
-  '.mosaic-eye{fill:var(--pixel-cream,var(--cream,#FFF9ED));stroke:var(--pixel-ink,var(--navy,#101827));stroke-width:.5}',
-  '.mosaic-pupil{fill:var(--pixel-ink,var(--navy,#101827))}',
 ].join('');
 
 function MosaicFigure({ id, silhouette, cells, texture, children, strokeWidth }) {
@@ -327,8 +325,6 @@ function DinosaurDetails({ name }) {
     return (
       <>
         <path className="pixel-light" stroke="var(--pixel-ink,var(--navy))" strokeWidth=".85" strokeLinejoin="round" d={name === 't-rex' ? 'M39 26 Q44 25 46 28 L49 30 L47 32 L44 29 L40 31Z' : 'M38 26 Q42 24 44 27 L47 29 L44 30 L41 28Z'} />
-        <circle className="mosaic-eye" cx="52" cy={name === 't-rex' ? '12.6' : '14'} r="2.1" />
-        <circle className="mosaic-pupil" cx="52.8" cy={name === 't-rex' ? '12.7' : '14.1'} r="1" />
         <path className="mosaic-detail" d={name === 't-rex' ? 'M52 20 Q56 22 60 19 M58 16 L59 16' : 'M53 20 Q57 21 60 19 M58 16 L59 16'} />
         <path className="mosaic-detail" d="M15 41 L18 41 M33 41 L37 41" />
       </>
@@ -339,8 +335,6 @@ function DinosaurDetails({ name }) {
     return (
       <>
         <path className="pixel-gold" stroke="var(--pixel-ink,var(--navy))" strokeWidth=".72" strokeLinejoin="round" d="M48 17 L53 10 L55 16 L52 19Z M53 25 L63 23 L59 27 L54 28Z M39 16 L42 9 L44 15Z" />
-        <circle className="mosaic-eye" cx="53.1" cy="20.3" r="1.8" />
-        <circle className="mosaic-pupil" cx="53.6" cy="20.3" r=".9" />
         <path className="mosaic-detail" d="M56 28 Q59 29 61 27" />
       </>
     );
@@ -349,8 +343,6 @@ function DinosaurDetails({ name }) {
   if (name === 'stegosaurus' || name === 'ankylosaurus') {
     return (
       <>
-        <circle className="mosaic-eye" cx={name === 'stegosaurus' ? '55' : '52'} cy={name === 'stegosaurus' ? '26.2' : '26'} r="1.8" />
-        <circle className="mosaic-pupil" cx={name === 'stegosaurus' ? '55.5' : '52.5'} cy="26" r=".86" />
         <path className="mosaic-detail" d={name === 'stegosaurus' ? 'M58 30 Q60 30 61 28' : 'M56 29 Q59 30 61 28'} />
         {name === 'ankylosaurus' && <path className="pixel-gold" stroke="var(--pixel-ink,var(--navy))" strokeWidth=".7" d="M3 24 L7 21 L11 24 L10 31 L4 32 L1 28Z" />}
       </>
@@ -360,8 +352,6 @@ function DinosaurDetails({ name }) {
   if (name === 'brachiosaurus') {
     return (
       <>
-        <circle className="mosaic-eye" cx="54.2" cy="8.4" r="1.9" />
-        <circle className="mosaic-pupil" cx="54.9" cy="8.4" r=".9" />
         <path className="mosaic-detail" d="M55 13 Q58 14 60 12" />
       </>
     );
@@ -369,8 +359,6 @@ function DinosaurDetails({ name }) {
 
   return (
     <>
-      <circle className="mosaic-eye" cx="47" cy="14" r="1.55" />
-      <circle className="mosaic-pupil" cx="47.5" cy="14" r=".72" />
       <path className="mosaic-detail" d="M52 16 L59 15" />
     </>
   );

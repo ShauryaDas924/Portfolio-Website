@@ -46,6 +46,16 @@
 .world-sun { fill: var(--gold); }
 .world-cloud { fill: var(--cream); opacity: 0.78; }
 .world-cloud--two { opacity: 0.5; }
+/* Animate each cloud's inner artwork so its authored SVG placement stays fixed. */
+.mosaic-cloud__drift {
+  --cloud-start: -5px;
+  --cloud-end: 13px;
+  animation: cloud-drift 72s ease-in-out infinite;
+}
+.world-cloud--one .mosaic-cloud__drift { --cloud-end: 17px; animation-duration: 78s; animation-delay: -12s; }
+.world-cloud--two .mosaic-cloud__drift { --cloud-start: -4px; --cloud-end: 11px; animation-duration: 56s; animation-delay: -31s; }
+.about-scene-cloud .mosaic-cloud__drift { --cloud-end: 12px; animation-duration: 66s; animation-delay: -22s; }
+.scene-cloud-mark .mosaic-cloud__drift { --cloud-start: -3px; --cloud-end: 8px; animation-duration: 52s; animation-delay: -17s; }
 .world-meteor {
   pointer-events: none;
   animation: meteor-crossing 58s linear infinite;
@@ -64,6 +74,15 @@
 .volcano-rim { fill: var(--mosaic-volcano-rim); }
 .volcano-glow { fill: var(--terracotta); }
 .volcano-smoke { fill: var(--mosaic-smoke); opacity: 0.65; }
+.volcano-smoke__base { opacity: 0.3; }
+.volcano-smoke__plume {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: smoke-rise 9s linear infinite;
+}
+.volcano-smoke__plume--two { animation-duration: 10.5s; animation-delay: -3.5s; }
+.volcano-smoke__plume--three { animation-duration: 8.5s; animation-delay: -6.2s; }
 .ground-top { fill: var(--gold); }
 .ground-body { fill: var(--mosaic-ground); }
 .ground-shadow { fill: var(--mosaic-ground-shadow); }
@@ -73,12 +92,31 @@
 .world-rocks { fill: var(--mosaic-rock); }
 .world-flowers { fill: var(--terracotta); }
 .world-flower-centers { fill: var(--cream); }
+.mosaic-tree__canopy,
+.mosaic-flower__sway,
+.mosaic-grass__sway { transform-box: fill-box; }
+.mosaic-tree__canopy {
+  transform-origin: 40% 88%;
+  animation: canopy-sway 8.6s ease-in-out infinite;
+}
+.mosaic-flower__sway {
+  transform-origin: 50% 98%;
+  animation: flower-sway 4.8s ease-in-out infinite;
+}
+.mosaic-grass__sway {
+  transform-origin: 50% 100%;
+  animation: grass-sway 6.2s ease-in-out infinite;
+}
+.mosaic-wind--offset .mosaic-tree__canopy { animation-duration: 7.4s; animation-delay: -3.1s; }
+.mosaic-wind--offset .mosaic-flower__sway { animation-duration: 5.4s; animation-delay: -2.2s; }
+.mosaic-wind--offset .mosaic-grass__sway { animation-duration: 5.7s; animation-delay: -3.4s; }
 .mosaic-ground-network { opacity: 0.34; }
 .mosaic-cloud,
 .mosaic-tree,
 .mosaic-fern,
 .mosaic-rock,
 .mosaic-flower,
+.mosaic-grass,
 .meteor-facet,
 .scene-ground-facet,
 .scene-hill-facet {
@@ -195,7 +233,34 @@
 .hero-cache__sparkle::before { top: -7px; left: 18px; transform: scale(0.58) rotate(27deg); }
 .hero-cache__sparkle::after { top: 17px; left: -9px; transform: scale(0.42) rotate(-24deg); }
 
-/* The last visible position is behind the near ridge; the reset is hidden. */
+@keyframes cloud-drift {
+  0%, 100% { transform: translateX(var(--cloud-start)); }
+  50% { transform: translateX(var(--cloud-end)); }
+}
+
+@keyframes smoke-rise {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.72); }
+  16% { opacity: 0.64; }
+  70% { opacity: 0.3; }
+  100% { opacity: 0; transform: translate(10px, -48px) scale(1.14); }
+}
+
+@keyframes flower-sway {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes grass-sway {
+  0%, 36%, 100% { transform: rotate(-0.4deg); }
+  66% { transform: rotate(2.1deg); }
+}
+
+@keyframes canopy-sway {
+  0%, 100% { transform: rotate(-0.5deg); }
+  50% { transform: rotate(1.2deg); }
+}
+
+/* The last visible meteor position is behind the near ridge; the reset is hidden. */
 @keyframes meteor-crossing {
   0% { opacity: 0; transform: translate3d(-150px, -36px, 0); }
   7% { opacity: 1; }
@@ -498,8 +563,7 @@
 
 @media (max-width: 430px) {
   .world-cloud--two,
-  .world-flora--right,
-  .volcano-smoke { display: none; }
+  .world-flora--right { display: none; }
   .hero-mascot { left: 7%; width: 55%; }
   .hero-field-marker { transform: scale(0.86); transform-origin: top left; }
   .treasure-dinosaur { width: 48%; }
@@ -516,6 +580,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .mosaic-cloud__drift,
+  .volcano-smoke__plume,
+  .mosaic-flower__sway,
+  .mosaic-grass__sway,
+  .mosaic-tree__canopy { animation: none !important; transform: none; }
+  .volcano-smoke__base { opacity: 1; }
+  .volcano-smoke__plume { opacity: 0; }
   .world-meteor {
     animation: none !important;
     opacity: 1;

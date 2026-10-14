@@ -3,6 +3,7 @@ import {
   MosaicCloud,
   MosaicFern,
   MosaicFlower,
+  MosaicGrass,
   MosaicGroundNetwork,
   MosaicRock,
   MosaicSurfaceTexture,
@@ -92,8 +93,27 @@ export default function PrehistoricLandscape() {
           />
           <path d="M511 201L521 207L528 202L535 209L529 227L518 232Z" className="volcano-glow" />
           <g className="volcano-smoke">
-            <path d="M514 185C507 178 510 170 518 168C514 159 519 151 527 151C532 142 545 140 550 148C561 147 567 155 563 163C570 169 566 179 556 180C551 189 536 190 530 184Z" />
-            <path d="M527 151L537 160L531 174L518 168M550 148L548 164L563 163" fill="none" stroke="var(--mosaic-cloud-seam, var(--periwinkle))" strokeOpacity="0.2" strokeWidth="1.5" />
+            <g className="volcano-smoke__base">
+              <path d="M514 185C507 178 510 170 518 168C514 159 519 151 527 151C532 142 545 140 550 148C561 147 567 155 563 163C570 169 566 179 556 180C551 189 536 190 530 184Z" />
+              <path d="M527 151L537 160L531 174L518 168M550 148L548 164L563 163" fill="none" stroke="var(--mosaic-cloud-seam, var(--periwinkle))" strokeOpacity="0.2" strokeWidth="1.5" />
+            </g>
+            <g className="volcano-smoke__emitter" transform="translate(521 198)">
+              <g className="volcano-smoke__plume volcano-smoke__plume--one">
+                <path d="M-5 3L-10 -2L-9 -8L-5 -12L-7 -17L-1 -23L5 -20L8 -14L13 -10L12 -3L6 2L1 -2Z" />
+                <path d="M-7 -17L-1 -23L5 -20L3 -12L-4 -10Z" fill="var(--mosaic-cloud-shade, var(--pixel-haze))" opacity="0.22" />
+                <path d="M-4 -10L3 -12L8 -14M1 -2L6 2" fill="none" stroke="var(--mosaic-cloud-seam, var(--periwinkle))" strokeOpacity="0.2" strokeWidth="1" />
+              </g>
+              <g className="volcano-smoke__plume volcano-smoke__plume--two">
+                <path d="M-7 4L-11 -2L-7 -7L-9 -13L-3 -19L3 -18L6 -13L11 -10L10 -4L5 1L1 0Z" />
+                <path d="M-9 -13L-3 -19L3 -18L1 -10L-7 -7Z" fill="var(--mosaic-cloud-shade, var(--pixel-haze))" opacity="0.18" />
+                <path d="M-7 -7L1 -10L6 -13M1 0L5 1" fill="none" stroke="var(--mosaic-cloud-seam, var(--periwinkle))" strokeOpacity="0.18" strokeWidth="1" />
+              </g>
+              <g className="volcano-smoke__plume volcano-smoke__plume--three">
+                <path d="M-4 2L-9 -3L-7 -9L-3 -12L-5 -17L1 -22L7 -18L9 -12L13 -8L10 -2L5 2L1 -1Z" />
+                <path d="M-5 -17L1 -22L7 -18L4 -11L-3 -12Z" fill="var(--mosaic-cloud-shade, var(--pixel-haze))" opacity="0.2" />
+                <path d="M-3 -12L4 -11L9 -12M1 -1L5 2" fill="none" stroke="var(--mosaic-cloud-seam, var(--periwinkle))" strokeOpacity="0.18" strokeWidth="1" />
+              </g>
+            </g>
           </g>
         </g>
 
@@ -137,6 +157,10 @@ export default function PrehistoricLandscape() {
           <path d="M330 437C346 417 361 402 390 391C408 398 420 408 432 422L398 433L372 454L345 485L326 520H280C294 484 306 461 330 437Z" fill="var(--mosaic-path-light, var(--pixel-path))" opacity="0.7" />
         </g>
 
+        <g className="world-grass">
+          <MosaicGrass x={117} y={341} scale={0.9} />
+          <MosaicGrass x={588} y={332} scale={0.82} className="mosaic-wind--offset" />
+        </g>
         <g className="world-ferns">
           <MosaicFern x={168} y={334} scale={0.87} />
           <MosaicFern x={505} y={338} scale={0.9} />

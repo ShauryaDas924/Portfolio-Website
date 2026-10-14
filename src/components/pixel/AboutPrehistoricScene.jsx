@@ -3,6 +3,7 @@ import {
   MosaicCloud,
   MosaicFern,
   MosaicFlower,
+  MosaicGrass,
   MosaicGroundNetwork,
   MosaicRock,
   MosaicSurfaceTexture,
@@ -61,8 +62,10 @@ export default function AboutPrehistoricScene() {
           <MosaicRock x={356} y={149} scale={0.55} />
         </g>
         <g className="about-scene-flower">
+          <MosaicGrass x={177} y={116} scale={0.6} />
+          <MosaicGrass x={346} y={121} scale={0.56} className="mosaic-wind--offset" />
           <MosaicFlower x={273} y={128} scale={0.6} />
-          <MosaicFlower x={393} y={132} scale={0.55} />
+          <MosaicFlower x={393} y={132} scale={0.55} className="mosaic-wind--offset" />
         </g>
       </svg>
 
