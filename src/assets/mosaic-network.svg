@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 272" width="360" height="272">
+  <!-- Original irregular cell network inspired by the supplied quilt photograph. -->
+  <g fill="none" stroke="black" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M0 70 Q31 61 72 75 Q100 65 162 70 Q198 78 249 59 Q296 82 334 67 Q345 62 360 70 M0 146 Q25 123 49 142 Q90 155 128 145 Q168 134 219 148 Q258 157 305 133 Q340 138 360 146 M0 213 Q44 226 80 204 Q114 207 158 218 Q196 228 249 205 Q292 202 332 216 Q345 218 360 213" />
+    <path d="M45 0 Q48 36 72 75 Q68 115 49 142 Q59 179 80 204 Q60 232 45 272 M119 0 Q148 39 162 70 Q135 102 128 145 Q162 176 158 218 Q138 245 119 272 M212 0 Q220 35 249 59 Q219 96 219 148 Q241 176 249 205 Q213 245 212 272 M295 0 Q322 36 334 67 Q300 97 305 133 Q325 177 332 216 Q304 243 295 272" />
+    <path d="M162 70 Q181 104 219 148 M249 205 Q273 168 305 133" />
+  </g>
+</svg>

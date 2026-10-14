@@ -1,4 +1,5 @@
 import { ShieldCheck } from 'lucide-react';
+import ProjectTreasureScene from './pixel/ProjectTreasureScene.jsx';
 
 const caseRows = [
   ['Problem', 'problem'],
@@ -12,13 +13,16 @@ export default function ProductDetail({ product }) {
   return (
     <article className="case-study" id={`case-${product.id}`}>
       <div className="case-study-header">
-        <div>
+        <div className="case-study-intro">
           <p className="eyebrow">Case study</p>
           <h3>{product.name}</h3>
           {product.subtitle ? <p className="case-study-subtitle">{product.subtitle}</p> : null}
           <p>{product.description}</p>
         </div>
-        <span className="status-pill">{product.status}</span>
+        <div className="case-study-art">
+          <ProjectTreasureScene projectId={product.id} compact />
+          <span className="status-pill">{product.status}</span>
+        </div>
       </div>
 
       <div className="case-study-grid">

@@ -1,15 +1,13 @@
 import { ArrowRight, Download, Github, Linkedin } from 'lucide-react';
+import PrehistoricLandscape from './pixel/PrehistoricLandscape.jsx';
 
 export default function Hero() {
   return (
     <section className="hero section-pad" id="home">
-      <div className="hero-cloud hero-cloud-one" aria-hidden="true" />
-      <div className="hero-cloud hero-cloud-two" aria-hidden="true" />
-
       <div className="shell hero-grid">
         <div className="hero-copy">
           <p className="eyebrow">Shaurya Das · Frisco, Texas</p>
-          <h1>Software Engineer &amp; Product Builder</h1>
+          <h1 tabIndex="-1">Software Engineer &amp; Product Builder</h1>
           <p className="hero-subheadline">
             I build end-to-end software products across macOS, AI, browser extensions, full-stack web, and iOS.
           </p>
@@ -38,29 +36,20 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-panel" aria-label="Portfolio strengths">
-          <div className="signal-card signal-card-main">
-            <span className="signal-kicker">Product range</span>
-            <strong>macOS · AI · Web · Extensions · iOS</strong>
-            <p>Private products with recruiter-friendly architecture notes, demo paths, and clear boundaries.</p>
-          </div>
-          <div className="signal-grid">
-            <div className="signal-card">
-              <span>01</span>
-              Native Apple systems
+        <div className="hero-world">
+          <PrehistoricLandscape />
+          <div className="hero-capabilities" aria-label="Portfolio strengths">
+            <div className="hero-capabilities__lead">
+              <span className="signal-kicker">Product range</span>
+              <strong>macOS · AI · Web · Extensions · iOS</strong>
+              <p>Private products with recruiter-friendly architecture notes, demo paths, and clear boundaries.</p>
             </div>
-            <div className="signal-card">
-              <span>02</span>
-              AI-backed full stack
-            </div>
-            <div className="signal-card">
-              <span>03</span>
-              Privacy-first UX
-            </div>
-            <div className="signal-card">
-              <span>04</span>
-              Published browser extensions
-            </div>
+            <ol className="capability-list">
+              <li><span>01</span>Native Apple systems</li>
+              <li><span>02</span>AI-backed full stack</li>
+              <li><span>03</span>Privacy-first UX</li>
+              <li><span>04</span>Published browser extensions</li>
+            </ol>
           </div>
         </div>
       </div>

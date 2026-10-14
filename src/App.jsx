@@ -7,11 +7,14 @@ import ProductCard from './components/ProductCard.jsx';
 import ProductDetail from './components/ProductDetail.jsx';
 import ResumeCard from './components/ResumeCard.jsx';
 import SectionHeader from './components/SectionHeader.jsx';
+import AboutPrehistoricScene from './components/pixel/AboutPrehistoricScene.jsx';
+import { PixelSpriteLibrary } from './components/pixel/PixelSpriteLibrary.jsx';
 import { buildCards, contactItems, githubCards, products, resumes } from './data/portfolioData.js';
 
 export default function App() {
   return (
     <>
+      <PixelSpriteLibrary />
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
@@ -21,19 +24,23 @@ export default function App() {
 
         <section className="section-pad about-section" id="about">
           <div className="shell two-column">
-            <div>
+            <div className="about-copy">
               <SectionHeader eyebrow="About" title="Student builder with product instincts">
                 I’m Shaurya Das, a software engineer and product builder based in Frisco, Texas. I like building real
                 products, not just class projects. My work spans native macOS apps, SwiftUI/iOS, Chrome extensions,
                 AI-powered full-stack applications, FastAPI backends, PostgreSQL databases, and polished product
                 websites.
               </SectionHeader>
+              <AboutPrehistoricScene />
             </div>
 
             <div className="build-grid" aria-label="What I build">
-              {buildCards.map((card) => (
+              {buildCards.map((card, index) => (
                 <article className="build-card" key={card}>
-                  <Sparkles size={18} aria-hidden="true" />
+                  <span className="build-card-marker" aria-hidden="true">
+                    <Sparkles size={16} />
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
                   <h3>{card}</h3>
                 </article>
               ))}

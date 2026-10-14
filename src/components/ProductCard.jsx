@@ -1,46 +1,32 @@
 import { ArrowRight } from 'lucide-react';
+import ProjectTreasureScene from './pixel/ProjectTreasureScene.jsx';
 
 export default function ProductCard({ product }) {
   const PreviewElement = product.productUrl ? 'a' : 'div';
 
   return (
-    <article className={`product-card accent-${product.accent}`}>
+    <article className="product-card" data-project={product.id}>
       <PreviewElement
-        className={`product-preview${product.logo ? ' product-preview-logo' : ''}${
-          product.productUrl ? ' product-preview-link' : ''
-        }`}
+        className={`product-preview${product.productUrl ? ' product-preview-link' : ''}`}
         {...(product.productUrl
           ? {
               href: product.productUrl,
               target: '_blank',
               rel: 'noopener noreferrer',
-              'aria-label': `Open ${product.name}`,
+              'aria-label': `Open ${product.name} product`,
             }
-          : {
-              'aria-label': product.logo ? undefined : `${product.name} screenshot placeholder`,
-            })}
+          : {})}
       >
-        {product.logo ? (
-          <>
-            <img
-              className="product-logo"
-              src={product.logo}
-              alt={product.logoAlt}
-              onError={(event) => {
-                event.currentTarget.hidden = true;
-                event.currentTarget.parentElement?.classList.add('logo-failed');
-              }}
-            />
-            <span className="product-logo-fallback">{product.previewLabel}</span>
-          </>
-        ) : (
-          <span>{product.previewLabel}</span>
-        )}
+        <ProjectTreasureScene projectId={product.id} />
         {product.productUrl ? (
           <span className="product-preview-badge" aria-hidden="true">
-            Click me
+            Visit product ↗
           </span>
-        ) : null}
+        ) : (
+          <span className="product-preview-badge product-preview-badge--private" aria-hidden="true">
+            Private build
+          </span>
+        )}
       </PreviewElement>
 
       <div className="product-card-body">

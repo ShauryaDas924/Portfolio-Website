@@ -8,7 +8,7 @@ This file is written for AI coding agents. Read it before making changes.
 - **One-sentence description:** Static React/Vite portfolio site for presenting Shaurya Das's software engineering products, resumes, and contact links without exposing private source code.
 - **Main purpose:** Help recruiters and technical reviewers understand Shaurya's product-building work through public-safe summaries and case studies.
 - **Target users:** Recruiters, interviewers, technical reviewers, collaborators, Shaurya, future maintainers, and AI coding agents.
-- **Current status:** Private static portfolio repo suitable for local development and static deployment. No backend, database, authentication, analytics, or automated tests are present in the repo.
+- **Current status:** Private static portfolio repo suitable for local development and static deployment, with an original organic geometric mosaic React/SVG/CSS artwork system. No backend, database, authentication, or analytics are present in the repo.
 
 ## 2. What This Project Does
 
@@ -39,7 +39,7 @@ Success looks like:
 - The site is polished, responsive, and recruiter-friendly.
 - Product work is clear without exposing private repositories.
 - Resume downloads work.
-- Product logos and fallback artwork render correctly.
+- Project artwork maps to the correct stable product ID and remains decorative.
 - Noindex/search-indexing controls remain intact unless explicitly changed.
 
 Do not misunderstand this repo as:
@@ -58,8 +58,12 @@ Main components:
 - `src/main.jsx`: React root mount and CSS import.
 - `src/App.jsx`: Page composition and section order.
 - `src/data/portfolioData.js`: Source of truth for most display data.
+- `src/data/projectArtwork.js`: Stable project-ID-to-decorative-scene mapping; never a source for project claims.
 - `src/components/*.jsx`: Presentational components.
+- `src/components/pixel/*.jsx`: Reusable mosaic dinosaurs, hero/About landscapes, meteor, and project treasure scenes; the directory name is retained for import compatibility.
 - `src/styles.css`: Global styling and responsive layout.
+- `src/pixel-art.css`: Mosaic art tokens, geometry, animation, art breakpoints, and reduced-motion behavior; the filename is retained for import compatibility.
+- `tests/portfolio-integrity.test.mjs`: Eleven Node integrity tests for content, artwork, accessibility-source, privacy/noindex, and runtime-data-collection contracts.
 - `public/`: Static assets and Cloudflare/noindex deployment files.
 
 Entry points:
@@ -76,7 +80,8 @@ src/data/portfolioData.js -> src/App.jsx -> components -> rendered static UI
 
 State flow:
 
-- No React state hooks are currently used.
+- `Navbar.jsx` uses local React state only for the responsive menu and viewport-mode synchronization.
+- Escape and menu-link selection close the mobile menu; no page or product state is stored.
 - No global state manager exists.
 - No runtime data fetching exists.
 
@@ -125,11 +130,13 @@ Privacy-sensitive areas:
 Important folders:
 
 - `src/components/`: reusable React components.
+- `src/components/pixel/`: portfolio-authored decorative mosaic scenes and reusable SVG symbols.
 - `src/data/`: centralized portfolio data.
 - `public/product-logos/`: public logo assets.
 - `public/resume/`: public resume PDFs.
 - `public/screenshots/`: future public screenshot assets.
 - `docs/`: documentation.
+- `tests/`: lightweight repository integrity tests.
 - `dist/`: generated build output; do not edit directly.
 - `node_modules/`: generated dependencies; do not edit.
 
@@ -137,10 +144,16 @@ Important files:
 
 - `src/data/portfolioData.js`: edit this for product copy, resume metadata, GitHub cards, contacts, and nav items.
 - `src/App.jsx`: edit this for section composition or hard-coded About/GitHub wrapper copy.
-- `src/components/ProductCard.jsx`: edit this for product card rendering.
+- `src/components/ProductCard.jsx`: edit this for product card rendering and scene integration.
 - `src/components/ProductDetail.jsx`: edit this for case-study rendering.
 - `src/components/ResumeCard.jsx`: edit this for resume download behavior.
 - `src/styles.css`: edit this for visual design and responsive behavior.
+- `src/pixel-art.css`: edit this for mosaic artwork, environmental motion, treasure states, and art-specific responsive/reduced-motion rules.
+- `src/components/pixel/PixelSpriteLibrary.jsx`: reusable original mosaic dinosaur, chest, backpack, laptop, and reward symbols.
+- `src/components/pixel/PrehistoricLandscape.jsx`: hero landscape with the meteor, developer T-Rex, chest, ferns, and flowers.
+- `src/components/pixel/AboutPrehistoricScene.jsx`: calm decorative Brachiosaurus landscape beside the About copy.
+- `src/components/pixel/ProjectTreasureScene.jsx`: decorative project-card artwork selected by stable project ID.
+- `src/data/projectArtwork.js`: project-to-dinosaur/environment/chest/reward mapping.
 - `index.html`: edit this for document metadata and noindex meta tags.
 - `public/_headers`: edit this for Cloudflare Pages static headers.
 - `public/robots.txt`: edit this for crawler policy.
@@ -176,10 +189,12 @@ Preserve these rules unless the user explicitly requests otherwise:
 4. **No authentication assumption:** The site is not password-protected. Do not describe noindex as security or authentication.
 5. **Resume downloads:** Preserve normal anchor download behavior for resume PDFs unless asked to change it.
 6. **Public assets:** Treat everything under `public/` as public.
-7. **Logo accessibility:** Product logos should have meaningful alt text.
-8. **Fallback behavior:** `ProductCard.jsx` currently supports logo failure fallback. Do not remove it without a reason.
+7. **Artwork accessibility:** Project scenes are decorative and must be hidden from assistive technology without hiding product text or links.
+8. **Stable artwork mapping:** Product scenes are selected by exact product ID through `projectArtwork.js`, never by array position or a product-name guess.
 9. **Honest boundaries:** Case studies should not overstate security, privacy, anti-bypass, AI, or product guarantees.
 10. **No tracking:** Do not add analytics or tracking without explicit approval.
+11. **Original artwork boundary:** Read `docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md` before changing artwork. Do not copy Petalwind assets, CSS, coordinates, timings, palette, scenes, characters, branding, or layouts. Do not add an external sprite without documented provenance and public-use permission.
+12. **Accessible motion:** Decorative motion cannot carry content, intercept project links, create tab stops, or remain animated under reduced motion. Hover chest states require keyboard and touch-safe equivalents.
 
 Special caution:
 
@@ -200,7 +215,7 @@ Future AI agents should:
 - Preserve existing behavior unless asked.
 - Prefer small, focused patches.
 - Update docs when behavior changes.
-- Run or recommend `npm run build` after changes.
+- Run or recommend `npm test` and `npm run build` after changes.
 - Explain assumptions clearly.
 - Identify unknowns instead of guessing.
 
@@ -227,15 +242,28 @@ Inspect:
 
 Check both desktop and mobile media queries.
 
+### To Change Mosaic Artwork or Motion
+
+Read:
+
+- `docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md`
+- `src/pixel-art.css`
+- `src/components/pixel/PixelSpriteLibrary.jsx`
+- `src/components/pixel/PrehistoricLandscape.jsx`
+- `src/components/pixel/AboutPrehistoricScene.jsx`
+- `src/components/pixel/ProjectTreasureScene.jsx`
+- `src/data/projectArtwork.js`
+
+Keep authoritative product facts in `src/data/portfolioData.js`. Map scenes by stable project ID, preserve the exact palette roles and original-art boundary, provide hover/focus/touch/reduced-motion states together, and recompose rather than uniformly shrinking the desktop scene.
+
 ### To Change Product Logos
 
 Inspect:
 
 - `public/product-logos/`
 - `src/data/portfolioData.js`
-- `src/components/ProductCard.jsx`
 
-Use root-relative paths such as `/product-logos/name.png`.
+The current product cards use original SVG treasure scenes rather than logo images. Existing public logo files and data fields remain available but are not card artwork. Reintroducing a meaningful logo requires an explicit layout decision, root-relative paths such as `/product-logos/name.png`, accurate alt text, and a safe failure state.
 
 ### To Change Resume Files
 
@@ -265,7 +293,12 @@ Those implementations are not in this repo. Only public portfolio descriptions e
 
 ### To Change Tests
 
-Unknown from current repo. There is no test script and no test folder in this repository.
+Inspect:
+
+- `tests/portfolio-integrity.test.mjs`
+- the `test` script in `package.json`
+
+Keep the suite dependency-free unless a broader test strategy is explicitly approved. These tests verify static repository contracts, including required hero/About art and navigation/touch/contrast/motion accessibility hooks; they do not render the site or replace visual-regression, axe, screen-reader, or device-emulation checks.
 
 ### To Change Release or Package Behavior
 
@@ -286,15 +319,17 @@ Existing commands:
 ```bash
 npm install
 npm run dev
+npm test
 npm run build
 npm run preview
 ```
 
-No automated test command exists.
+`npm test` runs eleven integrity tests with Node's built-in test runner.
 
 Required validation after most changes:
 
 ```bash
+npm test
 npm run build
 ```
 
@@ -302,12 +337,17 @@ Manual testing checklist:
 
 - Home, About, Products, Resume, GitHub, and Contact anchors work.
 - Product cards render correctly.
-- Product logos load and remain centered.
-- Product logo fallback works when an image fails.
+- The hero renders its meteor, developer T-Rex, chest, ferns, and flowers, and the About section renders its calm Brachiosaurus scene.
+- All dinosaur, chest, and reward SVG references resolve to registered sprite symbols.
+- Unknown artwork IDs use the documented generic visual fallback without affecting product content.
 - Product case-study links jump to the right sections.
 - Resume buttons download PDFs.
 - External links open correctly.
 - Mobile layout remains readable.
+- Every stable project ID selects the intended dinosaur, environment, chest, and reward.
+- Meteor motion stays behind content, never impacts the ground, and becomes a complete static frame under reduced motion.
+- Chest behavior works through pointer hover and keyboard focus, while touch retains normal one-tap navigation.
+- Decorative scenes remain hidden from assistive technology without hiding meaningful card content.
 - `dist/robots.txt` and `dist/_headers` exist after build.
 - `dist/index.html` preserves noindex meta tags.
 
@@ -325,7 +365,7 @@ What could not be validated from the repo:
 - Deployed URL.
 - Search engine indexing status.
 - Private product repository implementation details.
-- Automated test coverage.
+- Automated rendered visual-regression, axe, screen-reader, and device-emulation coverage.
 
 ## 9. Known Unknowns
 
@@ -335,7 +375,7 @@ What could not be validated from the repo:
 | License | A `LICENSE` file or package license field. |
 | Deployment URL | Cloudflare Pages or hosting project settings. |
 | CI setup | `.github/workflows` or another CI config. |
-| Automated tests | Test scripts or test files. |
+| CI enforcement | A workflow or hosting build configuration that runs `npm test` and `npm run build`. |
 | Actual product implementations | Separate private repositories. |
 | Screenshot plan | Final screenshot assets or naming convention. |
 | Release process | Deployment/release documentation or hosting config. |
@@ -355,3 +395,4 @@ What could not be validated from the repo:
 - [File Map](docs/FILE_MAP.md)
 - [Troubleshooting](docs/TROUBLESHOOTING.md)
 - [Changelog Starter](docs/CHANGELOG_STARTER.md)
+- [Organic Geometric Mosaic Design](docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md)

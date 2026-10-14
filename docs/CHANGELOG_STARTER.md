@@ -60,7 +60,7 @@ This file provides a starter changelog structure for future maintainers. It is n
 
 ### Known Issues
 
-- No automated test script exists in `package.json`.
+- The repository has eleven Node integrity tests, but no automated rendered visual-regression, axe, screen-reader, or device-emulation suite.
 - No `LICENSE` file exists.
 - No deployment URL or Cloudflare Pages project settings are documented in the repo.
 - No screenshot assets are present beyond `public/screenshots/.gitkeep`.

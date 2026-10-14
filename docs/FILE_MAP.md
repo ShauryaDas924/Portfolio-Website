@@ -12,6 +12,12 @@
 | `vite.config.js` | Config | Vite React plugin configuration. | Be careful; affects build behavior. |
 | `.gitignore` | Config | Ignores dependencies, build output, env files, logs, and `.DS_Store`. | Update only when project ignore rules change. |
 
+## `tests/`
+
+| Path | Type | Purpose | Edit Guidance |
+| --- | --- | --- | --- |
+| `tests/portfolio-integrity.test.mjs` | Node test suite | Eleven integrity tests for product/case-study contracts, artwork mappings and palette, required hero/About art, accessibility-source hooks, resume/public-link boundaries, noindex controls, and runtime-data-collection safeguards. | Run with `npm test`; rendered visual, axe, screen-reader, and device-emulation QA remain manual. |
+
 ## `src/`
 
 | Path | Type | Purpose | Edit Guidance |
@@ -19,6 +25,8 @@
 | `src/main.jsx` | Source | Mounts React into `#root` and imports global CSS. | Rarely needs edits. |
 | `src/App.jsx` | Source | Composes page sections and maps data into cards. | Edit carefully; controls section order and IDs. |
 | `src/styles.css` | Source styling | Global visual system, responsive layout, cards, sections, buttons. | High impact; inspect responsive rules before changing. |
+| `src/pixel-art.css` | Source styling | Mosaic palette, SVG geometry, meteor/chest/environment motion, art breakpoints, and reduced-motion states. | High impact; follow `docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md`. |
+| `src/assets/mosaic-network.svg` | Source asset | Original irregular cell network reused as a restrained decorative mask. | Keep low contrast and clear of long-form copy. |
 
 ## `src/components/`
 
@@ -28,16 +36,22 @@
 | `Footer.jsx` | Source component | Footer and back-to-top link. | Low risk. |
 | `Hero.jsx` | Source component | Hero copy, CTA buttons, signal cards. | Copy changes are safe; link changes need review. |
 | `Navbar.jsx` | Source component | Sticky navigation and profile links. | Keep anchors aligned with section IDs. |
-| `ProductCard.jsx` | Source component | Product card rendering, logo fallback, tech chips, source note. | Important for featured product presentation and accessibility. |
+| `ProductCard.jsx` | Source component | Product card facts, mapped treasure-scene integration, public-product link, tech chips, source note, and case-study action. | Important for featured product presentation and accessibility. |
 | `ProductDetail.jsx` | Source component | Case study rendering and fixed case-study heading map. | Be careful with heading/key changes; data depends on keys. |
 | `ResumeCard.jsx` | Source component | Resume download anchor. | Preserve `download` behavior unless asked. |
 | `SectionHeader.jsx` | Source component | Shared section header wrapper. | Low risk. |
+| `pixel/PixelSpriteLibrary.jsx` | Source component | Reusable organic mosaic dinosaurs and angular chest/reward SVG symbols. | Preserve silhouette recognition, shared cell boundaries, light direction, and decorative accessibility. |
+| `pixel/PrehistoricLandscape.jsx` | Source component | Hero prehistoric landscape with the developer T-Rex, chest, ferns, flowers, and occluded meteor. | Keep semantic hero copy outside the decorative scene. |
+| `pixel/AboutPrehistoricScene.jsx` | Source component | Calm Brachiosaurus landscape supporting the About section. | Keep it decorative and separate from meaningful About copy. |
+| `pixel/ProjectTreasureScene.jsx` | Source component | Decorative per-project dinosaur/chest/reward composition. | Select by stable project ID; never add links or project facts inside the scene. |
+| `pixel/MosaicEnvironmentPrimitives.jsx` | Source component | Reusable organic clouds, trees, ferns, flowers and ground plus angular rocks. | Preserve curated shared-edge geometry and scene consistency. |
 
 ## `src/data/`
 
 | Path | Type | Purpose | Edit Guidance |
 | --- | --- | --- | --- |
 | `src/data/portfolioData.js` | Source data | Navigation, product summaries, product case studies, resume metadata, GitHub cards, contact items. | Highest-impact content file. Preserve private-source boundaries and honest limitations. |
+| `src/data/projectArtwork.js` | Source data | Stable mapping from project IDs to dinosaur, environment, chest, and reward variants. | Decorative configuration only; do not duplicate or invent product claims. |
 
 ## `public/`
 
@@ -47,7 +61,7 @@ Vite copies `public/` files to the root of `dist/`.
 | --- | --- | --- | --- |
 | `public/_headers` | Deployment config | Cloudflare Pages `X-Robots-Tag` headers. | Release/indexing sensitive; do not remove noindex casually. |
 | `public/robots.txt` | Deployment config | Disallows crawling. | Indexing sensitive. |
-| `public/product-logos/` | Asset | Product logos used by product cards. | Public assets; do not add private or sensitive images. |
+| `public/product-logos/` | Asset | Existing logo files kept for possible future use; current cards use SVG scenes. | Public assets; do not add private or sensitive images. |
 | `public/resume/` | Distribution asset | Public resume PDFs used by download cards. | Treat PDFs as public once deployed. |
 | `public/screenshots/` | Asset placeholder | Future screenshot/demo image location. | Public assets only. |
 
@@ -63,6 +77,8 @@ Vite copies `public/` files to the root of `dist/`.
 | `docs/FILE_MAP.md` | Documentation | File/folder map and edit guidance. | Update after file structure changes. |
 | `docs/TROUBLESHOOTING.md` | Documentation | Practical debugging guide. | Add issues as they are discovered. |
 | `docs/CHANGELOG_STARTER.md` | Documentation | Changelog template and first entry. | Convert to real changelog if releases are introduced. |
+| `docs/ORGANIC_GEOMETRIC_MOSAIC_DESIGN.md` | Documentation | Current art identity, geometry, mappings, motion, accessibility, responsive, performance, and provenance rules. | Read before changing mosaic artwork or motion. |
+| `docs/PREHISTORIC_PIXEL_ART_BIBLE.md` | Documentation | Historical notice for the retired pixel-art direction. | Use the mosaic design document for current rules. |
 
 ## Generated or External Folders
 

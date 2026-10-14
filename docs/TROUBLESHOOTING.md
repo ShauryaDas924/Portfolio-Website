@@ -5,11 +5,16 @@
 When something breaks, check:
 
 1. Did dependencies install with `npm install`?
-2. Does `npm run build` pass?
-3. Is the affected content in `src/data/portfolioData.js` or hard-coded in a component?
-4. Does the referenced public asset exist under `public/`?
-5. Did Vite copy the expected public file into `dist/`?
-6. Did a change accidentally remove noindex files or metadata?
+2. Does `npm test` pass all eleven integrity tests?
+3. Does `npm run build` pass?
+4. Is the affected content in `src/data/portfolioData.js` or hard-coded in a component?
+5. Does the referenced public asset exist under `public/`?
+6. Did Vite copy the expected public file into `dist/`?
+7. Did a change accidentally remove noindex files or metadata?
+
+### `npm test` fails
+
+The test script uses Node's built-in test runner on `tests/portfolio-integrity.test.mjs`. Read the named failing contract before changing code or data; failures commonly identify a changed product ID, artwork mapping, required hero/About detail, accessibility-source hook, resume/public link, noindex directive, or runtime data-collection boundary. The suite does not provide rendered visual-regression, axe, screen-reader, or device-emulation coverage.
 
 ## Install Issues
 
